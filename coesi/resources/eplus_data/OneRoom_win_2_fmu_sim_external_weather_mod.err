@@ -1,0 +1,30 @@
+Program Version,EnergyPlus, Version 9.2.0-921312fa1d, YMD=2020.01.29 12:07,
+   ** Warning ** CheckEnvironmentSpecifications: SimulationControl specified doing design day simulations, but no design environments specified.
+   **   ~~~   ** ...No design environment results produced. For these results, add appropriate SizingPeriod:* objects for your simulation.
+   ** Warning ** Weather file location will be used rather than entered (IDF) Location object.
+   **   ~~~   ** ..Location object=TURIN
+   **   ~~~   ** ..Weather File Location=TORINO - ITA IWEC Data WMO#=160590
+   **   ~~~   ** ..due to location differences, Latitude difference=[0.00] degrees, Longitude difference=[0.00] degrees.
+   **   ~~~   ** ..Time Zone difference=[1.0] hour(s), Elevation difference=[0.00] percent, [0.00] meters.
+   ** Warning ** GetSurfaceData: Window dimensions differ from Window 5/6 data file dimensions, 1 times.
+   **   ~~~   ** This will affect the frame heat transfer calculation if the frame in the Data File entry
+   **   ~~~   ** is not uniform, i.e., has sections with different geometry and/or thermal properties.
+   **   ~~~   ** For explicit details on each window, use Output:Diagnostics,DisplayExtraWarnings;
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ************* Beginning Simulation
+   ** Severe  ** ExternalInterface: Did not find file "socket.cfg".
+   **   ~~~   ** This file needs to be in same directory as in.idf.
+   **   ~~~   ** Check the documentation for the ExternalInterface.
+   **  Fatal  ** Error in ExternalInterface: Check EnergyPlus *.err file.
+   ...Summary of Errors that led to program termination:
+   ..... Reference severe error count=1
+   ..... Last severe error=ExternalInterface: Did not find file "socket.cfg".
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 1 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Terminated--Fatal Error Detected. 2 Warning; 1 Severe Errors; Elapsed Time=00hr 00min  0.35sec

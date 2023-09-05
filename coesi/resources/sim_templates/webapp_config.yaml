@@ -1,0 +1,15 @@
+ZMQ:
+  RUN_PROCESS:
+    python: mk_zmq:MosaikZMQ #cmd: python mk_zmq.py %(addr)s # best in-proc
+  PARAMS:
+    step_size: 600
+    duration: null
+  MODELS:
+    zmq:
+      PUBLIC: true
+      ANY_INPUTS: true
+      PARAMS:
+        host: 'tcp://*:'
+        port: 5558
+        socket_type: 'PUB'
+      ATTRS: []

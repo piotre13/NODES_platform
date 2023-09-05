@@ -1,0 +1,37 @@
+language: python
+matrix:
+    include:
+        - python: 2.7
+          dist: trusty
+          sudo: false
+        - python: 3.6
+          dist: trusty
+          sudo: false
+        - python: 3.7
+          dist: xenial
+          sudo: true
+
+install:
+  - pip install --upgrade pip setuptools wheel
+  - pip install --only-binary=numpy,scipy numpy scipy
+  - pip install xlrd
+  - pip install .
+  - pip install pytest-cov
+  - pip install coveralls
+  - pip install flake8
+
+script:
+  - py.test --cov=richardsonpy
+
+after_success:
+  - coveralls
+
+deploy:
+  provider: pypi
+  user: "__token__"
+  password:
+    secure: "WuJxppcTQhc+ACbPFH5HUvwiKFZTikDfX4r6TshnwbE9xwl4uel7PbxvSc1vpvDPmrp58xriyZ9tEj1cQngMn2Dp2Rpy2vX8CmQlKpZ1AnZuMKZzt9eXnLLp4HYgM6d98zz+sLa1gansSnpDBGbhIGaGb0qACF6UFieu6wjiX13Pyeo04Lpux7VCZC0OpoMGOxuo2K+GMXra5NKLRrp+Fzmu6lAi8UnHpjCP1LV4t1cuexZVXUi5V/zkVdMMYng5N2hkjSynENtrogLvC1ALU9MsZhbKx/OjzaRpOkDT5vYbmI/sjxOzDf0lk9FNH5St/9TAKtT0dYYbMVrZVcQK0nSDIW0lFIPI38YcR4NDJBV6mMq/xTX9AepH2nbQHxYN1L3U1KBwsmX2WnJlHovK04Q0RnPe+xXXAgNPKulxXR/XbxSf55Kf4Lmxf6ynDilI1+kbHv0l4UXKffYu+ntTwnlOXybDSBNczDtiTllqE6NRMkpeEd3isdaOjVGWg1jKKdyAi/7nx1gZxJbnPkjojsUVDKcZ7e7dYZCtD+Z3nl155/ZySpVUH15F8y6n0aYZU+tM6g9+Sjf0KTeUenTLK0ERRYgyGYGNhQFzI2na+JyxezvuR6p6Q9CPfS7mhTBFFC9U7tm6Jj5cICIQwUF7/i4aRI1FjZcGYXEXIpB4CVE="
+  skip_existing: true
+  on:
+    tags: true
+all_branches: true

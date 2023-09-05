@@ -1,0 +1,20 @@
+database: # Template and Default value for the database
+  RUN_PROCESS:
+    python: mk_hdf5:MosaikHdf5 #cmd: python mk_hdf5.py %(addr)s
+  PARAMS:
+    step_size: 600 # The step_size defines how often data will be collected.
+    duration: null # The duration is the simulation end time in seconds.
+    series_path: [null,null] # default for None (None,None)
+  MODELS:
+    db:
+      PUBLIC: true
+      ANY_INPUTS: true
+      PARAMS:
+        filename: null # name of the file output
+        scn_config_file: null # name of the YAML configuration of the scenario to save it in hdf5
+        buf_size: 1000 # default 1000
+        dataset_opts: null # default None. a dictionary of arguments that get passed to h5py's create_dataset() method.
+      ATTRS: []
+  EXTRA_METHODS:
+    set_meta_data: [] # takes a single dict with an arbitrary amount of key-values pairs.
+    set_static_data: [] # The method set_static_data() takes a dict of entities and data dicts.

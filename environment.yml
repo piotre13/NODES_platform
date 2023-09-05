@@ -1,0 +1,24 @@
+name: uesa
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pyfmi
+  - fmpy
+  - pyzmq
+  - cython
+  - pip
+  - arrow
+  - pathlib
+  - h5py
+  - dash
+  - matplotlib
+  - numba # homesim
+  - jupyterlab
+  - pip:
+      - eppy # energy plus in python
+      - mosaik
+      - pvlib==0.6.3 # pvsim
+      - tables==3.6.1 # pvsim
+      - mesa # for multi-agent system

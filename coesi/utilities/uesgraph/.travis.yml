@@ -1,0 +1,29 @@
+dist: xenial
+services:
+  - xvfb
+
+language: python
+python:
+- 2.7
+- 3.5
+- 3.6
+install:
+- pip install --upgrade pip setuptools wheel
+- pip install -e .
+- pip install pytest-cov
+- pip install coveralls
+before_script:
+- "export DISPLAY=:99.0"
+#- "sh -e /etc/init.d/xvfb start"
+- sleep 3
+script:
+- py.test --mpl
+after_success:
+- coveralls
+deploy:
+  provider: pypi
+  user: "__token__"
+  password:
+    secure: fM+DbGRC0VKQG9spYk8JJhSkKxZPsA44uwFwzEtcJDOBIIVTTs2ItDjhBzJZkGgcUcLPKl+jwcsBW7520h/F8yRIpoItP5rgkMpEJJPyViIwqraPEjxO6O7mYRr4oLoun4w7BkRgrLIxK4gIiVR0N8W+/eO/jql0J27dR5LAJD/CPXg1wItKESFkRAQwaMgSV1m8Q1qpSnnoW8ocpqxxAJgqu5OlY7zRty7qI3JsKNTwC9SOkQsON2lsNfuiv38jowEcfgLR73URZsX0BWBPjNErP6OZ94gKzZ8TUWvaeyvIrbrJLRJelyNL09Wmd4mfpCqcMhKau+N2aJ2WQ9gchYlZB2EhFm+nIM3vk8bdwCJU17OYHveRhEMBapsmyD8GnB6qVS0UexPMkAMmfEJ3F6it/8cLTW+48O7Zhu6lHsTGuVM8nN47zXrwSgmH6UonFTLo5MBPYqIN38JtYqv2fmSXPCt/E1TNCariwNkf/SJ+McMl4t8Sy0EAmafb9deUgr4Sy+8iLSYGIxI/e7IB987uscieuu0zTCyDEdFJYkZjfN+p6h3EHyOqgU+TRHg26uz2mMwZf4W1ELe40fXKcTk2Rl+SqzHOaqetD5b1Msn4mgDHOe4RIP6oviZofJflzquHzx9Pd+QXM/RP9YeHVqbRuMDpurfx16rOVrFpRDs=
+  on:
+    tags: true

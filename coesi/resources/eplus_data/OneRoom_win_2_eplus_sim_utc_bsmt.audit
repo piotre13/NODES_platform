@@ -1,0 +1,552 @@
+Basement Audit File 
+Program Version,GroundTempCalc - Basement, Version .5
+   ** Severe  ** IP: IDF line~7 Did not find "Output:EnergyManagementSystem" in list of Objects
+   ** Severe  ** IP: IDF line~12 Did not find "ScheduleTypeLimits" in list of Objects
+   ** Severe  ** IP: IDF line~18 Did not find "ScheduleTypeLimits" in list of Objects
+   ** Severe  ** IP: IDF line~24 Did not find "Schedule:Day:Hourly" in list of Objects
+   ** Severe  ** IP: IDF line~52 Did not find "Schedule:Week:Daily" in list of Objects
+   ** Severe  ** IP: IDF line~67 Did not find "Schedule:Year" in list of Objects
+   ** Severe  ** IP: IDF line~76 Did not find "ScheduleTypeLimits" in list of Objects
+   ** Severe  ** IP: IDF line~82 Did not find "Construction:WindowDataFile" in list of Objects
+   ** Severe  ** IP: IDF line~171 Did not find "Version" in list of Objects
+   ** Severe  ** IP: IDF line~172 Did not find "Timestep" in list of Objects
+   ** Severe  ** IP: IDF line~174 Did not find "Building" in list of Objects
+   ** Severe  ** IP: IDF line~184 Did not find "HeatBalanceAlgorithm" in list of Objects
+   ** Severe  ** IP: IDF line~185 Did not find "SurfaceConvectionAlgorithm:Inside" in list of Objects
+   ** Severe  ** IP: IDF line~186 Did not find "SurfaceConvectionAlgorithm:Outside" in list of Objects
+   ** Severe  ** IP: IDF line~188 Did not find "SimulationControl" in list of Objects
+   ** Severe  ** IP: IDF line~195 Did not find "RunPeriod" in list of Objects
+   ** Severe  ** IP: IDF line~210 Did not find "Site:Location" in list of Objects
+   ** Severe  ** IP: IDF line~217 Did not find "Material:NoMass" in list of Objects
+   ** Severe  ** IP: IDF line~225 Did not find "Material:NoMass" in list of Objects
+   ** Severe  ** IP: IDF line~233 Did not find "Material" in list of Objects
+   ** Severe  ** IP: IDF line~244 Did not find "Construction" in list of Objects
+   ** Severe  ** IP: IDF line~248 Did not find "Construction" in list of Objects
+   ** Severe  ** IP: IDF line~252 Did not find "Construction" in list of Objects
+   ** Severe  ** IP: IDF line~256 Did not find "Site:GroundTemperature:BuildingSurface" in list of Objects
+   ** Severe  ** IP: IDF line~258 Did not find "Zone" in list of Objects
+   ** Severe  ** IP: IDF line~267 Did not find "ScheduleTypeLimits" in list of Objects
+   ** Severe  ** IP: IDF line~273 Did not find "GlobalGeometryRules" in list of Objects
+   ** Severe  ** IP: IDF line~278 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~294 Did not find "FenestrationSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~309 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~325 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~341 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~357 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~373 Did not find "BuildingSurface:Detailed" in list of Objects
+   ** Severe  ** IP: IDF line~389 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~390 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~391 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~392 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~393 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~394 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~395 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~396 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~397 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~398 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~399 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~400 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~402 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~403 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~404 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~405 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~406 Did not find "Output:Variable" in list of Objects
+   ** Severe  ** IP: IDF line~407 Did not find "Output:VariableDictionary" in list of Objects
+   ** Severe  ** IP: IDF line~408 Did not find "Output:Surfaces:Drawing" in list of Objects
+   ** Severe  ** IP: IDF line~409 Did not find "Output:Surfaces:List" in list of Objects
+   ** Severe  ** IP: IDF line~410 Did not find "Output:Constructions" in list of Objects
+   ** Severe  ** IP: IDF line~411 Did not find "Output:Meter:MeterFileOnly" in list of Objects
+   ** Severe  ** IP: IDF line~412 Did not find "Output:Meter:MeterFileOnly" in list of Objects
+   ** Severe  ** IP: IDF line~414 Did not find "OutputControl:Table:Style" in list of Objects
+   ** Severe  ** IP: IDF line~417 Did not find "Output:Table:SummaryReports" in list of Objects
+   ** Severe  ** IP: The IDF file has no records.
+   ** Severe  ** IP: Other miscellaneous errors found in input
+   **   ~~~   ** Possible Invalid Numerics or other problems
+   ************* GroundTempCalc:Basement Terminated--Fatal Error Detected. 0 Warning; 61 Severe Errors
+  Processing Data Dictionary (BasementGHT.idd) File -- Complete
+  Maximum number of Alpha Args=           1
+  Maximum number of Numeric Args=          44
+  Number of Object Definitions=          14
+  Number of Section Definitions=           0
+  Processing Input Data File (BasementGHTIn.idf) -- Start
+      1 !-Generator IDFEditor 1.50
+      2 !-Option OriginalOrderTop UseSpecialFormat
+      3 
+      4 !-NOTE: All comments with '!-' are ignored by the IDFEditor and are generated automatically.
+      5 !-      Use '!' comments if they need to be retained when using the IDFEditor.
+      6 
+      7 Output:EnergyManagementSystem,
+   ** Severe  ** IP: IDF line~7 Did not find "Output:EnergyManagementSystem" in list of Objects
+      8     Verbose,                 !- Actuator Availability Dictionary Reporting
+      9     Verbose,                 !- Internal Variable Availability Dictionary Reporting
+     10     Verbose;                 !- EMS Runtime Language Debug Output Level
+     11 
+     12 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~12 Did not find "ScheduleTypeLimits" in list of Objects
+     13     Cont Sch,                !- Name
+     14     0.0,                     !- Lower Limit Value
+     15     1.0,                     !- Upper Limit Value
+     16     Continuous;              !- Numeric Type
+     17 
+     18 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~18 Did not find "ScheduleTypeLimits" in list of Objects
+     19     Disc Sch,                !- Name
+     20     0.0,                     !- Lower Limit Value
+     21     1.0,                     !- Upper Limit Value
+     22     Discrete;                !- Numeric Type
+     23 
+     24 Schedule:Day:Hourly,
+   ** Severe  ** IP: IDF line~24 Did not find "Schedule:Day:Hourly" in list of Objects
+     25     Day Sch Act,             !- Name
+     26     Any Number,              !- Schedule Type Limits Name
+     27     130,                     !- Hour 1
+     28     130,                     !- Hour 2
+     29     130,                     !- Hour 3
+     30     130,                     !- Hour 4
+     31     130,                     !- Hour 5
+     32     130,                     !- Hour 6
+     33     130,                     !- Hour 7
+     34     130,                     !- Hour 8
+     35     130,                     !- Hour 9
+     36     130,                     !- Hour 10
+     37     130,                     !- Hour 11
+     38     130,                     !- Hour 12
+     39     130,                     !- Hour 13
+     40     130,                     !- Hour 14
+     41     130,                     !- Hour 15
+     42     130,                     !- Hour 16
+     43     130,                     !- Hour 17
+     44     130,                     !- Hour 18
+     45     130,                     !- Hour 19
+     46     130,                     !- Hour 20
+     47     130,                     !- Hour 21
+     48     130,                     !- Hour 22
+     49     130,                     !- Hour 23
+     50     130;                     !- Hour 24
+     51 
+     52 Schedule:Week:Daily,
+   ** Severe  ** IP: IDF line~52 Did not find "Schedule:Week:Daily" in list of Objects
+     53     Wee Sch Act,             !- Name
+     54     Day Sch Act,             !- Sunday Schedule:Day Name
+     55     Day Sch Act,             !- Monday Schedule:Day Name
+     56     Day Sch Act,             !- Tuesday Schedule:Day Name
+     57     Day Sch Act,             !- Wednesday Schedule:Day Name
+     58     Day Sch Act,             !- Thursday Schedule:Day Name
+     59     Day Sch Act,             !- Friday Schedule:Day Name
+     60     Day Sch Act,             !- Saturday Schedule:Day Name
+     61     Day Sch Act,             !- Holiday Schedule:Day Name
+     62     Day Sch Act,             !- SummerDesignDay Schedule:Day Name
+     63     Day Sch Act,             !- WinterDesignDay Schedule:Day Name
+     64     Day Sch Act,             !- CustomDay1 Schedule:Day Name
+     65     Day Sch Act;             !- CustomDay2 Schedule:Day Name
+     66 
+     67 Schedule:Year,
+   ** Severe  ** IP: IDF line~67 Did not find "Schedule:Year" in list of Objects
+     68     Sch Act,                 !- Name
+     69     Any Number,              !- Schedule Type Limits Name
+     70     Wee Sch Act,             !- Schedule:Week Name 1
+     71     1,                       !- Start Month 1
+     72     1,                       !- Start Day 1
+     73     12,                      !- End Month 1
+     74     31;                      !- End Day 1
+     75 
+     76 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~76 Did not find "ScheduleTypeLimits" in list of Objects
+     77     Any Number,              !- Name
+     78     ,                        !- Lower Limit Value
+     79     ,                        !- Upper Limit Value
+     80     Continuous;              !- Numeric Type
+     81 
+     82 Construction:WindowDataFile,
+   ** Severe  ** IP: IDF line~82 Did not find "Construction:WindowDataFile" in list of Objects
+     83     DoubleClear,             !- Name
+     84     C:\EnergyPlusV9-2-0\DataSets\Window5DataFile.dat;  !- File Name
+     85 
+     86 !1ZoneUncontrolled_win_2.idf
+     87 ! Basic file description:  Basic test for EnergyPlus.  Resistive Walls.  Regular (no ground contact) floor.
+     88 !                          Regular roof.  1 Window (X 2 multiplier)
+     89 !
+     90 ! Highlights:              Illustrates use of Window5DataFile.dat for Windows; Multiplier for Windows
+     91 !
+     92 !
+     93 ! Simulation Location/Run: Denver Stapleton Intl Arpt CO USA WMO=724690, 2 design days, 1 run period,
+     94 !                          Run Control executes two design days (see RUN PERIOD object)
+     95 !
+     96 ! Location:                Denver, CO
+     97 !
+     98 ! Design Days:             Denver Stapleton Intl Arpt CO USA Annual Heating 99%, MaxDB=-16°C
+     99 !                          Denver Stapleton Intl Arpt CO USA Annual Cooling (DB=>MWB) 1%, MaxDB=32.6°C MWB=15.6°C
+    100 !
+    101 ! Run Period (Weather File): Full Annual Simulation, DENVER_STAPLETON_CO_USA_WMO_724690
+    102 !
+    103 ! Run Control:             No zone or system sizing, design day run control (no weather file simulation)
+    104 !
+    105 ! Building: Fictional 1 zone building with resistive walls.
+    106 !
+    107 !           The building is oriented due north.
+    108 !
+    109 ! Floor Area:        232.25 m2
+    110 ! Number of Stories: 1
+    111 !
+    112 ! Zone Description Details:
+    113 !
+    114 !       (0,15.24,0)                 (15.24,15.24,0)
+    115 !              _____________________________
+    116 !             |                             |
+    117 !             |                             |
+    118 !             |                             |
+    119 !             |                             |
+    120 !             |                             |
+    121 !             |                             |
+    122 !             |                             |
+    123 !             |                             |
+    124 !             |                             |
+    125 !             |                             |
+    126 !             |                             |
+    127 !             |                             |
+    128 !             |                             |
+    129 !             |                             |
+    130 !             |                             |
+    131 !             |____[=Win X 2=]______________|
+    132 !
+    133 !          (0,0,0)                      (15.24,0,0)
+    134 !
+    135 ! Internal gains description:     NA
+    136 !
+    137 ! Interzone Surfaces:             None
+    138 ! Internal Mass:                  None
+    139 ! People:                         None
+    140 ! Lights:                         None
+    141 ! Equipment:                      None
+    142 ! Windows:                        0
+    143 ! Detached Shading:               None
+    144 ! Daylight:                       None
+    145 ! Natural Ventilation:            None
+    146 ! Compact Schedules:              NA (no schedules)
+    147 ! Solar Distribution:             MinimalShadowing
+    148 !
+    149 ! HVAC:                           NA
+    150 !
+    151 ! Zonal Equipment:                NA
+    152 ! Central Air Handling Equipment: No
+    153 ! System Equipment Autosize:      No
+    154 ! Purchased Cooling:              No
+    155 ! Purchased Heating:              No
+    156 ! Purchased Chilled Water:        No
+    157 ! Purchased Hot Water:            No
+    158 ! Coils:                          None
+    159 ! Pumps:                          None
+    160 ! Boilers:                        None
+    161 ! Chillers:                       None
+    162 ! Towers:                         None
+    163 !
+    164 ! Results:
+    165 ! Standard Reports:               Variable Dictionary, Surfaces (dxf), Meter File
+    166 ! Timestep or Hourly Variables:   Hourly and Daily
+    167 ! Time bins Report:               None
+    168 ! HTML Report:                    None
+    169 ! Environmental Emissions:        None
+    170 ! Utility Tariffs:                None
+    171 Version,9.2;
+   ** Severe  ** IP: IDF line~171 Did not find "Version" in list of Objects
+    172 Timestep,6;
+   ** Severe  ** IP: IDF line~172 Did not find "Timestep" in list of Objects
+    173 
+    174 Building,
+   ** Severe  ** IP: IDF line~174 Did not find "Building" in list of Objects
+    175     Simple One Zone w Windows,  !- Name
+    176     0,                       !- North Axis {deg}
+    177     Suburbs,                 !- Terrain
+    178     0.04,                    !- Loads Convergence Tolerance Value
+    179     0.004,                   !- Temperature Convergence Tolerance Value {deltaC}
+    180     MinimalShadowing,        !- Solar Distribution
+    181     30,                      !- Maximum Number of Warmup Days
+    182     6;                       !- Minimum Number of Warmup Days
+    183 
+    184 HeatBalanceAlgorithm,ConductionTransferFunction;
+   ** Severe  ** IP: IDF line~184 Did not find "HeatBalanceAlgorithm" in list of Objects
+    185 SurfaceConvectionAlgorithm:Inside,TARP;
+   ** Severe  ** IP: IDF line~185 Did not find "SurfaceConvectionAlgorithm:Inside" in list of Objects
+    186 SurfaceConvectionAlgorithm:Outside,DOE-2;
+   ** Severe  ** IP: IDF line~186 Did not find "SurfaceConvectionAlgorithm:Outside" in list of Objects
+    187 
+    188 SimulationControl,
+   ** Severe  ** IP: IDF line~188 Did not find "SimulationControl" in list of Objects
+    189     No,                      !- Do Zone Sizing Calculation
+    190     No,                      !- Do System Sizing Calculation
+    191     No,                      !- Do Plant Sizing Calculation
+    192     Yes,                     !- Run Simulation for Sizing Periods
+    193     Yes;                     !- Run Simulation for Weather File Run Periods
+    194 
+    195 RunPeriod,
+   ** Severe  ** IP: IDF line~195 Did not find "RunPeriod" in list of Objects
+    196     Run Period 1,            !- Name
+    197     1,                       !- Begin Month
+    198     1,                       !- Begin Day of Month
+    199     ,                        !- Begin Year
+    200     12,                      !- End Month
+    201     31,                      !- End Day of Month
+    202     ,                        !- End Year
+    203     Monday,                  !- Day of Week for Start Day
+    204     Yes,                     !- Use Weather File Holidays and Special Days
+    205     Yes,                     !- Use Weather File Daylight Saving Period
+    206     No,                      !- Apply Weekend Holiday Rule
+    207     Yes,                     !- Use Weather File Rain Indicators
+    208     Yes;                     !- Use Weather File Snow Indicators
+    209 
+    210 Site:Location,
+   ** Severe  ** IP: IDF line~210 Did not find "Site:Location" in list of Objects
+    211     fdsfdaf,                 !- Name
+    212     45.22,                   !- Latitude {deg}
+    213     7.65,                    !- Longitude {deg}
+    214     -12,                     !- Time Zone {hr}
+    215     287;                     !- Elevation {m}
+    216 
+    217 Material:NoMass,
+   ** Severe  ** IP: IDF line~217 Did not find "Material:NoMass" in list of Objects
+    218     R13LAYER,                !- Name
+    219     Rough,                   !- Roughness
+    220     2.290965,                !- Thermal Resistance {m2-K/W}
+    221     0.9000000,               !- Thermal Absorptance
+    222     0.7500000,               !- Solar Absorptance
+    223     0.7500000;               !- Visible Absorptance
+    224 
+    225 Material:NoMass,
+   ** Severe  ** IP: IDF line~225 Did not find "Material:NoMass" in list of Objects
+    226     R31LAYER,                !- Name
+    227     Rough,                   !- Roughness
+    228     5.456,                   !- Thermal Resistance {m2-K/W}
+    229     0.9000000,               !- Thermal Absorptance
+    230     0.7500000,               !- Solar Absorptance
+    231     0.7500000;               !- Visible Absorptance
+    232 
+    233 Material,
+   ** Severe  ** IP: IDF line~233 Did not find "Material" in list of Objects
+    234     C5 - 4 IN HW CONCRETE,   !- Name
+    235     MediumRough,             !- Roughness
+    236     0.1014984,               !- Thickness {m}
+    237     1.729577,                !- Conductivity {W/m-K}
+    238     2242.585,                !- Density {kg/m3}
+    239     836.8000,                !- Specific Heat {J/kg-K}
+    240     0.9000000,               !- Thermal Absorptance
+    241     0.6500000,               !- Solar Absorptance
+    242     0.6500000;               !- Visible Absorptance
+    243 
+    244 Construction,
+   ** Severe  ** IP: IDF line~244 Did not find "Construction" in list of Objects
+    245     R13WALL,                 !- Name
+    246     R13LAYER;                !- Outside Layer
+    247 
+    248 Construction,
+   ** Severe  ** IP: IDF line~248 Did not find "Construction" in list of Objects
+    249     FLOOR,                   !- Name
+    250     C5 - 4 IN HW CONCRETE;   !- Outside Layer
+    251 
+    252 Construction,
+   ** Severe  ** IP: IDF line~252 Did not find "Construction" in list of Objects
+    253     ROOF31,                  !- Name
+    254     R31LAYER;                !- Outside Layer
+    255 
+    256 Site:GroundTemperature:BuildingSurface,18.89,18.92,19.02,19.12,19.21,19.23,19.07,19.32,19.09,19.21,19.13,18.96;
+   ** Severe  ** IP: IDF line~256 Did not find "Site:GroundTemperature:BuildingSurface" in list of Objects
+    257 
+    258 Zone,
+   ** Severe  ** IP: IDF line~258 Did not find "Zone" in list of Objects
+    259     ZONE ONE,                !- Name
+    260     0,                       !- Direction of Relative North {deg}
+    261     0, 0, 0,                            !- X,Y,Z  {m}
+    262     1,                       !- Type
+    263     1,                       !- Multiplier
+    264     autocalculate,           !- Ceiling Height {m}
+    265     autocalculate;           !- Volume {m3}
+    266 
+    267 ScheduleTypeLimits,
+   ** Severe  ** IP: IDF line~267 Did not find "ScheduleTypeLimits" in list of Objects
+    268     Fraction,                !- Name
+    269     0.0,                     !- Lower Limit Value
+    270     1.0,                     !- Upper Limit Value
+    271     CONTINUOUS;              !- Numeric Type
+    272 
+    273 GlobalGeometryRules,
+   ** Severe  ** IP: IDF line~273 Did not find "GlobalGeometryRules" in list of Objects
+    274     UpperLeftCorner,         !- Starting Vertex Position
+    275     CounterClockWise,        !- Vertex Entry Direction
+    276     World;                   !- Coordinate System
+    277 
+    278 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~278 Did not find "BuildingSurface:Detailed" in list of Objects
+    279     Zn001:Wall001,           !- Name
+    280     Wall,                    !- Surface Type
+    281     R13WALL,                 !- Construction Name
+    282     ZONE ONE,                !- Zone Name
+    283     Outdoors,                !- Outside Boundary Condition
+    284     ,                        !- Outside Boundary Condition Object
+    285     SunExposed,              !- Sun Exposure
+    286     WindExposed,             !- Wind Exposure
+    287     0.5000000,               !- View Factor to Ground
+    288     4,                       !- Number of Vertices
+    289     0, 0, 4.572000,                     !- X,Y,Z  1 {m}
+    290     0, 0, 0,                            !- X,Y,Z  2 {m}
+    291     15.24000, 0, 0,                     !- X,Y,Z  3 {m}
+    292     15.24000, 0, 4.572000;              !- X,Y,Z  4 {m}
+    293 
+    294 FenestrationSurface:Detailed,
+   ** Severe  ** IP: IDF line~294 Did not find "FenestrationSurface:Detailed" in list of Objects
+    295     Zn001:Wall001:Win001,    !- Name
+    296     Window,                  !- Surface Type
+    297     DoubleClear,             !- Construction Name
+    298     Zn001:Wall001,           !- Building Surface Name
+    299     ,                        !- Outside Boundary Condition Object
+    300     0.5000000,               !- View Factor to Ground
+    301     ,                        !- Frame and Divider Name
+    302     2.0,                     !- Multiplier
+    303     4,                       !- Number of Vertices
+    304     0.548000, 0, 2.5000,                !- X,Y,Z  1 {m}
+    305     0.548000, 0, 0.5000,                !- X,Y,Z  2 {m}
+    306     5.548000, 0, 0.5000,                !- X,Y,Z  3 {m}
+    307     5.548000, 0, 2.5000;                !- X,Y,Z  4 {m}
+    308 
+    309 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~309 Did not find "BuildingSurface:Detailed" in list of Objects
+    310     Zn001:Wall002,           !- Name
+    311     Wall,                    !- Surface Type
+    312     R13WALL,                 !- Construction Name
+    313     ZONE ONE,                !- Zone Name
+    314     Outdoors,                !- Outside Boundary Condition
+    315     ,                        !- Outside Boundary Condition Object
+    316     SunExposed,              !- Sun Exposure
+    317     WindExposed,             !- Wind Exposure
+    318     0.5000000,               !- View Factor to Ground
+    319     4,                       !- Number of Vertices
+    320     15.24000, 0, 4.572000,              !- X,Y,Z  1 {m}
+    321     15.24000, 0, 0,                     !- X,Y,Z  2 {m}
+    322     15.24000, 15.24000, 0,              !- X,Y,Z  3 {m}
+    323     15.24000, 15.24000, 4.572000;       !- X,Y,Z  4 {m}
+    324 
+    325 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~325 Did not find "BuildingSurface:Detailed" in list of Objects
+    326     Zn001:Wall003,           !- Name
+    327     Wall,                    !- Surface Type
+    328     R13WALL,                 !- Construction Name
+    329     ZONE ONE,                !- Zone Name
+    330     Outdoors,                !- Outside Boundary Condition
+    331     ,                        !- Outside Boundary Condition Object
+    332     SunExposed,              !- Sun Exposure
+    333     WindExposed,             !- Wind Exposure
+    334     0.5000000,               !- View Factor to Ground
+    335     4,                       !- Number of Vertices
+    336     15.24000, 15.24000, 4.572000,       !- X,Y,Z  1 {m}
+    337     15.24000, 15.24000, 0,              !- X,Y,Z  2 {m}
+    338     0, 15.24000, 0,                     !- X,Y,Z  3 {m}
+    339     0, 15.24000, 4.572000;              !- X,Y,Z  4 {m}
+    340 
+    341 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~341 Did not find "BuildingSurface:Detailed" in list of Objects
+    342     Zn001:Wall004,           !- Name
+    343     Wall,                    !- Surface Type
+    344     R13WALL,                 !- Construction Name
+    345     ZONE ONE,                !- Zone Name
+    346     Outdoors,                !- Outside Boundary Condition
+    347     ,                        !- Outside Boundary Condition Object
+    348     SunExposed,              !- Sun Exposure
+    349     WindExposed,             !- Wind Exposure
+    350     0.5000000,               !- View Factor to Ground
+    351     4,                       !- Number of Vertices
+    352     0, 15.24000, 4.572000,              !- X,Y,Z  1 {m}
+    353     0, 15.24000, 0,                     !- X,Y,Z  2 {m}
+    354     0, 0, 0,                            !- X,Y,Z  3 {m}
+    355     0, 0, 4.572000;                     !- X,Y,Z  4 {m}
+    356 
+    357 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~357 Did not find "BuildingSurface:Detailed" in list of Objects
+    358     Zn001:Flr001,            !- Name
+    359     Floor,                   !- Surface Type
+    360     FLOOR,                   !- Construction Name
+    361     ZONE ONE,                !- Zone Name
+    362     Surface,                 !- Outside Boundary Condition
+    363     Zn001:Flr001,            !- Outside Boundary Condition Object
+    364     NoSun,                   !- Sun Exposure
+    365     NoWind,                  !- Wind Exposure
+    366     1.000000,                !- View Factor to Ground
+    367     4,                       !- Number of Vertices
+    368     15.24000, 0.000000, 0.0,            !- X,Y,Z  1 {m}
+    369     0.000000, 0.000000, 0.0,            !- X,Y,Z  2 {m}
+    370     0.000000, 15.24000, 0.0,            !- X,Y,Z  3 {m}
+    371     15.24000, 15.24000, 0.0;            !- X,Y,Z  4 {m}
+    372 
+    373 BuildingSurface:Detailed,
+   ** Severe  ** IP: IDF line~373 Did not find "BuildingSurface:Detailed" in list of Objects
+    374     Zn001:Roof001,           !- Name
+    375     Roof,                    !- Surface Type
+    376     ROOF31,                  !- Construction Name
+    377     ZONE ONE,                !- Zone Name
+    378     Outdoors,                !- Outside Boundary Condition
+    379     ,                        !- Outside Boundary Condition Object
+    380     SunExposed,              !- Sun Exposure
+    381     WindExposed,             !- Wind Exposure
+    382     0,                       !- View Factor to Ground
+    383     4,                       !- Number of Vertices
+    384     0.000000, 15.24000, 4.572,          !- X,Y,Z  1 {m}
+    385     0.000000, 0.000000, 4.572,          !- X,Y,Z  2 {m}
+    386     15.24000, 0.000000, 4.572,          !- X,Y,Z  3 {m}
+    387     15.24000, 15.24000, 4.572;          !- X,Y,Z  4 {m}
+    388 
+    389 Output:Variable,*,Site Outdoor Air Drybulb Temperature,timestep;
+   ** Severe  ** IP: IDF line~389 Did not find "Output:Variable" in list of Objects
+    390 Output:Variable,*,Zone Mean Air Temperature,timestep;
+   ** Severe  ** IP: IDF line~390 Did not find "Output:Variable" in list of Objects
+    391 Output:Variable,*,Zone Windows Total Transmitted Solar Radiation Rate,timestep;
+   ** Severe  ** IP: IDF line~391 Did not find "Output:Variable" in list of Objects
+    392 Output:Variable,ZN001:WALL001,Surface Outside Face Incident Solar Radiation Rate per Area,timestep;
+   ** Severe  ** IP: IDF line~392 Did not find "Output:Variable" in list of Objects
+    393 Output:Variable,ZN001:WALL001,Surface Outside Face Sunlit Fraction,timestep;
+   ** Severe  ** IP: IDF line~393 Did not find "Output:Variable" in list of Objects
+    394 Output:Variable,ZN001:WALL001,Surface Inside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~394 Did not find "Output:Variable" in list of Objects
+    395 Output:Variable,ZN001:WALL001,Surface Outside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~395 Did not find "Output:Variable" in list of Objects
+    396 Output:Variable,ZN001:WALL001:WIN001,Surface Outside Face Incident Solar Radiation Rate per Area,timestep;
+   ** Severe  ** IP: IDF line~396 Did not find "Output:Variable" in list of Objects
+    397 Output:Variable,ZN001:WALL001:WIN001,Surface Outside Face Sunlit Fraction,timestep;
+   ** Severe  ** IP: IDF line~397 Did not find "Output:Variable" in list of Objects
+    398 Output:Variable,ZN001:WALL001:WIN001,Surface Window Transmitted Solar Radiation Rate,timestep;
+   ** Severe  ** IP: IDF line~398 Did not find "Output:Variable" in list of Objects
+    399 Output:Variable,ZN001:WALL001:WIN001,Surface Inside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~399 Did not find "Output:Variable" in list of Objects
+    400 Output:Variable,ZN001:WALL001:WIN001,Surface Outside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~400 Did not find "Output:Variable" in list of Objects
+    401 ! Multiplier 2 causes a new window definition.
+    402 Output:Variable,ZN001:WALL001:WIN001:2,Surface Outside Face Incident Solar Radiation Rate per Area,timestep;
+   ** Severe  ** IP: IDF line~402 Did not find "Output:Variable" in list of Objects
+    403 Output:Variable,ZN001:WALL001:WIN001:2,Surface Outside Face Sunlit Fraction,timestep;
+   ** Severe  ** IP: IDF line~403 Did not find "Output:Variable" in list of Objects
+    404 Output:Variable,ZN001:WALL001:WIN001:2,Surface Window Transmitted Solar Radiation Rate,timestep;
+   ** Severe  ** IP: IDF line~404 Did not find "Output:Variable" in list of Objects
+    405 Output:Variable,ZN001:WALL001:WIN001:2,Surface Inside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~405 Did not find "Output:Variable" in list of Objects
+    406 Output:Variable,ZN001:WALL001:WIN001:2,Surface Outside Face Temperature,timestep;
+   ** Severe  ** IP: IDF line~406 Did not find "Output:Variable" in list of Objects
+    407 Output:VariableDictionary,Regular;
+   ** Severe  ** IP: IDF line~407 Did not find "Output:VariableDictionary" in list of Objects
+    408 Output:Surfaces:Drawing,dxf:wireframe;
+   ** Severe  ** IP: IDF line~408 Did not find "Output:Surfaces:Drawing" in list of Objects
+    409 Output:Surfaces:List,details;
+   ** Severe  ** IP: IDF line~409 Did not find "Output:Surfaces:List" in list of Objects
+    410 Output:Constructions,Constructions;
+   ** Severe  ** IP: IDF line~410 Did not find "Output:Constructions" in list of Objects
+    411 Output:Meter:MeterFileOnly,EnergyTransfer:Building,hourly;
+   ** Severe  ** IP: IDF line~411 Did not find "Output:Meter:MeterFileOnly" in list of Objects
+    412 Output:Meter:MeterFileOnly,EnergyTransfer:Facility,hourly;
+   ** Severe  ** IP: IDF line~412 Did not find "Output:Meter:MeterFileOnly" in list of Objects
+    413 
+    414 OutputControl:Table:Style,
+   ** Severe  ** IP: IDF line~414 Did not find "OutputControl:Table:Style" in list of Objects
+    415     HTML;                    !- Column Separator
+    416 
+    417 Output:Table:SummaryReports,
+   ** Severe  ** IP: IDF line~417 Did not find "Output:Table:SummaryReports" in list of Objects
+    418     AllSummary;              !- Report 1 Name
+    419 
+  Processing Input Data File (BasementGHTIn.idf) -- Complete
+  Number of IDF "Lines"=           0
+

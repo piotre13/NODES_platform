@@ -1,0 +1,17 @@
+name: uesa
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - pyzmq
+  - pip
+  - arrow
+  - pathlib
+  - h5py
+  - dash
+  - matplotlib
+  - pip:
+      - mosaik
+      - pvlib==0.6.3 # pvsim
+      - tables==3.6.1 # pvsim

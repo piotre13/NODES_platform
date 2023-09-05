@@ -1,0 +1,2322 @@
+{
+    "Building": {
+        "Simple One Zone w Windows": {
+            "loads_convergence_tolerance_value": 0.04,
+            "maximum_number_of_warmup_days": 30,
+            "minimum_number_of_warmup_days": 6,
+            "north_axis": 0,
+            "solar_distribution": "MinimalShadowing",
+            "temperature_convergence_tolerance_value": 0.004,
+            "terrain": "City"
+        }
+    },
+    "BuildingSurface:Detailed": {
+        "Zn001:Flr001": {
+            "construction_name": "FLOOR",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Surface",
+            "outside_boundary_condition_object": "Zn001:Flr001",
+            "sun_exposure": "NoSun",
+            "surface_type": "Floor",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0.0
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0.0
+                }
+            ],
+            "view_factor_to_ground": 1.0,
+            "wind_exposure": "NoWind",
+            "zone_name": "ZONE ONE"
+        },
+        "Zn001:Roof001": {
+            "construction_name": "ROOF31",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "surface_type": "Roof",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 0.0,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0.0,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                }
+            ],
+            "view_factor_to_ground": 0,
+            "wind_exposure": "WindExposed",
+            "zone_name": "ZONE ONE"
+        },
+        "Zn001:Wall001": {
+            "construction_name": "R13WALL",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.75
+                }
+            ],
+            "view_factor_to_ground": 0.5,
+            "wind_exposure": "WindExposed",
+            "zone_name": "ZONE ONE"
+        },
+        "Zn001:Wall002": {
+            "construction_name": "R13WALL",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                }
+            ],
+            "view_factor_to_ground": 0.5,
+            "wind_exposure": "WindExposed",
+            "zone_name": "ZONE ONE"
+        },
+        "Zn001:Wall003": {
+            "construction_name": "R13WALL",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "NoSun",
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 12.24,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                }
+            ],
+            "view_factor_to_ground": 0.5,
+            "wind_exposure": "WindExposed",
+            "zone_name": "ZONE ONE"
+        },
+        "Zn001:Wall004": {
+            "construction_name": "R13WALL",
+            "number_of_vertices": 4,
+            "outside_boundary_condition": "Outdoors",
+            "sun_exposure": "SunExposed",
+            "surface_type": "Wall",
+            "vertices": [
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 2.75
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 12.24,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 0
+                },
+                {
+                    "vertex_x_coordinate": 0,
+                    "vertex_y_coordinate": 0,
+                    "vertex_z_coordinate": 2.75
+                }
+            ],
+            "view_factor_to_ground": 0.5,
+            "wind_exposure": "WindExposed",
+            "zone_name": "ZONE ONE"
+        }
+    },
+    "Construction": {
+        "FLOOR": {
+            "layer_2": "F05 Ceiling air space resistance",
+            "layer_3": "M14a 100mm heavyweight concrete",
+            "outside_layer": "F16 Acoustic tile"
+        },
+        "Heavy Partitions": {
+            "layer_2": "M05 200mm concrete block",
+            "layer_3": "G01a 19mm gypsum board",
+            "outside_layer": "G01a 19mm gypsum board"
+        },
+        "Medium Partitions": {
+            "layer_2": "F04 Wall air space resistance",
+            "layer_3": "G01a 19mm gypsum board",
+            "outside_layer": "G01a 19mm gypsum board"
+        },
+        "R13WALL": {
+            "layer_2": "I02 50mm insulation board",
+            "layer_3": "F04 Wall air space resistance",
+            "layer_4": "M01 100mm brick",
+            "layer_5": "G01a 19mm gypsum board",
+            "outside_layer": "M01 100mm brick"
+        },
+        "ROOF31": {
+            "layer_2": "F05 Ceiling air space resistance",
+            "layer_3": "F16 Acoustic tile",
+            "outside_layer": "M14a 100mm heavyweight concrete"
+        }
+    },
+    "Construction:WindowDataFile": {
+        "DoubleClear": {
+            "file_name": "C:\\EnergyPlusV9-2-0\\DataSets\\Window5DataFile.dat"
+        }
+    },
+    "ExternalInterface": {
+        "ExternalInterface 1": {
+            "name_of_external_interface": "FunctionalMockupUnitExport"
+        }
+    },
+    "GlobalGeometryRules": {
+        "GlobalGeometryRules 1": {
+            "coordinate_system": "World",
+            "starting_vertex_position": "UpperLeftCorner",
+            "vertex_entry_direction": "CounterClockWise"
+        }
+    },
+    "HeatBalanceAlgorithm": {
+        "HeatBalanceAlgorithm 1": {
+            "algorithm": "ConductionTransferFunction"
+        }
+    },
+    "Material": {
+        "Asbestos-cement board - 3.2mm": {
+            "conductivity": 0.58,
+            "density": 1900,
+            "roughness": "Smooth",
+            "specific_heat": 1000,
+            "thickness": 0.0032
+        },
+        "Asbestos-cement board - 6.4mm": {
+            "conductivity": 0.58,
+            "density": 1900,
+            "roughness": "Smooth",
+            "specific_heat": 1000,
+            "thickness": 0.0064
+        },
+        "Ash - 25mm": {
+            "conductivity": 0.159,
+            "density": 642,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Birch - 25mm": {
+            "conductivity": 0.172,
+            "density": 704,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Brick - fired clay - 1120 kg/m3 - 102mm": {
+            "conductivity": 0.405,
+            "density": 1120,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 1280 kg/m3 - 102mm": {
+            "conductivity": 0.48,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 1440 kg/m3 - 102mm": {
+            "conductivity": 0.57,
+            "density": 1440,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 1600 kg/m3 - 102mm": {
+            "conductivity": 0.675,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 1760 kg/m3 - 102mm": {
+            "conductivity": 0.78,
+            "density": 1760,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 1920 kg/m3 - 102mm": {
+            "conductivity": 0.895,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 2080 kg/m3 - 102mm": {
+            "conductivity": 1.02,
+            "density": 2080,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 2240 kg/m3 - 102mm": {
+            "conductivity": 1.185,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "Brick - fired clay - 2400 kg/m3 - 102mm": {
+            "conductivity": 1.34,
+            "density": 2400,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.102
+        },
+        "C5 - 4 IN HW CONCRETE": {
+            "conductivity": 1.729577,
+            "density": 2242.585,
+            "roughness": "MediumRough",
+            "solar_absorptance": 0.65,
+            "specific_heat": 836.8,
+            "thermal_absorptance": 0.9,
+            "thickness": 0.1014984,
+            "visible_absorptance": 0.65
+        },
+        "Calcitic - dolomitic - limestone - marble - and granite - 1600 kg/m3 - 13mm": {
+            "conductivity": 1.1,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Calcitic - dolomitic - limestone - marble - and granite - 1920 kg/m3 - 13mm": {
+            "conductivity": 1.6,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Calcitic - dolomitic - limestone - marble - and granite - 2240 kg/m3 - 13mm": {
+            "conductivity": 2.3,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Calcitic - dolomitic - limestone - marble - and granite - 2560 kg/m3 - 13mm": {
+            "conductivity": 3.2,
+            "density": 2560,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Calcitic - dolomitic - limestone - marble - and granite - 2880 kg/m3 - 13mm": {
+            "conductivity": 4.3,
+            "density": 2880,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "California Redwood - 25mm": {
+            "conductivity": 0.113,
+            "density": 420,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Concrete Block: Limestone Aggregrate: 200mm - 16.3 kg - 2 cores": {
+            "conductivity": 1.13,
+            "density": 2210,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2
+        },
+        "Concrete Block: Limestone Aggregrate: 200mm - 16.3 kg - 2 cores - perlite filled cores": {
+            "conductivity": 1.13,
+            "density": 2210,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2
+        },
+        "Concrete Block: Limestone Aggregrate: 300mm - 25 kg - 2 cores": {
+            "conductivity": 1.13,
+            "density": 2210,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Limestone Aggregrate: 300mm - 25 kg - 2 cores - perlite filled cores": {
+            "conductivity": 1.13,
+            "density": 2210,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Low Mass Aggregate: 7.3-7.7 kg - 2 or 3 cores": {
+            "conductivity": 0.33,
+            "density": 1390,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.15
+        },
+        "Concrete Block: Low Mass Aggregate: 7.3-7.7 kg - 2 or 3 cores - perlite filled cores": {
+            "conductivity": 0.33,
+            "density": 1390,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.15
+        },
+        "Concrete Block: Low Mass Aggregate: 7.3-7.7 kg - 2 or 3 cores - vermiculite filled cores": {
+            "conductivity": 0.33,
+            "density": 1390,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.15
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg - UF foam filled cores": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg - molded EPS (beads) filled cores": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg - molded EPS inserts in cores": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg - perlite filled cores": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 8.6-10.0 kg - vermiculite filled cores": {
+            "conductivity": 0.33,
+            "density": 1380,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2
+        },
+        "Concrete Block: Low Mass Aggregate: 14.5-16.3 kg - 2 or 3 cores": {
+            "conductivity": 0.33,
+            "density": 1440,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.3
+        },
+        "Concrete Block: Low Mass Aggregate: 14.5-16.3 kg - 2 or 3 cores - perlite filled cores": {
+            "conductivity": 0.33,
+            "density": 1440,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.3
+        },
+        "Concrete Block: Low Mass Aggregate: 14.5-16.3 kg - 2 or 3 cores - vermiculite filled cores": {
+            "conductivity": 0.33,
+            "density": 1440,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.3
+        },
+        "Concrete Block: Medium Mass Aggregate: 2 or 3 cores": {
+            "conductivity": 1.13,
+            "density": 1790,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Medium Mass Aggregate: 2 or 3 cores - molded EPS (beads) filled cores": {
+            "conductivity": 1.13,
+            "density": 1790,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Medium Mass Aggregate: 2 or 3 cores - molded EPS inserts in cores": {
+            "conductivity": 1.13,
+            "density": 1790,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Medium Mass Aggregate: 2 or 3 cores - perlite filled cores": {
+            "conductivity": 1.13,
+            "density": 1790,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Medium Mass Aggregate: 2 or 3 cores - vermiculite filled cores": {
+            "conductivity": 1.13,
+            "density": 1790,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete Block: Sand and Gravel Aggregrate: 15-16 kg - 2 or 3 cores": {
+            "conductivity": 1.13,
+            "density": 2180,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2
+        },
+        "Concrete Block: Sand and Gravel Aggregrate: 15-16 kg - 2 or 3 cores - perlite filled cores": {
+            "conductivity": 1.13,
+            "density": 2180,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2
+        },
+        "Concrete Block: Sand and Gravel Aggregrate: 15-16 kg - 2 or 3 cores - vermiculite filled cores": {
+            "conductivity": 1.13,
+            "density": 2180,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2
+        },
+        "Concrete Block: Sand and Gravel Aggregrate: 22.7 kg - 2 cores": {
+            "conductivity": 1.13,
+            "density": 2000,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1280 kg/m3 - 51mm": {
+            "conductivity": 0.65,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1280 kg/m3 - 102mm": {
+            "conductivity": 0.65,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1600 kg/m3 - 51mm": {
+            "conductivity": 0.97,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1600 kg/m3 - 102mm": {
+            "conductivity": 0.97,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1920 kg/m3 - 51mm": {
+            "conductivity": 1.4,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Cement/lime - mortar - and stucco - 1920 kg/m3 - 102mm": {
+            "conductivity": 1.4,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 640 kg/m3 - 51mm": {
+            "conductivity": 0.18,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.051
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 640 kg/m3 - 102mm": {
+            "conductivity": 0.18,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.102
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 960 kg/m3 - 51mm": {
+            "conductivity": 0.33,
+            "density": 960,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.051
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 960 kg/m3 - 102mm": {
+            "conductivity": 0.33,
+            "density": 960,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.102
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1280 kg/m3 - 51mm": {
+            "conductivity": 0.535,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.051
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1280 kg/m3 - 102mm": {
+            "conductivity": 0.535,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.102
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1600 kg/m3 - 51mm": {
+            "conductivity": 0.785,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.051
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1600 kg/m3 - 102mm": {
+            "conductivity": 0.785,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.102
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1920 kg/m3 - 51mm": {
+            "conductivity": 1.1,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.051
+        },
+        "Concrete: Expanded shale - clay - slate - expanded slags - cinders - pumice - 1920 kg/m3 - 102mm": {
+            "conductivity": 1.1,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes - 1120 kg/m3 - 51mm": {
+            "conductivity": 0.36,
+            "density": 1120,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes - 1120 kg/m3 - 102mm": {
+            "conductivity": 0.36,
+            "density": 1120,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes - 1280 kg/m3 - 51mm": {
+            "conductivity": 0.44,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes - 1280 kg/m3 - 102mm": {
+            "conductivity": 0.44,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes - 1600 kg/m3 - 51mm": {
+            "conductivity": 0.6,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes - 1600 kg/m3 - 102mm": {
+            "conductivity": 0.6,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes - 1920 kg/m3 - 51mm": {
+            "conductivity": 0.75,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes - 1920 kg/m3 - 102mm": {
+            "conductivity": 0.75,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes and cellular concretes - 320 kg/m3 - 51mm": {
+            "conductivity": 0.12,
+            "density": 320,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes and cellular concretes - 320 kg/m3 - 102mm": {
+            "conductivity": 0.12,
+            "density": 320,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes and cellular concretes - 640 kg/m3 - 51mm": {
+            "conductivity": 0.2,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes and cellular concretes - 640 kg/m3 - 102mm": {
+            "conductivity": 0.2,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Foam concretes and cellular concretes - 960 kg/m3 - 51mm": {
+            "conductivity": 0.3,
+            "density": 960,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Foam concretes and cellular concretes - 960 kg/m3 - 102mm": {
+            "conductivity": 0.3,
+            "density": 960,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Gypsum-fiber concrete (87.5% gypsum - 12.5% wood chips) - 51mm": {
+            "conductivity": 0.24,
+            "density": 816,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.051
+        },
+        "Concrete: Gypsum-fiber concrete (87.5% gypsum - 12.5% wood chips) - 102mm": {
+            "conductivity": 0.24,
+            "density": 816,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.102
+        },
+        "Concrete: Limestone concretes - 1600 kg/m3 - 51mm": {
+            "conductivity": 0.79,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Limestone concretes - 1600 kg/m3 - 102mm": {
+            "conductivity": 0.79,
+            "density": 1600,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Limestone concretes - 1920 kg/m3 - 51mm": {
+            "conductivity": 1.14,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Limestone concretes - 1920 kg/m3 - 102mm": {
+            "conductivity": 1.14,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Limestone concretes - 2240 kg/m3 - 51mm": {
+            "conductivity": 1.6,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Limestone concretes - 2240 kg/m3 - 102mm": {
+            "conductivity": 1.6,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 320 kg/m3 - 51mm": {
+            "conductivity": 0.12,
+            "density": 320,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.051
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 320 kg/m3 - 102mm": {
+            "conductivity": 0.12,
+            "density": 320,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.102
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 480 kg/m3 - 51mm": {
+            "conductivity": 0.16,
+            "density": 480,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.051
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 480 kg/m3 - 102mm": {
+            "conductivity": 0.16,
+            "density": 480,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.102
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 640 kg/m3 - 51mm": {
+            "conductivity": 0.21,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.051
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 640 kg/m3 - 102mm": {
+            "conductivity": 0.21,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.102
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 800 kg/m3 - 51mm": {
+            "conductivity": 0.265,
+            "density": 800,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.051
+        },
+        "Concrete: Perlite - vermiculite - and polystyrene beads - 800 kg/m3 - 102mm": {
+            "conductivity": 0.265,
+            "density": 800,
+            "roughness": "MediumRough",
+            "specific_heat": 795,
+            "thickness": 0.102
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2080 kg/m3 - 51mm": {
+            "conductivity": 1.45,
+            "density": 2080,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2080 kg/m3 - 102mm": {
+            "conductivity": 1.45,
+            "density": 2080,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2240 kg/m3 - 51mm": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2240 kg/m3 - 102mm": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2400 kg/m3 - 51mm": {
+            "conductivity": 2.15,
+            "density": 2400,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.051
+        },
+        "Concrete: Sand and gravel or stone aggregate concretes - 2400 kg/m3 - 102mm": {
+            "conductivity": 2.15,
+            "density": 2400,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.102
+        },
+        "Douglas Fir-Larch - 25mm": {
+            "conductivity": 0.141,
+            "density": 559,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "F06 EIFS finish": {
+            "conductivity": 0.72,
+            "density": 1856,
+            "roughness": "Smooth",
+            "specific_heat": 840,
+            "thickness": 0.0095
+        },
+        "F07 25mm stucco": {
+            "conductivity": 0.72,
+            "density": 1856,
+            "roughness": "Smooth",
+            "specific_heat": 840,
+            "thickness": 0.0254
+        },
+        "F08 Metal surface": {
+            "conductivity": 45.28,
+            "density": 7824,
+            "roughness": "Smooth",
+            "specific_heat": 500,
+            "thickness": 0.0008
+        },
+        "F09 Opaque spandrel glass": {
+            "conductivity": 0.99,
+            "density": 2528,
+            "roughness": "Smooth",
+            "specific_heat": 880,
+            "thickness": 0.0064
+        },
+        "F10 25mm stone": {
+            "conductivity": 3.17,
+            "density": 2560,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.0254
+        },
+        "F11 Wood siding": {
+            "conductivity": 0.09,
+            "density": 592,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1170,
+            "thickness": 0.0127
+        },
+        "F12 Asphalt shingles": {
+            "conductivity": 0.04,
+            "density": 1120,
+            "roughness": "VeryRough",
+            "specific_heat": 1260,
+            "thickness": 0.0032
+        },
+        "F13 Built-up roofing": {
+            "conductivity": 0.16,
+            "density": 1120,
+            "roughness": "Rough",
+            "specific_heat": 1460,
+            "thickness": 0.0095
+        },
+        "F14 Slate or tile": {
+            "conductivity": 1.59,
+            "density": 1920,
+            "roughness": "VeryRough",
+            "specific_heat": 1260,
+            "thickness": 0.0127
+        },
+        "F15 Wood shingles": {
+            "conductivity": 0.04,
+            "density": 592,
+            "roughness": "VeryRough",
+            "specific_heat": 1300,
+            "thickness": 0.0064
+        },
+        "F16 Acoustic tile": {
+            "conductivity": 0.06,
+            "density": 368,
+            "roughness": "MediumSmooth",
+            "specific_heat": 590,
+            "thickness": 0.0191
+        },
+        "F17 Carpet": {
+            "conductivity": 0.06,
+            "density": 288,
+            "roughness": "MediumRough",
+            "specific_heat": 1380,
+            "thickness": 0.0127
+        },
+        "F18 Terrazzo": {
+            "conductivity": 1.8,
+            "density": 2560,
+            "roughness": "Rough",
+            "specific_heat": 790,
+            "thickness": 0.0254
+        },
+        "G01 16mm gypsum board": {
+            "conductivity": 0.16,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1090,
+            "thickness": 0.0159
+        },
+        "G01a 19mm gypsum board": {
+            "conductivity": 0.16,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1090,
+            "thickness": 0.019
+        },
+        "G02 16mm plywood": {
+            "conductivity": 0.12,
+            "density": 544,
+            "roughness": "Smooth",
+            "specific_heat": 1210,
+            "thickness": 0.0159
+        },
+        "G03 13mm fiberboard sheathing": {
+            "conductivity": 0.07,
+            "density": 400,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0127
+        },
+        "G04 13mm wood": {
+            "conductivity": 0.15,
+            "density": 608,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.0127
+        },
+        "G05 25mm wood": {
+            "conductivity": 0.15,
+            "density": 608,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.0254
+        },
+        "G06 50mm wood": {
+            "conductivity": 0.15,
+            "density": 608,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.0508
+        },
+        "G07 100mm wood": {
+            "conductivity": 0.15,
+            "density": 608,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.1016
+        },
+        "Gypsum or plaster board - 2.7mm": {
+            "conductivity": 0.58,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1090,
+            "thickness": 0.0027
+        },
+        "Gypsum or plaster board - 5.9mm": {
+            "conductivity": 0.58,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1090,
+            "thickness": 0.0059
+        },
+        "Gypsum or plaster board - 9.5mm": {
+            "conductivity": 0.58,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1090,
+            "thickness": 0.0095
+        },
+        "Hardboard High density - service-tempered grade and service grade": {
+            "conductivity": 0.82,
+            "density": 880,
+            "roughness": "Smooth",
+            "specific_heat": 1340,
+            "thickness": 0.019
+        },
+        "Hardboard High density - standard-tempered grade": {
+            "conductivity": 0.144,
+            "density": 1010,
+            "roughness": "Smooth",
+            "specific_heat": 1340,
+            "thickness": 0.019
+        },
+        "Hardboard Medium density": {
+            "conductivity": 0.105,
+            "density": 800,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.019
+        },
+        "Hardwood - 12.9mm": {
+            "conductivity": 0.167,
+            "density": 680,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.0129
+        },
+        "Hardwood - 19mm": {
+            "conductivity": 0.167,
+            "density": 680,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.019
+        },
+        "Hardwood - 25mm": {
+            "conductivity": 0.167,
+            "density": 680,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Hem-Fir - Spruce-Pine-Fir - 25mm": {
+            "conductivity": 0.119,
+            "density": 447,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Homogeneous board from repulped paper": {
+            "conductivity": 0.072,
+            "density": 480,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1170,
+            "thickness": 0.0032
+        },
+        "I01 25mm insulation board": {
+            "conductivity": 0.03,
+            "density": 43,
+            "roughness": "MediumRough",
+            "specific_heat": 1210,
+            "thickness": 0.0254
+        },
+        "I02 50mm insulation board": {
+            "conductivity": 0.03,
+            "density": 43,
+            "roughness": "MediumRough",
+            "specific_heat": 1210,
+            "thickness": 0.0508
+        },
+        "I03 75mm insulation board": {
+            "conductivity": 0.03,
+            "density": 43,
+            "roughness": "MediumRough",
+            "specific_heat": 1210,
+            "thickness": 0.0762
+        },
+        "I04 89mm batt insulation": {
+            "conductivity": 0.05,
+            "density": 19,
+            "roughness": "VeryRough",
+            "specific_heat": 960,
+            "thickness": 0.0894
+        },
+        "I05 154mm batt insulation": {
+            "conductivity": 0.05,
+            "density": 19,
+            "roughness": "VeryRough",
+            "specific_heat": 960,
+            "thickness": 0.1544
+        },
+        "I06 244mm batt insulation": {
+            "conductivity": 0.05,
+            "density": 19,
+            "roughness": "VeryRough",
+            "specific_heat": 960,
+            "thickness": 0.2438
+        },
+        "Insulation: Cellular glass - 25mm": {
+            "conductivity": 0.05,
+            "density": 136,
+            "roughness": "MediumRough",
+            "specific_heat": 750,
+            "thickness": 0.025
+        },
+        "Insulation: Cellular glass - 50mm": {
+            "conductivity": 0.05,
+            "density": 136,
+            "roughness": "MediumRough",
+            "specific_heat": 750,
+            "thickness": 0.05
+        },
+        "Insulation: Cellular glass - 75mm": {
+            "conductivity": 0.05,
+            "density": 136,
+            "roughness": "MediumRough",
+            "specific_heat": 750,
+            "thickness": 0.075
+        },
+        "Insulation: Cellular polyisocyanuratei (CFC-11 exp.) (gaspermeable facers)": {
+            "conductivity": 0.0245,
+            "density": 32,
+            "roughness": "Rough",
+            "specific_heat": 920,
+            "thickness": 0.025
+        },
+        "Insulation: Cellular polyisocyanuratej (CFC-11 exp.) (gasimpermeable facers)": {
+            "conductivity": 0.02,
+            "density": 32,
+            "roughness": "Rough",
+            "specific_heat": 920,
+            "thickness": 0.025
+        },
+        "Insulation: Cellular polyurethane/polyisocyanuratei (CFC11 exp.) (unfaced)": {
+            "conductivity": 0.0245,
+            "density": 24,
+            "roughness": "Rough",
+            "specific_heat": 1590,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded perlite - organic bonded - 25mm": {
+            "conductivity": 0.052,
+            "density": 16,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1260,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - extruded (smooth skin surface) (CFC-12 exp.)": {
+            "conductivity": 0.029,
+            "density": 29,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - extruded (smooth skin surface) (HCFC-142b exp.)": {
+            "conductivity": 0.029,
+            "density": 29,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - molded beads - 16kg/m3 density": {
+            "conductivity": 0.037,
+            "density": 16,
+            "roughness": "VeryRough",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - molded beads - 20kg/m3 density": {
+            "conductivity": 0.036,
+            "density": 20,
+            "roughness": "VeryRough",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - molded beads - 24kg/m3 density": {
+            "conductivity": 0.035,
+            "density": 24,
+            "roughness": "VeryRough",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - molded beads - 28 k6/m3 density": {
+            "conductivity": 0.035,
+            "density": 28,
+            "roughness": "VeryRough",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded polystyrene - molded beads - 32 kg/m3 density": {
+            "conductivity": 0.033,
+            "density": 32,
+            "roughness": "VeryRough",
+            "specific_heat": 1210,
+            "thickness": 0.025
+        },
+        "Insulation: Expanded rubber (rigid) - 25mm": {
+            "conductivity": 0.032,
+            "density": 72,
+            "roughness": "MediumRough",
+            "specific_heat": 1680,
+            "thickness": 0.025
+        },
+        "Insulation: Glass fiber - organic bonded - 25mm": {
+            "conductivity": 0.036,
+            "density": 64,
+            "roughness": "MediumRough",
+            "specific_heat": 960,
+            "thickness": 0.025
+        },
+        "Insulation: Glass fiber - organic bonded - 50mm": {
+            "conductivity": 0.036,
+            "density": 140,
+            "roughness": "MediumRough",
+            "specific_heat": 960,
+            "thickness": 0.05
+        },
+        "Insulation: Glass fiber - organic bonded - 75mm": {
+            "conductivity": 0.036,
+            "density": 140,
+            "roughness": "MediumRough",
+            "specific_heat": 960,
+            "thickness": 0.075
+        },
+        "Laminated paperboard": {
+            "conductivity": 0.072,
+            "density": 480,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1380,
+            "thickness": 0.0032
+        },
+        "M01 100mm brick": {
+            "conductivity": 0.89,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.1016
+        },
+        "M02 150mm lightweight concrete block": {
+            "conductivity": 0.49,
+            "density": 512,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.1524
+        },
+        "M03 200mm lightweight concrete block": {
+            "conductivity": 0.5,
+            "density": 464,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2032
+        },
+        "M04 300mm lightweight concrete block": {
+            "conductivity": 0.71,
+            "density": 512,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.3048
+        },
+        "M05 200mm concrete block": {
+            "conductivity": 1.11,
+            "density": 800,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2032
+        },
+        "M06 300mm concrete block": {
+            "conductivity": 1.4,
+            "density": 800,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.3048
+        },
+        "M07 150mm lightweight concrete block (filled)": {
+            "conductivity": 0.29,
+            "density": 512,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.1524
+        },
+        "M08 200mm lightweight concrete block (filled)": {
+            "conductivity": 0.26,
+            "density": 464,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.2032
+        },
+        "M09 300mm lightweight concrete block (filled)": {
+            "conductivity": 0.29,
+            "density": 512,
+            "roughness": "MediumRough",
+            "specific_heat": 880,
+            "thickness": 0.3048
+        },
+        "M10 200mm concrete block (filled)": {
+            "conductivity": 0.72,
+            "density": 800,
+            "roughness": "MediumRough",
+            "specific_heat": 920,
+            "thickness": 0.2032
+        },
+        "M11 100mm lightweight concrete": {
+            "conductivity": 0.53,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.1016
+        },
+        "M12 150mm lightweight concrete": {
+            "conductivity": 0.53,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.1524
+        },
+        "M13 200mm lightweight concrete": {
+            "conductivity": 0.53,
+            "density": 1280,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.2032
+        },
+        "M14 150mm heavyweight concrete": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.1524
+        },
+        "M14a 100mm heavyweight concrete": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.1016
+        },
+        "M15 200mm heavyweight concrete": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.2032
+        },
+        "M16 300mm heavyweight concrete": {
+            "conductivity": 1.95,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 900,
+            "thickness": 0.3048
+        },
+        "M17 50mm lightweight concrete roof ballast": {
+            "conductivity": 0.19,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 840,
+            "thickness": 0.0508
+        },
+        "Maple - 25mm": {
+            "conductivity": 0.164,
+            "density": 671,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Nail-base sheathing - 12.7mm": {
+            "conductivity": 0.057,
+            "density": 400,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0127
+        },
+        "Oak - 25mm": {
+            "conductivity": 0.17,
+            "density": 704,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Particleboard High density": {
+            "conductivity": 0.17,
+            "density": 1000,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1300,
+            "thickness": 0.019
+        },
+        "Particleboard Low density": {
+            "conductivity": 0.102,
+            "density": 590,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1300,
+            "thickness": 0.019
+        },
+        "Particleboard Medium density": {
+            "conductivity": 0.135,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1300,
+            "thickness": 0.019
+        },
+        "Particleboard Underlayment - 15.9mm": {
+            "conductivity": 0.311,
+            "density": 640,
+            "roughness": "MediumRough",
+            "specific_heat": 1210,
+            "thickness": 0.0159
+        },
+        "Plywood (Douglas Fir) - 6.4mm": {
+            "conductivity": 0.12,
+            "density": 540,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1210,
+            "thickness": 0.0064
+        },
+        "Plywood (Douglas Fir) - 9.5mm": {
+            "conductivity": 0.12,
+            "density": 540,
+            "roughness": "Smooth",
+            "specific_heat": 1210,
+            "thickness": 0.0095
+        },
+        "Plywood (Douglas Fir) - 12.7mm": {
+            "conductivity": 0.12,
+            "density": 540,
+            "roughness": "Smooth",
+            "specific_heat": 1210,
+            "thickness": 0.0127
+        },
+        "Plywood (Douglas Fir) - 15.9mm": {
+            "conductivity": 0.12,
+            "density": 540,
+            "roughness": "Smooth",
+            "specific_heat": 1210,
+            "thickness": 0.0159
+        },
+        "Plywood or wood panels - 19.0mm": {
+            "conductivity": 0.12,
+            "density": 540,
+            "roughness": "Smooth",
+            "specific_heat": 1210,
+            "thickness": 0.019
+        },
+        "Quartzitic and sandstone - 1920 kg/m3 - 13mm": {
+            "conductivity": 1.9,
+            "density": 1920,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Quartzitic and sandstone - 2240 kg/m3 - 13mm": {
+            "conductivity": 3.5,
+            "density": 2240,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Quartzitic and sandstone - 2560 kg/m3 - 13mm": {
+            "conductivity": 6.2,
+            "density": 2560,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Quartzitic and sandstone - 2880 kg/m3 - 13mm": {
+            "conductivity": 10.4,
+            "density": 2880,
+            "roughness": "MediumRough",
+            "specific_heat": 790,
+            "thickness": 0.013
+        },
+        "Sheathing - regular density - 12.7mm": {
+            "conductivity": 0.055,
+            "density": 290,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0127
+        },
+        "Sheathing - regular density - 19.8mm": {
+            "conductivity": 0.055,
+            "density": 290,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0198
+        },
+        "Sheathing intermediate density - 12.7mm": {
+            "conductivity": 0.057,
+            "density": 350,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0127
+        },
+        "Shingle backer - 7.9mm": {
+            "conductivity": 0.063,
+            "density": 290,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0079
+        },
+        "Shingle backer - 9.5mm": {
+            "conductivity": 0.063,
+            "density": 290,
+            "roughness": "Smooth",
+            "specific_heat": 1300,
+            "thickness": 0.0095
+        },
+        "Softwood - 12.9mm": {
+            "conductivity": 0.129,
+            "density": 496,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.0129
+        },
+        "Softwood - 19mm": {
+            "conductivity": 0.129,
+            "density": 496,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.019
+        },
+        "Softwood - 25mm": {
+            "conductivity": 0.129,
+            "density": 496,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Sound deadening board": {
+            "conductivity": 0.063,
+            "density": 240,
+            "roughness": "Smooth",
+            "specific_heat": 1260,
+            "thickness": 0.0127
+        },
+        "Southern Cypress - 25mm": {
+            "conductivity": 0.131,
+            "density": 508,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Southern Pine - 25mm": {
+            "conductivity": 0.153,
+            "density": 615,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Tile and lay-in panels - plain or acoustic - 12.7mm": {
+            "conductivity": 0.057,
+            "density": 290,
+            "roughness": "MediumSmooth",
+            "specific_heat": 590,
+            "thickness": 0.0127
+        },
+        "Tile and lay-in panels - plain or acoustic - 19mm": {
+            "conductivity": 0.057,
+            "density": 290,
+            "roughness": "MediumSmooth",
+            "specific_heat": 590,
+            "thickness": 0.019
+        },
+        "Waferboard": {
+            "conductivity": 0.091,
+            "density": 590,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1300,
+            "thickness": 0.019
+        },
+        "West Coast Woods - Cedars - 25mm": {
+            "conductivity": 0.114,
+            "density": 425,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1630,
+            "thickness": 0.025
+        },
+        "Wood subfloor - 19mm": {
+            "conductivity": 0.115,
+            "density": 800,
+            "roughness": "MediumSmooth",
+            "specific_heat": 1380,
+            "thickness": 0.019
+        }
+    },
+    "Material:AirGap": {
+        "F04 Wall air space resistance": {
+            "thermal_resistance": 0.15
+        },
+        "F05 Ceiling air space resistance": {
+            "thermal_resistance": 0.18
+        }
+    },
+    "Material:NoMass": {
+        "Acoustical tile - 12.7mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.22
+        },
+        "Acoustical tile - 19mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.33
+        },
+        "Asbestos-cement shingles": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.037
+        },
+        "Asphalt roll roofing": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.026
+        },
+        "Asphalt shingles": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.077
+        },
+        "Built-up roofing - 10mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.058
+        },
+        "Carpet and fibrous pad": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.37
+        },
+        "Carpet and rubber pad": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.22
+        },
+        "Cement Plaster: Sand aggregate - 10mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.013
+        },
+        "Cement Plaster: Sand aggregate - 20mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.026
+        },
+        "Clay tile - hollow - 1 cell deep - 75mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.14
+        },
+        "Clay tile - hollow - 1 cell deep - 100mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.2
+        },
+        "Clay tile - hollow - 2 cells deep - 150mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.27
+        },
+        "Clay tile - hollow - 2 cells deep - 200mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.33
+        },
+        "Clay tile - hollow - 2 cells deep - 250mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.39
+        },
+        "Clay tile - hollow - 3 cells deep - 300mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.44
+        },
+        "Cork tile - 3.2mm": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.049
+        },
+        "Gypsum partition tile 75 by 300 by 760mm - 4 cells": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.238
+        },
+        "Gypsum partition tile 75 by 300 by 760mm - solid": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.222
+        },
+        "Gypsum partition tile 100 by 300 by 760mm - 3 cells": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.294
+        },
+        "Gypsum plaster: Lightweight aggregate - 13mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.056
+        },
+        "Gypsum plaster: Lightweight aggregate - 16mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.066
+        },
+        "Gypsum plaster: Lightweight aggregate on metal lath - 19mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.083
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 75-100mm 6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 1.94
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 90mm -6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 2.29
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 90mm - 19-26 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 2.63
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 140-165mm - 6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 3.32
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 140mm - 10-26 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 3.67
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 150-190mm - 6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 3.91
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 210-250mm - 6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 5.34
+        },
+        "Insulation: Mineral fiber - processed from rock - slag - or glass - 250-330mm - 6.4-32 kg/m3": {
+            "roughness": "Rough",
+            "thermal_resistance": 6.77
+        },
+        "Mineral fiber (rock - slag - glass) - 90mm (closed sidewall application)": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 2.3
+        },
+        "Mineral fiber (rock - slag - glass) - 95-130mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 1.94
+        },
+        "Mineral fiber (rock - slag - glass) - 170-220mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 3.35
+        },
+        "Mineral fiber (rock - slag - glass) - 190-250mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 3.87
+        },
+        "Mineral fiber (rock - slag - glass) - 260-350mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 5.28
+        },
+        "Perlite aggregate plaster: Sand aggregate - 13mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.016
+        },
+        "Perlite aggregate plaster: Sand aggregate - 16mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.019
+        },
+        "Perlite aggregate plaster: Sand aggregate on metal lath - 19mm": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.023
+        },
+        "R13LAYER": {
+            "roughness": "Rough",
+            "solar_absorptance": 0.75,
+            "thermal_absorptance": 0.9,
+            "thermal_resistance": 2.290965,
+            "visible_absorptance": 0.75
+        },
+        "R31LAYER": {
+            "roughness": "Rough",
+            "solar_absorptance": 0.75,
+            "thermal_absorptance": 0.9,
+            "thermal_resistance": 5.456,
+            "visible_absorptance": 0.75
+        },
+        "Shingles: Asbestos-cement": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.037
+        },
+        "Shingles: Wood 400mm - 190-mm exposure": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.15
+        },
+        "Shingles: Wood - plus insul. backer board": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.25
+        },
+        "Shingles: Wood -double 400mm - 300-mm exposure": {
+            "roughness": "MediumRough",
+            "thermal_resistance": 0.21
+        },
+        "Siding: Architectural (soda-lime float) glass": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.018
+        },
+        "Siding: Asbestos-cement 6.4mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.037
+        },
+        "Siding: Asphalt insulating": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.26
+        },
+        "Siding: Asphalt roll": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.026
+        },
+        "Siding: Hardboard 11mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.12
+        },
+        "Siding: Hollow-backed": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.11
+        },
+        "Siding: Insulating-board backed 9.5mm nominal": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.32
+        },
+        "Siding: Insulating-board backed 9.5mm nominal - foil backed": {
+            "roughness": "Smooth",
+            "thermal_resistance": 0.52
+        },
+        "Siding: Wood - bevel 13 by 200mm - lapped": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.14
+        },
+        "Siding: Wood - bevel 19 by 250mm - lapped": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.18
+        },
+        "Siding: Wood - drop 20 by 200mm": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.14
+        },
+        "Siding: Wood - plywood 9.5mm - lapped": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.1
+        },
+        "Slate - 13mm": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.009
+        },
+        "Terrazzo - 25mm": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.014
+        },
+        "Tile: asphalt - linoleum - vinyl - rubber": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.009
+        },
+        "Tile: vinyl asbestos": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.009
+        },
+        "Vaporpermeable felt": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.011
+        },
+        "Vaporseal - 2 layers of mopped 0.73 kg/m2 felt": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.21
+        },
+        "Vaporseal - plastic film": {
+            "roughness": "Rough",
+            "thermal_resistance": 0.002
+        },
+        "Wood - hardwood finish - 19mm": {
+            "roughness": "MediumSmooth",
+            "thermal_resistance": 0.12
+        },
+        "Wood shingles - plain and plastic film faced": {
+            "roughness": "VeryRough",
+            "thermal_resistance": 0.166
+        }
+    },
+    "OtherEquipment": {
+        "OthEqu_ZoneOne": {
+            "design_level": 1,
+            "design_level_calculation_method": "EquipmentLevel",
+            "fraction_latent": 0,
+            "fraction_lost": 0,
+            "fraction_radiant": 0,
+            "fuel_type": "None",
+            "schedule_name": "FMU_OthEqu_ZoneOne",
+            "zone_or_zonelist_name": "ZONE ONE"
+        }
+    },
+    "Output:Constructions": {
+        "Output:Constructions 1": {
+            "details_type_1": "Constructions"
+        }
+    },
+    "Output:EnergyManagementSystem": {
+        "Output:EnergyManagementSystem 1": {
+            "actuator_availability_dictionary_reporting": "Verbose",
+            "ems_runtime_language_debug_output_level": "Verbose",
+            "internal_variable_availability_dictionary_reporting": "Verbose"
+        }
+    },
+    "Output:Meter:MeterFileOnly": {
+        "Output:Meter:MeterFileOnly 1": {
+            "key_name": "EnergyTransfer:Building",
+            "reporting_frequency": "Hourly"
+        },
+        "Output:Meter:MeterFileOnly 2": {
+            "key_name": "EnergyTransfer:Facility",
+            "reporting_frequency": "Hourly"
+        }
+    },
+    "Output:Surfaces:Drawing": {
+        "Output:Surfaces:Drawing 1": {
+            "report_type": "DXF:WireFrame"
+        }
+    },
+    "Output:Surfaces:List": {
+        "Output:Surfaces:List 1": {
+            "report_type": "Details"
+        }
+    },
+    "Output:Table:SummaryReports": {
+        "Output:Table:SummaryReports 1": {
+            "reports": [
+                {
+                    "report_name": "AllSummary"
+                }
+            ]
+        }
+    },
+    "Output:Variable": {
+        "Output:Variable 1": {
+            "key_value": "*",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Site Outdoor Air Drybulb Temperature"
+        },
+        "Output:Variable 2": {
+            "key_value": "*",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Zone Mean Air Temperature"
+        },
+        "Output:Variable 3": {
+            "key_value": "*",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Zone Windows Total Transmitted Solar Radiation Rate"
+        },
+        "Output:Variable 4": {
+            "key_value": "ZN001:WALL001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Incident Solar Radiation Rate per Area"
+        },
+        "Output:Variable 5": {
+            "key_value": "ZN001:WALL001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Sunlit Fraction"
+        },
+        "Output:Variable 6": {
+            "key_value": "ZN001:WALL001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Inside Face Temperature"
+        },
+        "Output:Variable 7": {
+            "key_value": "ZN001:WALL001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Temperature"
+        },
+        "Output:Variable 8": {
+            "key_value": "ZN001:WALL001:WIN001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Incident Solar Radiation Rate per Area"
+        },
+        "Output:Variable 9": {
+            "key_value": "ZN001:WALL001:WIN001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Sunlit Fraction"
+        },
+        "Output:Variable 10": {
+            "key_value": "ZN001:WALL001:WIN001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Window Transmitted Solar Radiation Rate"
+        },
+        "Output:Variable 11": {
+            "key_value": "ZN001:WALL001:WIN001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Inside Face Temperature"
+        },
+        "Output:Variable 12": {
+            "key_value": "ZN001:WALL001:WIN001",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Temperature"
+        },
+        "Output:Variable 13": {
+            "key_value": "ZN001:WALL001:WIN001:2",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Incident Solar Radiation Rate per Area"
+        },
+        "Output:Variable 14": {
+            "key_value": "ZN001:WALL001:WIN001:2",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Sunlit Fraction"
+        },
+        "Output:Variable 15": {
+            "key_value": "ZN001:WALL001:WIN001:2",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Window Transmitted Solar Radiation Rate"
+        },
+        "Output:Variable 16": {
+            "key_value": "ZN001:WALL001:WIN001:2",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Inside Face Temperature"
+        },
+        "Output:Variable 17": {
+            "key_value": "ZN001:WALL001:WIN001:2",
+            "reporting_frequency": "Timestep",
+            "variable_name": "Surface Outside Face Temperature"
+        }
+    },
+    "Output:VariableDictionary": {
+        "Output:VariableDictionary 1": {
+            "key_field": "regular"
+        }
+    },
+    "OutputControl:Table:Style": {
+        "OutputControl:Table:Style 1": {
+            "column_separator": "HTML"
+        }
+    },
+    "People": {
+        "RoomPeople": {
+            "activity_level_schedule_name": "Sch Act",
+            "carbon_dioxide_generation_rate": 3.82e-08,
+            "clothing_insulation_calculation_method": "ClothingInsulationSchedule",
+            "enable_ashrae_55_comfort_warnings": "No",
+            "fraction_radiant": 0.3,
+            "mean_radiant_temperature_calculation_type": "ZoneAveraged",
+            "number_of_people": 1,
+            "number_of_people_calculation_method": "People",
+            "number_of_people_schedule_name": "FMU_Peo_ZoneOne",
+            "sensible_heat_fraction": "Autocalculate",
+            "zone_or_zonelist_name": "ZONE ONE"
+        }
+    },
+    "RunPeriod": {
+        "Run Period 1": {
+            "apply_weekend_holiday_rule": "No",
+            "begin_day_of_month": 1,
+            "begin_month": 1,
+            "day_of_week_for_start_day": "Monday",
+            "end_day_of_month": 31,
+            "end_month": 12,
+            "use_weather_file_daylight_saving_period": "Yes",
+            "use_weather_file_holidays_and_special_days": "Yes",
+            "use_weather_file_rain_indicators": "Yes",
+            "use_weather_file_snow_indicators": "Yes"
+        }
+    },
+    "Schedule:Day:Hourly": {
+        "Day Sch Act": {
+            "hour_1": 130,
+            "hour_2": 130,
+            "hour_3": 130,
+            "hour_4": 130,
+            "hour_5": 130,
+            "hour_6": 130,
+            "hour_7": 130,
+            "hour_8": 130,
+            "hour_9": 130,
+            "hour_10": 130,
+            "hour_11": 130,
+            "hour_12": 130,
+            "hour_13": 130,
+            "hour_14": 130,
+            "hour_15": 130,
+            "hour_16": 130,
+            "hour_17": 130,
+            "hour_18": 130,
+            "hour_19": 130,
+            "hour_20": 130,
+            "hour_21": 130,
+            "hour_22": 130,
+            "hour_23": 130,
+            "hour_24": 130,
+            "schedule_type_limits_name": "Any Number"
+        }
+    },
+    "Schedule:Week:Daily": {
+        "Wee Sch Act": {
+            "customday1_schedule_day_name": "Day Sch Act",
+            "customday2_schedule_day_name": "Day Sch Act",
+            "friday_schedule_day_name": "Day Sch Act",
+            "holiday_schedule_day_name": "Day Sch Act",
+            "monday_schedule_day_name": "Day Sch Act",
+            "saturday_schedule_day_name": "Day Sch Act",
+            "summerdesignday_schedule_day_name": "Day Sch Act",
+            "sunday_schedule_day_name": "Day Sch Act",
+            "thursday_schedule_day_name": "Day Sch Act",
+            "tuesday_schedule_day_name": "Day Sch Act",
+            "wednesday_schedule_day_name": "Day Sch Act",
+            "winterdesignday_schedule_day_name": "Day Sch Act"
+        }
+    },
+    "Schedule:Year": {
+        "Sch Act": {
+            "schedule_type_limits_name": "Any Number",
+            "schedule_weeks": [
+                {
+                    "end_day": 31,
+                    "end_month": 12,
+                    "schedule_week_name": "Wee Sch Act",
+                    "start_day": 1,
+                    "start_month": 1
+                }
+            ]
+        }
+    },
+    "ScheduleTypeLimits": {
+        "Any Number": {
+            "numeric_type": "Continuous"
+        },
+        "Cont Sch": {
+            "lower_limit_value": 0.0,
+            "numeric_type": "Continuous",
+            "upper_limit_value": 1.0
+        },
+        "Disc Sch": {
+            "lower_limit_value": 0.0,
+            "numeric_type": "Discrete",
+            "upper_limit_value": 1.0
+        },
+        "Fraction": {
+            "lower_limit_value": 0.0,
+            "numeric_type": "Continuous",
+            "upper_limit_value": 1.0
+        }
+    },
+    "SimulationControl": {
+        "SimulationControl 1": {
+            "do_plant_sizing_calculation": "No",
+            "do_system_sizing_calculation": "No",
+            "do_zone_sizing_calculation": "No",
+            "run_simulation_for_sizing_periods": "No",
+            "run_simulation_for_weather_file_run_periods": "Yes"
+        }
+    },
+    "Site:GroundTemperature:BuildingSurface": {
+        "Site:GroundTemperature:BuildingSurface 1": {
+            "april_ground_temperature": 19.12,
+            "august_ground_temperature": 19.32,
+            "december_ground_temperature": 18.96,
+            "february_ground_temperature": 18.92,
+            "january_ground_temperature": 18.89,
+            "july_ground_temperature": 19.07,
+            "june_ground_temperature": 19.23,
+            "march_ground_temperature": 19.02,
+            "may_ground_temperature": 19.21,
+            "november_ground_temperature": 19.13,
+            "october_ground_temperature": 19.21,
+            "september_ground_temperature": 19.09
+        }
+    },
+    "Site:Location": {
+        "Turin": {
+            "elevation": 287,
+            "latitude": 45.22,
+            "longitude": 7.65,
+            "time_zone": 1
+        }
+    },
+    "SurfaceConvectionAlgorithm:Inside": {
+        "SurfaceConvectionAlgorithm:Inside 1": {
+            "algorithm": "TARP"
+        }
+    },
+    "SurfaceConvectionAlgorithm:Outside": {
+        "SurfaceConvectionAlgorithm:Outside 1": {
+            "algorithm": "DOE-2"
+        }
+    },
+    "Timestep": {
+        "Timestep 1": {
+            "number_of_timesteps_per_hour": 6
+        }
+    },
+    "Version": {
+        "Version 1": {
+            "version_identifier": "9.2"
+        }
+    },
+    "Window": {
+        "window1": {
+            "building_surface_name": "Zn001:Wall001",
+            "construction_name": "DoubleClear",
+            "height": 2,
+            "length": 5,
+            "multiplier": 2,
+            "starting_x_coordinate": 3.5,
+            "starting_z_coordinate": 0.5
+        },
+        "window2": {
+            "building_surface_name": "Zn001:Wall002",
+            "construction_name": "DoubleClear",
+            "height": 2,
+            "length": 3,
+            "multiplier": 2,
+            "starting_x_coordinate": 3.5,
+            "starting_z_coordinate": 0.5
+        }
+    },
+    "Zone": {
+        "ZONE ONE": {
+            "ceiling_height": "Autocalculate",
+            "direction_of_relative_north": 0,
+            "multiplier": 1,
+            "type": 1,
+            "volume": "Autocalculate",
+            "x_origin": 0,
+            "y_origin": 0,
+            "z_origin": 0
+        }
+    }
+}

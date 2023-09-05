@@ -1,0 +1,36 @@
+[INFO][FMUCHK] FMI compliance checker 2.0.4 [FMILibrary: 2.0.3] build date: Nov  6 2017
+[INFO][FMUCHK] Called with following options:
+[INFO][FMUCHK] D:/Projects/PycharmProjects/casestudy/casestudy/utilities/fmuchecker/fmuCheck.win64.exe -e ./OutputFMUChecker/log_OneRoom_win_2_fmu_sim_external_weather.txt -o ./OutputFMUChecker/result_OneRoom_win_2_fmu_sim_external_weather.csv -c , -s 6 -k xml D:\Projects\PycharmProjects\casestudy\casestudy/models/fmus/OneRoom_win_2_fmu_sim_external_weather.fmu
+[INFO][FMUCHK] Will process FMU D:\Projects\PycharmProjects\casestudy\casestudy/models/fmus/OneRoom_win_2_fmu_sim_external_weather.fmu
+[INFO][FMILIB] XML specifies FMI standard version 1.0
+[INFO][FMI1XML] Processing implementation element (co-simulation FMU detected)
+[ERROR][FMI1XML] Detected on line:59 of modelDescription.xml
+[ERROR][FMI1XML] Found capability flag canSignalEvents which have been deprecated as it fills no function
+[INFO][FMUCHK] Model name: OneRoom_win_2_fmu_sim_external_weather.idf
+[INFO][FMUCHK] Model identifier: OneRoom_win_2_fmu_sim_external_weather
+[INFO][FMUCHK] Model GUID: b9bce7d21f00affdb5e04fe18b717665
+[INFO][FMUCHK] Model version: 
+[INFO][FMUCHK] FMU kind: CoSimulation_Tool
+[INFO][FMUCHK] The FMU contains:
+0 constants
+0 parameters
+0 discrete variables
+7 continuous variables
+5 inputs
+2 outputs
+0 internal variables
+0 variables with causality 'none'
+7 real variables
+0 integer variables
+0 enumeration variables
+0 boolean variables
+0 string variables
+
+[INFO][FMUCHK] No input data provided. In case of simulation initial values from FMU will be used.
+[INFO][FMUCHK] Printing output file header
+FMU check summary:
+FMU reported:
+	0 warning(s) and error(s)
+Checker reported:
+	0 Warning(s)
+	2 Error(s)

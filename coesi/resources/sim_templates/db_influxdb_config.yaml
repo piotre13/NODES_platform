@@ -1,0 +1,33 @@
+influxdb:
+  RUN_PROCESS:
+    python: mk_influxdb2:MosaikInfluxDB
+  PARAMS:
+    step_size: 600
+  MODELS:
+    db:
+      PUBLIC: true
+      ANY_INPUTS: true
+      PARAMS:
+        scenario_name: null
+        url: 'http://localhost:8086/'
+        bucket: 'uesa'
+        org: 'EC_lab'
+        token: 'htGhvrN5jXMBakYnAneSlaOJz5WRPOVBCsVYQn1rkS1QhvKeT-bOIeo4a2scHJCu7O5JUDyxaZyfZ0DjdS3VmA=='
+      ATTRS: []
+#influxdb1:
+#  RUN_PROCESS:
+#    python: mk_influxdb1:MosaikInfluxDB
+#  PARAMS:
+#    step_size: 600
+#  MODELS:
+#    db:
+#      PUBLIC: true
+#      ANY_INPUTS: true
+#      PARAMS:
+#        scenario_name: null
+#        influxDBHost: 'localhost'
+#        influxDBPort: '8086'
+#        influxDBUser: 'Daniele'
+#        influxDBPass: 'uesadbapp'
+#        influxDBName: 'uesa'
+#      ATTRS: []
