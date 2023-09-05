@@ -1,0 +1,1 @@
+# This folder will contains the models (e.g. the FMUs)
