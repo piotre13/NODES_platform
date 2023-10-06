@@ -1,0 +1,56 @@
+{
+
+  "output_columns": ["geometry", "height", "area", "n_floors", "net_leased_area", "gross_floor_area", "dest", "year_of_construction", "sez_cens"],
+  "matching_col": ["geometry", "av", "-","-", "-", "-", "des_ty", "-", "SEZ2011"],
+  "matching_values": {
+    "dest": {
+      "residential": ["edificio generico-uso residenziale", "edificio generico-uso abitativo"],
+      "industrial": [],
+      "agricoltural": ["capannone-uso agricolturale"],
+      "administrative": [],
+      "commercial": ["capannone-uso commerciale"],
+      "religious": ["chiesa-uso luogo di culto"]
+  }},
+  "avg_floor_height": 2.5,
+  "leased_area_CF": 0.8,
+  "istat_indices": ["A6","A7","A2","A44","PF1"],
+  "filter": {"dest": ["residential"]},
+
+
+
+  "shp_columns_to_keep" : ["ALTEZZA_VO", "NUM_PIANI", "SUPERFICIE", "CIT_AR", "CODICE_CEN", "QT_GRONDA", "QT_SUOLO"],
+  "building_age_columns": {
+    "E8": "-1919",
+    "E9": "1919-1945",
+    "E10": "1946-1960",
+    "E11": "1961-1970",
+    "E12": "1971-1980",
+    "E13": "1981-1990",
+    "E14": "1991-2000",
+    "E15": "2001-2005",
+    "E16": "2005-"
+  },
+  "floors": {
+  "building_floors_no_columns": {
+    "E17": 1,
+    "E18": 2,
+    "E19": 3,
+    "E20": 4.5
+  },
+  "single_floor_height": 3
+},
+  "building_use_columns": {
+    "E3": "residential",
+    "E4": "non residential"
+  },
+  "population_columns": ["PF1", "P1"],
+  "z_score_threshold": [1, 0.75],
+  "infiltration_rate_range": [0.5, 2],
+  "cooling_system_probability": [0.25, 0.75],
+  "heating_system_probability": [0.95, 0.05],
+  "energy_demand": {
+    "electricity": 2400,
+    "cooling": 180,
+    "heating": 14800
+  }
+}
