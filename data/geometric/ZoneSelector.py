@@ -4,7 +4,7 @@ import osmnx
 import requests
 from requests import Request
 from owslib.wfs import WebFeatureService
-from shapely.geometry import box, Point, Polygon, MultiPolygon
+from shapely.geometry import box, Point, Polygon, MultiPolygon, MultiPoint, GeometryCollection
 from shapely import STRtree
 from pyproj import CRS, Proj, Transformer
 import time
@@ -435,16 +435,17 @@ class ZoneSelector():
                         #surf = MultiPolygon(surf)
                     except IndexError:
                         #surf = [[x[i]-ref_x,y[i]-ref_y,0],[x[0]-ref_x,y[0]-ref_y,0],[x[0]-ref_x,y[0]-ref_y,height],[x[i]-ref_x,y[i]-ref_y,height]]
-                        surf = [[x[i],y[i],0],[x[0],y[0],0],[x[0],y[0],height],[x[i],y[i],height]]
+                        surf = [(x[i],y[i],0),(x[0],y[0],0),(x[0],y[0],height),(x[i],y[i],height)]
 
                         #surf = MultiPolygon(surf)
 
-                    surfaces.append(surf)
+                    surfaces.append(Polygon(surf))
 
 
-
-                self.buildings.at[index,'neighbours_surfaces']=str(surfaces)
-                self.buildings.at[index,'neighbours_vertices']=str(vertex)
+                tmp = str(surfaces)
+                tmp2 = list(tmp)
+                self.buildings.at[index,'neighbours_surfaces']=MultiPolygon(surfaces).wkt
+                self.buildings.at[index,'neighbours_vertices']=MultiPoint(vertex).wkt
             #self.buildings['b_id'] = self.buildings['b_id'].astype(str)
 
         print(geom)
@@ -462,6 +463,8 @@ class ZoneSelector():
     def df2geojson(self, path):
         types = self.buildings.dtypes
         self.buildings.to_file(path, driver='GeoJSON')
+        #self.buildings.to_file('outcomes/frassinetto_test.csv', driver='CSV')
+
 
     def df2shp(self, path):
         types = self.buildings.dtypes
