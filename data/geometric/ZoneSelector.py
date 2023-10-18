@@ -5,12 +5,14 @@ import requests
 from requests import Request
 from owslib.wfs import WebFeatureService
 from shapely.geometry import box, Point, Polygon, MultiPolygon
+from shapely import STRtree
 from pyproj import CRS, Proj, Transformer
 import time
 import numpy as np
 import random
 import statistics
 import json
+import matplotlib.pyplot as plt
 from scipy import stats
 
 class DataFiller():
@@ -354,6 +356,7 @@ class ZoneSelector():
             self.filter()
         #converting formats
         self.buildings= self.buildings.astype({'height': 'float', 'area': 'float','net_leased_area': 'float','gross_floor_area': 'float'})
+        self.set_unique_ids()
     def get_year_of_construction(self):
         if ('year_of_construction' not in self.buildings.columns and self.proc_conf['matching_col'][
             self.proc_conf['output_columns'].index('year_of_construction')]
@@ -388,6 +391,68 @@ class ZoneSelector():
         self.inputs['census_ind'] = self.inputs['census_ind'].loc[self.inputs['census_ind']['SEZ2011'].isin(self.inputs['census_zone']['SEZ2011'])]
         self.buildings = self.Datafilling.statistical_assignation(self.buildings,self.inputs['census_ind'], self.inputs['census_ind_tracciato'])
 
+    def set_unique_ids(self):
+        self.buildings = self.buildings.reset_index()
+        self.buildings['b_id'] = self.buildings.apply(lambda i: 'BUI_%s'%i.name, axis=1)
+        self.buildings = self.buildings.set_index('b_id')
+
+    def get_shading_surfaces(self, distance = 40):
+        #TODO questo andrebbe fatto prima del cleaning perche anche gli edifici non selezionati possono fare ombra
+        self.buildings['neighbours_surfaces'] = pd.Series()
+        self.buildings['neighbours_vertices'] = pd.Series()
+        self.buildings['neighbours_ids'] = pd.Series()
+        #need to convert buildings to projected cartesian
+        self.buildings = self.buildings.to_crs('EPSG:32632')
+
+        for index, row in self.buildings.iterrows():
+            num = int(index.split('_')[-1])
+            centroid = row['geometry'].centroid
+            buffer = centroid.buffer(distance)
+            neigh_list = self.buildings.sindex.query(buffer, predicate= 'contains' )
+            neigh_list = np.delete(neigh_list, np.where(neigh_list == num))
+            self.buildings.at[index,'neighbours_ids'] = str(neigh_list)
+            #ref_x = 500000.0
+            #ref_y = 4649776.22
+            neigh_vertex = []
+            for neigh in neigh_list:
+                idx = 'BUI_%s'%neigh
+                height = self.buildings.loc[idx,'height']
+                geom = self.buildings.loc[idx,'geometry'].exterior.coords.xy
+                surfaces = []
+                x=geom[0]
+                y=geom[1]
+                vertex = []
+                for i in range(len(geom[0])):
+                    vertex.append((x[i], y[i], 0))
+                    vertex.append((x[i], y[i], height))
+                    #vertex.append([x[i]-ref_x,ref_y-y[i],0])
+                    #vertex.append([x[i]-ref_x,ref_y-y[i],height])
+
+                    try:
+                        #surf = [(x[i]-ref_x,y[i]-ref_y,0),(x[i+1]-ref_x,y[i+1]-ref_y,0),(x[i+1]-ref_x,y[i+1]-ref_y,height),(x[i]-ref_x,y[i]-ref_y,height)]
+                        surf = [(x[i], y[i], 0), (x[i + 1], y[i + 1], 0),
+                                (x[i + 1], y[i + 1], height), (x[i], y[i], height)]
+                        #surf = MultiPolygon(surf)
+                    except IndexError:
+                        #surf = [[x[i]-ref_x,y[i]-ref_y,0],[x[0]-ref_x,y[0]-ref_y,0],[x[0]-ref_x,y[0]-ref_y,height],[x[i]-ref_x,y[i]-ref_y,height]]
+                        surf = [[x[i],y[i],0],[x[0],y[0],0],[x[0],y[0],height],[x[i],y[i],height]]
+
+                        #surf = MultiPolygon(surf)
+
+                    surfaces.append(surf)
+
+
+
+                self.buildings.at[index,'neighbours_surfaces']=str(surfaces)
+                self.buildings.at[index,'neighbours_vertices']=str(vertex)
+            #self.buildings['b_id'] = self.buildings['b_id'].astype(str)
+
+        print(geom)
+
+
+
+
+        return
     def cut_building_data (self):
         return self.buildings.clip(self.inputs['cut_area'])
     def filter(self):
@@ -423,6 +488,7 @@ if __name__ == '__main__':
     zone.get_year_of_construction()
     zone.get_demographics()
     zone.clean_df(cut=True,filter=True)
+    zone.get_shading_surfaces()
     zone.df2geojson('outcomes/frassinetto_test.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')
 
