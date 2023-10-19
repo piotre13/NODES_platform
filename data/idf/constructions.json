@@ -1,0 +1,44 @@
+{
+  "high_performance": [
+    {
+      "name": "floor_ground",
+      "layers": {
+        "Outside_Layer": "concrete_hd_UNI10351",
+        "Layer_2": "concrete_ld_UNI10351",
+        "Layer_3": "insulation_extrudedpolystyrene_4cm_UNI10351",
+        "Layer_4": "concrete_subfloor",
+        "Layer_5": "ceramic_tile_UNI10456"
+      }
+    },
+    {
+      "name": "roof_external",
+      "layers": {
+        "Outside_Layer": "clay_tile",
+        "Layer_2": "sprucewood_UNI10351",
+        "Layer_3": "insulation_extrudedpolystyrene_6cm_UNI10351",
+        "Layer_4": "steam_barrier_UNI10456",
+        "Layer_5": "airgap_4cm_UNI6946",
+        "Layer_6": "sprucewood_UNI10351"
+      }
+    },
+    {
+      "name": "wall_external",
+      "layers": {
+        "Outside_Layer": "limeplaster_UNI10456",
+        "Layer_2": "external_brickwork_UNI10351",
+        "Layer_3": "insulation_fiberglass_UNI10351",
+        "Layer_4": "steam_barrier_UNI10456",
+        "Layer_5": "internal_brickwork_UNI10351",
+        "Layer_6": "gypsumplaster_UNI10456"
+      }
+    },
+    {
+      "name": "wall_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    }
+  ]
+}
