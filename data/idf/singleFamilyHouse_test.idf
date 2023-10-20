@@ -13,34 +13,6 @@ Version,
 
 !-   ===========  ALL OBJECTS IN CLASS: SIMULATIONCONTROL ===========
 
-!
-! HVACTemplate:Zone:IdealLoadsAirSystem,
-!   Zn001,                                  !- Zone Name
-!   ,                                       !- Template Thermostat Name
-!   ,                                       !- System Availability Schedule Name
-!   ,                                       !- Maximum Heating Supply Air Temperature {C}
-!   ,                                       !- Minimum Cooling Supply Air Temperature {C}
-!   ,                                       !- Maximum Heating Supply Air Humidity Ratio {kgWater/kgDryAir}
-!   ,                                       !- Minimum Cooling Supply Air Humidity Ratio {kgWater/kgDryAir}
-!   ,                                       !- Heating Limit
-!   ,                                       !- Maximum Heating Air Flow Rate {m3/s}
-!   ,                                       !- Maximum Sensible Heating Capacity {W}
-!   ,                                       !- Cooling Limit
-!   ,                                       !- Maximum Cooling Air Flow Rate {m3/s}
-!   ,                                       !- Maximum Total Cooling Capacity {W}
-!   ,                                       !- Heating Availability Schedule Name
-!   ,                                       !- Cooling Availability Schedule Name
-!   ,                                       !- Dehumidification Control Type
-!   ,                                       !- Cooling Sensible Heat Ratio {dimensionless}
-!   ,                                       !- Dehumidification Setpoint {percent}
-!   ,                                       !- Humidification Control Type
-!   ,                                       !- Humidification Setpoint {percent}
-!   ,                                       !- Outdoor Air Method
-!   ,                                       !- Outdoor Air Flow Rate per Person {m3/s}
-!   ,                                       !- Outdoor Air Flow Rate per Zone Floor Area {m3/s-m2}
-!   ,                                       !- Outdoor Air Flow Rate per Zone {m3/s}
-!   ,                                       !- Design Specification Outdoor Air Object Name
-!   ;                                       !- Demand Controlled Ventilation Type
 SimulationControl,
     No,                      !- Do Zone Sizing Calculation
     No,                      !- Do System Sizing Calculation
@@ -465,6 +437,11 @@ ExternalInterface:FunctionalMockupUnitExport:From:Variable,
     Zn001,                   !- Output:Variable Index Key Name
     Zone Mean Air Temperature,  !- Output:Variable Name
     TBuilding;               !- FMU Variable Name
+	
+ExternalInterface:FunctionalMockupUnitExport:From:Variable,
+    Zn001,                   !- Output:Variable Index Key Name
+    Zone Predicted Sensible Load to Heating Setpoint Heat Transfer Rate,  !- Output:Variable Name
+    HeatingLoadTarget;               !- FMU Variable Name
 
 
 !-   ===========  ALL OBJECTS IN CLASS: EXTERNALINTERFACE:FUNCTIONALMOCKUPUNITEXPORT:TO:SCHEDULE ===========
@@ -503,7 +480,7 @@ ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_OthEqu_Watt_Schedule_Rad,  !- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     OthEquRadWatt,              !- FMU Variable Name
-    0;                       !- Initial Value
+    2000;                       !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_OthEqu_Watt_Schedule_FanCoil,  !- Schedule Name
@@ -566,7 +543,10 @@ Output:Variable,
     Other Equipment Convective Heating Energy,  !- Variable Name
     timestep;                !- Reporting Frequency
 	
-
+Output:Variable,
+    Zn001,                    !- Key Value
+    Zone Predicted Sensible Load to Heating Setpoint Heat Transfer Rate,    !- Variable Name
+    timestep;                 !- Reporting Frequency
 
 
 !-   ===========  ALL OBJECTS IN CLASS: OUTPUT:METER:METERFILEONLY ===========
@@ -578,4 +558,123 @@ Output:Meter:MeterFileOnly,
 Output:Meter:MeterFileOnly,
     EnergyTransfer:Facility, !- Key Name
     Hourly;                  !- Reporting Frequency
+	
+ZoneControl:Thermostat ,
+  Zn001_Thermostat,
+  Zn001,
+  Zone Control Type Sched,
+  ThermostatSetpoint:SingleHeating, Heating Setpoint with SB;
+
+!- ! Control type objects these may be used in more than one zone
+ThermostatSetpoint:SingleHeating ,
+  Heating Setpoint with SB,
+  Heating Setpoints;
+
+Schedule:Compact , 
+  Zone Control Type Sched, 
+  Control Type,
+  Through: 12/31,
+  For: AllDays,
+  Until: 24:00,
+  1; !- Single Heating
+! Heating setpoint schedule definition
+Schedule:Compact,
+  Heating Setpoints,
+  Temperature,
+  Through: 12/31,
+  For: AllDays,
+  Until: 24:00, 20.;
+	
+DesignSpecification:OutdoorAir,
+  SZ DSOA Zn001,                                           !- Name
+  flow/person,                                             !- Outdoor Air Method
+  0.0,                                                     !- Outdoor Air Flow per Person {m3/s}
+  0.0,                                                     !- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
+  0.0;                                                     !- Outdoor Air Flow per Zone {m3/s}
+
+Sizing:Zone,
+  Zn001,                                                   !- Zone or ZoneList Name
+  SupplyAirTemperature,                                    !- Zone Cooling Design Supply Air Temperature Input Method
+  13,                                                      !- Zone Cooling Design Supply Air Temperature {C}
+  ,                                                        !- Zone Cooling Design Supply Air Temperature Difference {delta C}
+  SupplyAirTemperature,                                    !- Zone Heating Design Supply Air Temperature Input Method
+  26,                                                      !- Zone Heating Design Supply Air Temperature {C}
+  ,                                                        !- Zone Heating Design Supply Air Temperature Difference {delta C}
+  0.0077,                                                  !- Zone Cooling Design Supply Air Humidity Ratio {kg-H20/kg-air}
+  0.0156,                                                  !- Zone Heating Design Supply Air Humidity Ratio {kg-H2O/kg-air}
+  SZ DSOA Zn001,                                           !- Design Specification Outdoor Air Object Name
+  ,                                                        !- Zone Heating Sizing Factor
+  ,                                                        !- Zone Cooling Sizing Factor
+  DesignDay,                                               !- Cooling Design Air Flow Method
+  0,                                                       !- Cooling Design Air Flow Rate {m3/s}
+  ,                                                        !- Cooling Minimum Air Flow per Zone Floor Area {m3/s-m2}
+  ,                                                        !- Cooling Minimum Air Flow {m3/s}
+  0,                                                       !- Cooling Minimum Air Flow Fraction {}
+  DesignDay,                                               !- Heating Design Air Flow Method
+  0,                                                       !- Heating Design Air Flow Rate {m3/s}
+  ,                                                        !- Heating Maximum Air Flow per Zone Floor Area {m3/s-m2}
+  ,                                                        !- Heating Maximum Air Flow {m3/s}
+  0,                                                       !- Heating Maximum Air Flow Fraction {}
+  ;                                                        !- Design Specification Zone Air Distribution Object Name
+
+ZoneHVAC:EquipmentConnections,
+  Zn001,                                                   !- Zone Name
+  Zn001 Equipment,                                         !- Zone Conditioning Equipment List Name
+  Zn001 Ideal Loads Supply Inlet,                          !- Zone Air Inlet Node or NodeList Name
+  ,                                                        !- Zone Air Exhaust Node or NodeList Name
+  Zn001 Zone Air Node,                                     !- Zone Air Node Name
+  Zn001 Return Outlet;                                     !- Zone Return Air Node Name
+
+ZoneHVAC:EquipmentList,
+  Zn001 Equipment,                                         !- Name
+  SequentialLoad,                                          !- Load Distribution Scheme
+  ZoneHVAC:IdealLoadsAirSystem,                            !- Zone Equipment Object Type
+  Zn001 Ideal Loads Air System,                            !- Zone Equipment Name
+  1,                                                       !- Zone Equipment Cooling Sequence
+  1,                                                       !- Zone Equipment Heating or No-Load Sequence
+  ,                                                        !- Zone Equipment Sequential Cooling Fraction Schedule Name
+  ;                                                        !- Zone Equipment Sequential Heating Fraction Schedule Name
+
+ZoneHVAC:IdealLoadsAirSystem,
+  Zn001 Ideal Loads Air System,                            !- Name
+  Zone Control Type Sched,                                 !- Availability Schedule Name
+  Zn001 Ideal Loads Supply Inlet,                          !- Zone Supply Air Node Name
+  ,                                                        !- Zone Exhaust Air Node Name
+  ,                                                        !- System Inlet Air Node Name
+  26,                                                      !- Maximum Heating Supply Air Temperature [C]
+  13,                                                      !- Minimum Cooling Supply Air Temperature [C]
+  0.0156,                                                  !- Maximum Heating Supply Air Humidity Ratio [kg-H20/kg-air]
+  0.0077,                                                  !- Minimum Cooling Supply Air Humidity Ratio [kg-H20/kg-air]
+  LimitCapacity,                                           !- Heating Limit
+  ,                                                        !- Maximum Heating Air Flow Rate {m3/s}
+  1000,                                                    !- Maximum Sensible Heating Capacity {m3/s}
+  LimitCapacity,                                           !- Cooling Limit
+  ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
+  0,                                                       !- Maximum Total Cooling Capacity {m3/s}
+  ,                                                        !- Heating Availability Schedule Name
+  ,                                                        !- Cooling Availability Schedule Name
+  None,                                                    !- Dehumidification Control Type
+  0.7,                                                     !- Cooling Sensible Heat Ratio
+  None,                                                    !- Humidification Control Type
+  SZ DSOA Zn001,                                           !- Design Specification Outdoor Air Object Name
+  Zn001 Ideal Loads Outdoor Air Inlet,                     !- Outdoor Air Inlet Node Name
+  None,                                                    !- Demand Controlled Ventilation Type
+  NoEconomizer,                                            !- Outdoor Air Economizer Type
+  None,                                                    !- Heat Recovery Type
+  0.70,                                                    !- Sensible Heat Recovery Effectiveness
+  0.65;                                                    !- Latent Heat Recovery Effectiveness
+
+Site:GroundTemperature:BuildingSurface,
+  18.89,                                                   !- January Ground Temperature
+  18.92,                                                   !- February Ground Temperature
+  19.02,                                                   !- March Ground Temperature
+  19.12,                                                   !- April Ground Temperature
+  19.21,                                                   !- May Ground Temperature
+  19.23,                                                   !- June Ground Temperature
+  19.07,                                                   !- July Ground Temperature
+  19.32,                                                   !- August Ground Temperature
+  19.09,                                                   !- September Ground Temperature
+  19.21,                                                   !- October Ground Temperature
+  19.13,                                                   !- November Ground Temperature
+  18.96;                                                   !- December Ground Temperature
 
