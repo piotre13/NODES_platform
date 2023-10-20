@@ -372,7 +372,11 @@ class ZoneSelector():
         else:
             print('Year_of_construction values are already present with the correct column name')
             return
-
+    def get_w2w(self):
+        self.buildings['w2w']=0.2
+    def get_construction_type(self):
+        #TODO now is hardcoded must be taken from data or from config specifications
+        self.buildings['construction_type'] = 'high_performance'
     def get_tabula_archetype(self):
         #TODO in future for teaser lets use this one enhanced by Finocchiaro thesis
         pass
@@ -491,6 +495,8 @@ if __name__ == '__main__':
     zone.get_year_of_construction()
     zone.get_demographics()
     zone.clean_df(cut=True,filter=True)
+    zone.get_construction_type()
+    zone.get_w2w()
     zone.get_shading_surfaces()
     zone.df2geojson('outcomes/frassinetto_test.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')

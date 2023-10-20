@@ -2,8 +2,9 @@ from eppy.modeleditor import IDF
 import numpy as np
 import math
 import json
-
-
+import geopandas as gpd
+import shapely.wkt
+import pandas as pd
 def find_starting_vertex(vertices):
     # Find the vertex with the minimum x-coordinate
     min_x = max(vertices, key=lambda vertex: vertex[0])
@@ -170,18 +171,30 @@ class Building:
 class SingleFamilyHouse(Building):
     def __init__(self, idf_path, idd_path, config):
         super().__init__(idf_path, idd_path)
+        self.building_name = config['name']
         self.materials_list = config['materials_list']
         self.constructions_list = config['construction_list']
-        self.floor_vertices = config['floor_vertices']
         self.height = config['height']
         self.window_to_wall_ratio = config['window_to_wall_ratio']
-        self.shading_surfaces = config['shading_surfaces']
         self.window_distance_from_roof = 0.5
+        self.floor_vertices = list(config['floor_vertices'].exterior.coords)
+        self.floor_vertices.pop()
+
+        #getting neighbours if presents
+        if not pd.isnull(config['shading_surfaces']):
+            self.shading_surfaces = shapely.wkt.loads(config['shading_surfaces'])
+            self.shading_surfaces = [list(x.exterior.coords) for x in self.shading_surfaces.geoms ]
+        else:
+            self.shading_surfaces = []
+
+
         self._define_materials()
         self._define_constructions()
         self._create_floor_and_roof_surfaces()
         self._create_wall_surfaces()
-        self._add_shading()
+        if len(self.shading_surfaces)>0:
+            self._add_shading()
+            print('shades_added')
         # self._add_shading()
 
     def _define_materials(self):
@@ -217,7 +230,7 @@ class SingleFamilyHouse(Building):
 
     def _define_constructions(self):
 
-        for construction in constructions_list:
+        for construction in self.constructions_list:
             construction_obj = self.idf.newidfobject('CONSTRUCTION')
             # set the name of the construction
             construction_obj.Name = construction['name']
@@ -338,9 +351,12 @@ class SingleFamilyHouse(Building):
             window_surface.Vertex_4_Xcoordinate = "{:.7f}".format(window_base_vertices[0][0])
             window_surface.Vertex_4_Ycoordinate = "{:.7f}".format(window_base_vertices[0][1])
             window_surface.Vertex_4_Zcoordinate = "{:.7f}".format(window_min_z_coordinate)
-
-            setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
-
+            try:
+                setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
+                print(shading_control.)
+            except ValueError as e:
+                print(e)
+                print('yo')
     def _add_shading(self):
 
         for i in range(len(self.shading_surfaces)):
@@ -359,68 +375,79 @@ class SingleFamilyHouse(Building):
         self.idf.savecopy(path)
 
 
-if __name__ == '__main__':
-    idf_path = 'singleFamilyHouse_test.idf'
-    idd_path = "C:/EnergyPlusV23-1-0/Energy+.idd"
-
+def main(config):
     # open material.json:
-    with open('materials.json') as f:
+    with open(config['material_file']) as f:
         materials_list = json.load(f)
         materials_list = materials_list['materials']
     # open construction.json:
-    with open('constructions.json') as f:
+    with open(config['construction_file']) as f:
         constructions_list = json.load(f)
 
-    floor_coordinates = [[392783.116707601875532, 5037970.027620642445982],
-                         [392786.345666732289828, 5037964.115988032892346],
-                         [392776.852269067545421, 5037966.634060244075954],
-                         [392780.073409866658039, 5037960.722557845525444]]
+    gdf = gpd.read_file(config['gdf_file'])
 
-    shading_surfaces = [
-        [
-            [392804.10487793584, 5037965.924153913, 0],
-            [392808.0357948013, 5037960.3783843955, 0],
-            [392808.0357948013, 5037960.3783843955, 3],
-            [392804.10487793584, 5037965.924153913, 3]
-        ], [
-            [392808.0357948013, 5037960.3783843955, 0],
-            [392802.38684248074, 5037956.407532597, 0],
-            [392802.38684248074, 5037956.407532597, 3],
-            [392808.0357948013, 5037960.3783843955, 3]
-        ], [
-            [392802.38684248074, 5037956.407532597, 0],
-            [392798.4561175372, 5037961.964415291, 0],
-            [392798.4561175372, 5037961.964415291, 3],
-            [392802.38684248074, 5037956.407532597, 3]
-        ], [
-            [392798.4561175372, 5037961.964415291, 0],
-            [392804.10487793584, 5037965.924153913, 0],
-            [392804.10487793584, 5037965.924153913, 3],
-            [392798.4561175372, 5037961.964415291, 3]
-        ]
-    ]
+    for bid, b_row in gdf.iterrows():
+        params = {'name':'BUI_%s'%bid, 'materials_list': None, 'construction_list': constructions_list[b_row['construction_type']],
+                  'window_to_wall_ratio': b_row['w2w'], 'height': b_row['height'], 'floor_vertices': b_row['geometry'], 'shading_surfaces':b_row['neighbours_surfaces']}
 
-    construction_type = 'high_performance'
+        #prepare the material list
+        unique_materials = set()
 
-    constructions_list = constructions_list[construction_type]
-    # create a list of materials included in key 'layers' considering unique elements across all elements in the list
-    unique_materials = set()
+        for construction in constructions_list[b_row['construction_type']]:
+            materials = construction.get("layers", {})
+            unique_materials.update(materials.values())
+        # filter materials_list elements to include only elements which name is in unique_materials
+        mat_list = [material for material in materials_list if material['name'] in unique_materials]
+        params['materials_list'] = mat_list
 
-    for construction in constructions_list:
-        materials = construction.get("layers", {})
-        unique_materials.update(materials.values())
-    # filter materials_list elements to include only elements which name is in unique_materials
-    materials_list = [material for material in materials_list if material['name'] in unique_materials]
+        #instantiating a class for creating an IDF
+        if bid == 96:
+            idf_name = 'frassinetto_casestudy/SingleFamilyHouse_%s.idf'%bid
+            sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
+            sfh.save_idf(idf_name)
 
-    config = {
-        'materials_list': materials_list,
-        'construction_list': constructions_list,
-        'window_to_wall_ratio': 0.2,
-        'height': 3,
-        'floor_vertices': floor_coordinates,
-        'shading_surfaces': shading_surfaces
-    }
 
-    sfh = SingleFamilyHouse(config=config, idf_path=idf_path, idd_path=idd_path)
 
-    sfh.save_idf('singleFamilyHouse_test_modified.idf')
+
+if __name__ == '__main__':
+
+    config = {"material_file":"materials.json",
+              "construction_file": "constructions.json",
+              "gdf_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/geometric/outcomes/frassinetto_test.geojson",
+              "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
+              "idf_template": "singleFamilyHouse_test.idf"
+              }
+
+    main(config)
+
+
+
+
+    # floor_coordinates = [[392783.116707601875532, 5037970.027620642445982],
+    #                      [392786.345666732289828, 5037964.115988032892346],
+    #                      [392776.852269067545421, 5037966.634060244075954],
+    #                      [392780.073409866658039, 5037960.722557845525444]]
+    #
+    # shading_surfaces = [
+    #     [
+    #         [392804.10487793584, 5037965.924153913, 0],
+    #         [392808.0357948013, 5037960.3783843955, 0],
+    #         [392808.0357948013, 5037960.3783843955, 3],
+    #         [392804.10487793584, 5037965.924153913, 3]
+    #     ], [
+    #         [392808.0357948013, 5037960.3783843955, 0],
+    #         [392802.38684248074, 5037956.407532597, 0],
+    #         [392802.38684248074, 5037956.407532597, 3],
+    #         [392808.0357948013, 5037960.3783843955, 3]
+    #     ], [
+    #         [392802.38684248074, 5037956.407532597, 0],
+    #         [392798.4561175372, 5037961.964415291, 0],
+    #         [392798.4561175372, 5037961.964415291, 3],
+    #         [392802.38684248074, 5037956.407532597, 3]
+    #     ], [
+    #         [392798.4561175372, 5037961.964415291, 0],
+    #         [392804.10487793584, 5037965.924153913, 0],
+    #         [392804.10487793584, 5037965.924153913, 3],
+    #         [392798.4561175372, 5037961.964415291, 3]
+    #     ]
+    # ]
