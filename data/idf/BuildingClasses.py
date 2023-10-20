@@ -353,8 +353,11 @@ class SingleFamilyHouse(Building):
             window_surface.Vertex_4_Zcoordinate = "{:.7f}".format(window_min_z_coordinate)
             try:
                 setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
-                print(shading_control.)
+
             except ValueError as e:
+                shading_control.objls.append(f"Fenestration_Surface_{i+1}_Name")
+                setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
+                print(shading_control.__dict__)
                 print(e)
                 print('yo')
     def _add_shading(self):
@@ -401,10 +404,10 @@ def main(config):
         params['materials_list'] = mat_list
 
         #instantiating a class for creating an IDF
-        if bid == 96:
-            idf_name = 'frassinetto_casestudy/SingleFamilyHouse_%s.idf'%bid
-            sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
-            sfh.save_idf(idf_name)
+
+        idf_name = 'frassinetto_casestudy/SingleFamilyHouse_%s.idf'%bid
+        sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
+        sfh.save_idf(idf_name)
 
 
 
