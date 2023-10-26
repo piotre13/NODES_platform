@@ -180,10 +180,13 @@ class SingleFamilyHouse(Building):
         self.floor_vertices = list(config['floor_vertices'].exterior.coords)
         self.floor_vertices.pop()
 
+
         #getting neighbours if presents
         if not pd.isnull(config['shading_surfaces']):
             self.shading_surfaces = shapely.wkt.loads(config['shading_surfaces'])
             self.shading_surfaces = [list(x.exterior.coords) for x in self.shading_surfaces.geoms ]
+            self.shading_vertices = shapely.wkt.loads(config['shading_vertices'])
+            print('yo')
         else:
             self.shading_surfaces = []
 
@@ -361,10 +364,10 @@ class SingleFamilyHouse(Building):
                 print(e)
                 print('yo')
     def _add_shading(self):
-
+        self.shading_surfaces.pop()
         for i in range(len(self.shading_surfaces)):
             surafaces_vertices = self.shading_surfaces[i]
-
+            surafaces_vertices.pop()
             #surafaces_vertices = sort_vertices_counterclockwise(surafaces_vertices)
             # create shading object:
             shading_surface = self.idf.newidfobject('Shading:Building:Detailed')
@@ -391,7 +394,7 @@ def main(config):
 
     for bid, b_row in gdf.iterrows():
         params = {'name':'BUI_%s'%bid, 'materials_list': None, 'construction_list': constructions_list[b_row['construction_type']],
-                  'window_to_wall_ratio': b_row['w2w'], 'height': b_row['height'], 'floor_vertices': b_row['geometry'], 'shading_surfaces':b_row['neighbours_surfaces']}
+                  'window_to_wall_ratio': b_row['w2w'], 'height': b_row['height'], 'floor_vertices': b_row['geometry'], 'shading_surfaces':b_row['neighbours_surfaces'], "shading_vertices":b_row['neighbours_vertices']}
 
         #prepare the material list
         unique_materials = set()
@@ -404,8 +407,8 @@ def main(config):
         params['materials_list'] = mat_list
 
         #instantiating a class for creating an IDF
-
-        idf_name = 'frassinetto_casestudy/SingleFamilyHouse_%s.idf'%bid
+        #TODO the name must be passed as config
+        idf_name = config['idf_out_dir']+'/SingleFamilyHouse_%s.idf'%bid
         sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
         sfh.save_idf(idf_name)
 
@@ -416,9 +419,10 @@ if __name__ == '__main__':
 
     config = {"material_file":"materials.json",
               "construction_file": "constructions.json",
-              "gdf_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/geometric/outcomes/frassinetto_test.geojson",
+              "gdf_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/geometric/outcomes/frassinetto_test_reduced.geojson",
               "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
-              "idf_template": "singleFamilyHouse_test.idf"
+              "idf_template": "singleFamilyHouse_test.idf",
+              "idf_out_dir": "frassinetto_casestudy_reduced"
               }
 
     main(config)

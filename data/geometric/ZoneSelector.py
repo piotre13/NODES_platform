@@ -351,7 +351,7 @@ class ZoneSelector():
     def clean_df(self, cut=False, filter=False):
         self.buildings = self.buildings[self.proc_conf['output_columns']]
         if cut :
-            self.cut_building_data()
+            self.buildings = self.cut_building_data()
         if filter:
             self.filter()
         #converting formats
@@ -379,7 +379,14 @@ class ZoneSelector():
         self.buildings['construction_type'] = 'high_performance'
     def get_tabula_archetype(self):
         #TODO in future for teaser lets use this one enhanced by Finocchiaro thesis
+        self.buildings['Tabula_type'] = 'SFH'
+        self.buildings['Tabula_id'] = 'SFH_01'
+
         pass
+    def get_hvac_id(self):
+        #todo must implement an unique taxonomy to include the hvac type
+        self.buildings['hvac_type'] = 'gb'
+
     def get_demographics (self):
         #NO user inputs for now only from istat data
         #TODO generalize the demographic assignation
@@ -484,7 +491,7 @@ if __name__ == '__main__':
         'census_zone': 'census_data_Frassinetto.geojson',
         'census_ind': 'R01_indicatori_2011_sezioni.csv',
         'census_ind_tracciato':'tracciato_2011_sezioni.csv',
-        'cut_area': 'limite_Frassinetto_test.geojson',
+        'cut_area': 'limite_frassinetto_reduced.geojson',
     }
     proc_conf = '../processing_config.json'
     zone = ZoneSelector(zone,proc_conf,**raw_inputs)
@@ -498,7 +505,9 @@ if __name__ == '__main__':
     zone.get_construction_type()
     zone.get_w2w()
     zone.get_shading_surfaces()
-    zone.df2geojson('outcomes/frassinetto_test.geojson')
+    zone.get_hvac_id()
+    zone.get_tabula_archetype()
+    zone.df2geojson('outcomes/frassinetto_test_reduced.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')
 
     print('yo')

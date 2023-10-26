@@ -647,7 +647,7 @@ ZoneHVAC:IdealLoadsAirSystem,
   0.0077,                                                  !- Minimum Cooling Supply Air Humidity Ratio [kg-H20/kg-air]
   LimitCapacity,                                           !- Heating Limit
   ,                                                        !- Maximum Heating Air Flow Rate {m3/s}
-  1000,                                                    !- Maximum Sensible Heating Capacity {m3/s}
+  0,                                                    !- Maximum Sensible Heating Capacity {m3/s}
   LimitCapacity,                                           !- Cooling Limit
   ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
   0,                                                       !- Maximum Total Cooling Capacity {m3/s}
@@ -664,17 +664,4 @@ ZoneHVAC:IdealLoadsAirSystem,
   0.70,                                                    !- Sensible Heat Recovery Effectiveness
   0.65;                                                    !- Latent Heat Recovery Effectiveness
 
-Site:GroundTemperature:BuildingSurface,
-  18.89,                                                   !- January Ground Temperature
-  18.92,                                                   !- February Ground Temperature
-  19.02,                                                   !- March Ground Temperature
-  19.12,                                                   !- April Ground Temperature
-  19.21,                                                   !- May Ground Temperature
-  19.23,                                                   !- June Ground Temperature
-  19.07,                                                   !- July Ground Temperature
-  19.32,                                                   !- August Ground Temperature
-  19.09,                                                   !- September Ground Temperature
-  19.21,                                                   !- October Ground Temperature
-  19.13,                                                   !- November Ground Temperature
-  18.96;                                                   !- December Ground Temperature
 

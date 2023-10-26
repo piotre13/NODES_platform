@@ -31,7 +31,7 @@ from definitions import *
 
 sys.path.insert(0, PROJECT_ROOT)
 
-from tests import villas_pb2
+#from tests import villas_pb2
 
 from utils import *
 
@@ -79,17 +79,17 @@ def main(configs, SCENARIO_NAME, START_DATE, DAYS, STOP_TIME, RT_FACTOR, RT=Fals
         UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
         UDPServerSocket.bind((localIP, localPort))
 
-        print("UDP server up and listening")
-        start = False
-        msg = villas_pb2.Message()
-        print("Waiting")
-        while (not start):
-            payload = UDPServerSocket.recv(bufferSize)
-            print(payload)
-            msg.ParseFromString(payload)
-            STOP_TIME = msg.samples[0].values[0].f
-            start = True
-            UDPServerSocket.close()
+        # print("UDP server up and listening")
+        # start = False
+        # msg = villas_pb2.Message()
+        # print("Waiting")
+        # while (not start):
+        #     payload = UDPServerSocket.recv(bufferSize)
+        #     print(payload)
+        #     msg.ParseFromString(payload)
+        #     STOP_TIME = msg.samples[0].values[0].f
+        #     start = True
+        #     UDPServerSocket.close()
 
         sim_start_time = datetime.now()
         print(STOP_TIME)

@@ -70,7 +70,7 @@ class FMU_Adapter(mosaik_api.Simulator):
         if work_dir is None:
             self.work_dir = os.path.join(MODELS_ROOT, 'fmus')
         else:
-            self.work_dir = work_dir  # working directory of fmu blocks
+            self.work_dir = os.path.join(MODELS_ROOT,'fmus', work_dir)  # working directory of fmu blocks must be in models
 
         self.fmu_check = fmu_check
         self.fmu_info = fmu_info
