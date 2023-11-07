@@ -67,12 +67,12 @@ class Scenario_Yaml():
                     tmp['MODELS'][fmu_dict['mod_name']]['PARAMS']['num'] = 1
                     tmp['MODELS'][fmu_dict['mod_name']]['PUBLIC'] = True
 
-                sim_name = fmu_dict['mk']+str(i)
+                    sim_name = fmu_dict['mk']+str(i)
 
-                self.scenario['SIM_CONFIG'][sim_name]=deepcopy(tmp)
-                eid = sim_name+'.'+list(tmp['MODELS'].keys())[0]+ '_'+inst_name
-                self.eids.append(eid)
-                self.building_eids.append(eid)
+                    self.scenario['SIM_CONFIG'][sim_name]=deepcopy(tmp)
+                    eid = sim_name+'.'+list(tmp['MODELS'].keys())[0]+ '_'+inst_name
+                    self.eids.append(eid)
+                    self.building_eids.append(eid)
                 i+=1
 
         return entities_ids
