@@ -53,7 +53,6 @@ class WaterReservoirSim(mosaik_api.Simulator):
 
     def step(self, time, inputs, max_advance):
         self.time = time
-        print(time)
         # Check for new delta and do step for each model instance:
         for eid, model_instance in self.entities.items():
             if eid in inputs:
@@ -75,10 +74,7 @@ class WaterReservoirSim(mosaik_api.Simulator):
             for attr in attrs:
                 if attr not in self.meta['models'][model_type]['attrs']:
                     raise ValueError('Unknown output attribute: %s' % attr)
-
-                # Get model.val or model.delta:
                 data[eid][attr] = model.listStorage[attr]
-
         return data
 
 def main():
