@@ -59,7 +59,6 @@ class WaterReservoirSim(mosaik_api.Simulator):
                 attrs = inputs[eid]
                 for attr, values in attrs.items():
                     for key, value in values.items():
-                        print(value)
                         model_instance.listWatershed[attr].step(value)
         model_instance.step()
         return time + self.step_size
