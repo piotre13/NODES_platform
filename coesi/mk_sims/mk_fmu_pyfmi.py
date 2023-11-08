@@ -18,7 +18,7 @@ import json
 from memory_profiler import profile
 from pathlib import Path
 
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 from fmpy import dump
 from pyfmi import load_fmu
 

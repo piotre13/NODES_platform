@@ -1,79 +1,87 @@
-CONNECTIONS: null
+---
 SCEN_CONFIG:
-  DAYS: 365
+  SCENARIO_NAME: test
+  START_DATE: '2020-01-01 00:00:00'  # 'YYY-MM-DD HH:MM:SS'
+  DAYS: 12 # number of days of simulation (7)
   RT_FACTOR: null
-  SCENARIO_NAME: NODES_test
-  START_DATE: '2015-01-01 00:00:00'
+SIM_CONFIG: # list of simulatorS that will be used in the scenario
+  timeseries:
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+      #cmd: python mk_timeseries.py %(addr)s
+    PARAMS:
+      start_date: START_DATE
+      stop_date: '2020-01-12 00:00:00'
+      datafile: 'inflow.csv'
+      stepsize: 86400
+    MODELS:
+      ts:
+        PUBLIC: true
+        PARAMS:
+          num: 1
+        ATTRS:
+          - ban_97_inflow
+          - oros_97_inflow
+          - pacajus_97_inflow
+          - pacoti_97_inflow
+  grapssimulator:
+    RUN_PROCESS:
+      python: mk_graps:WaterReservoirSim
+    PARAMS:
+      stepsize: 86400
+    MODELS:
+      grps:
+        PUBLIC: true
+        PARAMS:
+          num: 1
+          input_names:
+            - ban_97_inflow
+            - oros_97_inflow
+            - pacajus_97_inflow
+            - pacoti_97_inflow
+        ATTRS:
+          - ban_97_inflow
+          - oros_97_inflow
+          - pacajus_97_inflow
+          - pacoti_97_inflow
+          - Oros
+          - Banabuiu
+          - Pacajus
+          - Pacoti
+CONNECTIONS:
+  '0':
+    ATTRS:
+      - - ban_97_inflow
+        - ban_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '1':
+    ATTRS:
+      - - oros_97_inflow
+        - oros_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '2':
+    ATTRS:
+      - - pacajus_97_inflow
+        - pacajus_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '3':
+    ATTRS:
+      - - pacoti_97_inflow
+        - pacoti_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
 SCEN_OUTPUTS:
   DB:
     attrs:
-    - fmu_pyfmi_sim.rc_eplus_0.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_1.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_2.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_3.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_4.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_5.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_6.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_7.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_8.TBuilding
-    - fmu_pyfmi_sim.rc_eplus_9.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_0.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_1.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_2.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_3.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_4.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_5.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_6.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_7.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_8.TBuilding
-    - fmu_pyfmi_sim2.rc2_eplus2_9.TBuilding
-    step_size: 300
-SIM_CONFIG:
-  fmu_pyfmi_sim:
-    MODELS:
-      rc:
-        ATTRS:
-        - PeopleActivity
-        - LightsWatt
-        - EEquipWatt
-        - InfilAch
-        - OthEquRadWatt
-        - OthEquFCWatt
-        - TBuilding
-        - PeopleNumber
-        PARAMS:
-          fmu_name: res_highP
-          instance_name:
-          - eplus
-          num: 10
-        PUBLIC: true
-    PARAMS:
-      fmu_log: 0
-      step_size: 600
-      stop_time: 31536000
-    RUN_PROCESS:
-      cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim2:
-    MODELS:
-      rc2:
-        ATTRS:
-        - PeopleActivity
-        - LightsWatt
-        - EEquipWatt
-        - InfilAch
-        - OthEquRadWatt
-        - OthEquFCWatt
-        - TBuilding
-        - PeopleNumber
-        PARAMS:
-          fmu_name: res_highP
-          instance_name:
-          - eplus2
-          num: 10
-        PUBLIC: true
-    PARAMS:
-      fmu_log: 0
-      step_size: 600
-      stop_time: 31536000
-    RUN_PROCESS:
-      cmd: python mk_fmu_pyfmi.py %(addr)s
+      - timeseries.ts_0.ban_97_inflow
+      - timeseries.ts_0.oros_97_inflow
+      - timeseries.ts_0.pacajus_97_inflow
+      - timeseries.ts_0.pacoti_97_inflow
+      - grapssimulator.grps_0.Oros
+      - grapssimulator.grps_0.Banabuiu
+      - grapssimulator.grps_0.Pacajus
+      - grapssimulator.grps_0.Pacoti
+    step_size: 86400

@@ -17,7 +17,7 @@ from subprocess import Popen, PIPE  # replace os.system() and os.spawn*
 import json
 from pathlib import Path
 
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 from fmpy import dump, freeLibrary
 from fmpy import read_model_description, extract
 from fmpy.fmi1 import FMU1Slave

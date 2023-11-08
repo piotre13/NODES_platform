@@ -5,7 +5,7 @@ From mosaik-zmq modified.
 
 """
 import zmq
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 import json
 import collections
 

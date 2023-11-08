@@ -16,7 +16,7 @@ import os
 import sys
 from pathlib import Path
 
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 import pandas as pd
 import numpy as np
 

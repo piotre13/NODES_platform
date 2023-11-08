@@ -45,7 +45,7 @@ import json
 import re
 
 import h5py
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 import networkx as nx
 import numpy as np
 

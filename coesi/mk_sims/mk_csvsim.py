@@ -9,7 +9,7 @@ import os
 import sys
 from pathlib import Path
 
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 
 
 PROJECT_ROOT = str(Path(__file__).resolve().parents[2]).replace('\\', '/')

@@ -31,7 +31,7 @@ from definitions import *
 
 sys.path.insert(0, PROJECT_ROOT)
 
-from tests import villas_pb2
+#from tests import villas_pb2
 
 from utils import *
 
@@ -71,32 +71,32 @@ def main(configs, SCENARIO_NAME, START_DATE, DAYS, STOP_TIME, RT_FACTOR, RT=Fals
             print(f'\nSimulation took {delta_sim_time}')
         else:
             sys.exit()
-    elif RT == True:
-        localIP = '130.192.177.102'
-        localPort = 13000
-        bufferSize = 1024
+    # elif RT == True:
+        # localIP = '130.192.177.102'
+        # localPort = 13000
+        # bufferSize = 1024
 
-        UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        UDPServerSocket.bind((localIP, localPort))
+        # UDPServerSocket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+        # UDPServerSocket.bind((localIP, localPort))
 
-        print("UDP server up and listening")
-        start = False
-        msg = villas_pb2.Message()
-        print("Waiting")
-        while (not start):
-            payload = UDPServerSocket.recv(bufferSize)
-            print(payload)
-            msg.ParseFromString(payload)
-            STOP_TIME = msg.samples[0].values[0].f
-            start = True
-            UDPServerSocket.close()
+        # print("UDP server up and listening")
+        # start = False
+        # msg = villas_pb2.Message()
+        # print("Waiting")
+        # while (not start):
+            # payload = UDPServerSocket.recv(bufferSize)
+            # print(payload)
+            # msg.ParseFromString(payload)
+            # STOP_TIME = msg.samples[0].values[0].f
+            # start = True
+            # UDPServerSocket.close()
 
-        sim_start_time = datetime.now()
-        print(STOP_TIME)
-        world.run(until=int(STOP_TIME), rt_factor=RT_FACTOR, rt_strict=False, lazy_stepping=False)
-        # rtfactor = 1 1 simulation time unit == takes 1 second
-        delta_sim_time = datetime.now() - sim_start_time
-        print(f'\nSimulation took {delta_sim_time}')
+        # sim_start_time = datetime.now()
+        # print(STOP_TIME)
+        # world.run(until=int(STOP_TIME), rt_factor=RT_FACTOR, rt_strict=False, lazy_stepping=False)
+        # #rtfactor = 1 1 simulation time unit == takes 1 second
+        # delta_sim_time = datetime.now() - sim_start_time
+        # print(f'\nSimulation took {delta_sim_time}')
     return world, entities
 
 
@@ -382,7 +382,7 @@ if __name__ == '__main__':
                   "more details on how to use uesa commands.\n")
         else:
             scenario = scenario + '.yaml'
-            print(f'{scenario}.yaml selected.')
+            print(f'{scenario} selected.')
         args.scn_config = scenario
 
 

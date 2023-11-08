@@ -10,7 +10,7 @@ Research group of Politecnico di Torino Energy Center Lab.
 
 """
 
-import mosaik_api
+import mosaik_api_v3 as mosaik_api
 
 import time, errno
 import socket

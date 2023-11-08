@@ -1,0 +1,87 @@
+---
+SCEN_CONFIG:
+  SCENARIO_NAME: test
+  START_DATE: '2020-01-01 00:00:00'  # 'YYY-MM-DD HH:MM:SS'
+  DAYS: 12 # number of days of simulation (7)
+  RT_FACTOR: null
+SIM_CONFIG: # list of simulatorS that will be used in the scenario
+  timeseries:
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+      #cmd: python mk_timeseries.py %(addr)s
+    PARAMS:
+      start_date: START_DATE
+      stop_date: '2020-01-12 00:00:00'
+      datafile: 'inflow.csv'
+      stepsize: 86400
+    MODELS:
+      ts:
+        PUBLIC: true
+        PARAMS:
+          num: 1
+        ATTRS:
+          - ban_97_inflow
+          - oros_97_inflow
+          - pacajus_97_inflow
+          - pacoti_97_inflow
+  grapssimulator:
+    RUN_PROCESS:
+      python: mk_graps:WaterReservoirSim
+    PARAMS:
+      stepsize: 86400
+    MODELS:
+      grps:
+        PUBLIC: true
+        PARAMS:
+          num: 1
+          input_names:
+            - ban_97_inflow
+            - oros_97_inflow
+            - pacajus_97_inflow
+            - pacoti_97_inflow
+        ATTRS:
+          - ban_97_inflow
+          - oros_97_inflow
+          - pacajus_97_inflow
+          - pacoti_97_inflow
+          - Oros
+          - Banabuiu
+          - Pacajus
+          - Pacoti
+CONNECTIONS:
+  '0':
+    ATTRS:
+      - - ban_97_inflow
+        - ban_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '1':
+    ATTRS:
+      - - oros_97_inflow
+        - oros_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '2':
+    ATTRS:
+      - - pacajus_97_inflow
+        - pacajus_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+  '3':
+    ATTRS:
+      - - pacoti_97_inflow
+        - pacoti_97_inflow
+    FROM: timeseries.ts_0
+    TO: grapssimulator.grps_0
+SCEN_OUTPUTS:
+  DB:
+    attrs:
+      - timeseries.ts_0.ban_97_inflow
+      - timeseries.ts_0.oros_97_inflow
+      - timeseries.ts_0.pacajus_97_inflow
+      - timeseries.ts_0.pacoti_97_inflow
+      - grapssimulator.grps_0.Oros
+      - grapssimulator.grps_0.Banabuiu
+      - grapssimulator.grps_0.Pacajus
+      - grapssimulator.grps_0.Pacoti
+    step_size: 86400
