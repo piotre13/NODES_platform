@@ -1,0 +1,25 @@
+---
+SCEN_CONFIG:
+  SCENARIO_NAME: test
+  START_DATE: '2020-01-01 00:00:00'
+  DAYS: 365
+  RT_FACTOR: null
+SIM_CONFIG:
+  grapssimulator:
+    RUN_PROCESS:
+      python: mk_graps:WaterReservoirSim
+    PARAMS:
+      stepsize: 86400
+    MODELS:
+      grps:
+        PUBLIC: true
+        PARAMS:
+          num: 1
+          input_names:
+            - ban_97_inflow
+            - oros_97_inflow
+            - pacajus_97_inflow
+            - pacoti_97_inflow
+        ATTRS:
+CONNECTIONS:
+SCEN_OUTPUTS:
