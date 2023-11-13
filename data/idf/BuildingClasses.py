@@ -234,12 +234,17 @@ class SingleFamilyHouse(Building):
     def _define_constructions(self):
 
         for construction in self.constructions_list:
-            construction_obj = self.idf.newidfobject('CONSTRUCTION')
-            # set the name of the construction
-            construction_obj.Name = construction['name']
-            # set the outside layer of the construction
-            for layer in construction['layers']:
-                construction_obj[layer] = construction['layers'][layer]
+            if construction['type'] == 'window':
+                construction_obj = self.idf.getobject('WindowMaterial:SimpleGlazingSystem', 'window_simple')
+                construction_obj.UFactor = construction['properties']['U']
+                construction_obj.Solar_Heat_Gain_Coefficient = construction['properties']['g']
+            else:
+                construction_obj = self.idf.newidfobject('CONSTRUCTION')
+                # set the name of the construction
+                construction_obj.Name = construction['name']
+                # set the outside layer of the construction
+                for layer in construction['layers']:
+                    construction_obj[layer] = construction['layers'][layer]
 
     def _create_floor_and_roof_surfaces(self):
 
