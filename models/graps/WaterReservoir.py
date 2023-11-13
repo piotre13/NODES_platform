@@ -12,7 +12,6 @@ class Watershed:
         self.inflow = _inflow
         with open(self.nameFile, 'w') as file:
             file.write(str(self.inflow) + '\n')
-
 class Reservoir:
     def __init__(self, _nameReservoir, _latitude, _longitude, _minElevation, _maxElevation, _maxStorage, _minStorage, _currentStorage, _alpha1, _beta1, _gamma1, _alpha2, _beta2, _numSpillways, _numOutlets, _restrictionLevels, _numChildren, _numParents, _targetStorage, _targetStorageRealibility, _evaporationDepth, _targetRestrictionProbability):
         self.nameReservoir = _nameReservoir
@@ -38,7 +37,6 @@ class Reservoir:
         self.targetStorageRealibility = _targetStorageRealibility
         self.evaporationDepth = _evaporationDepth
         self.targetRestrictionProbability = _targetRestrictionProbability
-
 class User:
     def __init__(self, _nameUser, _demand, _UserId, _UserType, _numChildren, _numParents, _RestrictionLevels, _restrictionFraction, _restrictionCompensation, _nlags, _timeStepLength):
         self.nameUser = _nameUser
@@ -54,7 +52,6 @@ class User:
         self.restrictionFraction = _restrictionFraction
         self.restrictionCompensation = _restrictionCompensation
         self.nlags = _nlags
-
 class WaterReservoir:
     def __init__(self, _nameModel, input_names):
         self.nameModel = _nameModel
@@ -294,13 +291,11 @@ class WaterReservoir:
 
         with open(MODELS_ROOT + '/graps/input_data_files/reservoir_details.dat', 'w') as file:
             file.writelines(lines)
-
     def updateUserDetails(self):
         with open(MODELS_ROOT + '/graps/input_data_files/decisionvar_details.dat', 'w') as file:
             for user in self.listUser:
                 file.write(str(user.demand[user.timeStep]) + '\n')
                 user.timeStep = user.timeStep + 1
-
     def step(self):
         self.updateUserDetails()
         self.updateReservoirDetails()
