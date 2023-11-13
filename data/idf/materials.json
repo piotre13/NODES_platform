@@ -187,6 +187,175 @@
       "properties": {
         "Thermal_Resistance": 0.16
       }
+    },
+    {
+      "name": "Brick blocks",
+      "properties": {
+        "Roughness": "MediumRough",
+        "Thickness": 0.3,
+        "Conductivity": 0.3371,
+        "Density": 1000,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Cement mortar (2cm)",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.02,
+        "Conductivity": 1.4,
+        "Density": 2000,
+        "Specific_Heat": 670,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Cement mortar (3cm)",
+      "properties": {
+        "Roughness": "MediumRough",
+        "Thickness": 0.03,
+        "Conductivity": 1.4,
+        "Density": 2000,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Concrete slab",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.06,
+        "Conductivity": 1.06,
+        "Density": 2000,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "External plaster",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.02,
+        "Conductivity": 0.9,
+        "Density": 1800,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Hollowcore slab",
+      "properties": {
+        "Roughness": "MediumRough",
+        "Thickness": 0.16,
+        "Conductivity": 0.64,
+        "Density": 600,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Indoor flooring (stoneware)",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.015,
+        "Conductivity": 1.47,
+        "Density": 1700,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Internal plaster",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.02,
+        "Conductivity": 0.7,
+        "Density": 1400,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Polystyrene insulation board",
+      "properties": {
+        "Roughness": "Smooth",
+        "Thickness": 0.02,
+        "Conductivity": 0.045,
+        "Density": 30,
+        "Specific_Heat": 1220,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Reinforced concrete slab",
+      "properties": {
+        "Roughness": "MediumRough",
+        "Thickness": 0.1,
+        "Conductivity": 1.06,
+        "Density": 2400,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Roof tiles",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.02,
+        "Conductivity": 0.99,
+        "Density": 2000,
+        "Specific_Heat": 840,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Stone blocks",
+      "properties": {
+        "Roughness": "Rough",
+        "Thickness": 0.7,
+        "Conductivity": 2.4,
+        "Density": 2500,
+        "Specific_Heat": 1000,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "Wood planking",
+      "properties": {
+        "Roughness": "MediumSmooth",
+        "Thickness": 0.03,
+        "Conductivity": 0.15,
+        "Density": 550,
+        "Specific_Heat": 1600,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
     }
   ]
 }

@@ -40,5 +40,76 @@
         "Layer_3": "gypsumplaster_UNI10456"
       }
     }
+  ],
+  "0000_1950": [
+    {
+      "name": "floor_ground",
+      "layers": {
+        "Outside_Layer": "External plaster",
+        "Layer_2": "Reinforced concrete slab",
+        "Layer_3": "Concrete slab",
+        "Layer_4": "Cement mortar (3cm)",
+        "Layer_5": "Indoor flooring (stoneware)"
+      }
+    },
+    {
+      "name": "roof_external",
+      "layers": {
+        "Outside_Layer": "Roof tiles",
+        "Layer_2": "airgap_4cm_UNI6946",
+        "Layer_3": "Wood planking"
+      }
+    },
+    {
+      "name": "wall_external",
+      "layers": {
+        "Outside_Layer": "External plaster",
+        "Layer_2": "Stone blocks",
+        "Layer_3": "Internal plaster"
+      }
+    },
+    {
+      "name": "wall_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    }
+  ],
+  "1950_200": [
+    {
+      "name": "floor_ground",
+      "layers": {
+        "Outside_Layer": "External plaster",
+        "Layer_2": "Hollowcore slab",
+        "Layer_3": "Cement mortar (2cm)",
+        "Layer_4": "Indoor flooring (stoneware)"
+      }
+    },
+    {
+      "name": "roof_external",
+      "layers": {
+        "Outside_Layer": "Roof tiles",
+        "Layer_2": "airgap_4cm_UNI6946",
+        "Layer_3": "Wood planking"
+      }
+    },
+    {
+      "name": "wall_external",
+      "layers": {
+        "Outside_Layer": "External plaster",
+        "Layer_2": "Brick blocks",
+        "Layer_3": "Internal plaster"
+      }
+    },
+    {
+      "name": "wall_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    }
   ]
 }
