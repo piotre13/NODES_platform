@@ -234,7 +234,7 @@ class SingleFamilyHouse(Building):
     def _define_constructions(self):
         #TODO testing only for window
         for construction in self.constructions_list:
-            if construction['type'] == 'window':
+            if construction['name'].startswith('window'):
                 construction_obj = self.idf.getobject('WindowMaterial:SimpleGlazingSystem', 'window_simple')
                 construction_obj.UFactor = construction['properties']['U']
                 construction_obj.Solar_Heat_Gain_Coefficient = construction['properties']['g']
@@ -424,8 +424,8 @@ if __name__ == '__main__':
 
     config = {"material_file":"materials.json",
               "construction_file": "constructions.json",
-              "gdf_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/geometric/outcomes/frassinetto_test_reduced.geojson",
-              "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
+              "gdf_file": "C:/Users/SilvioBrandi/PycharmProjects/NODES_platform/data/geometric/outcomes/frassinetto_test_reduced.geojson",
+              "idd_path": "C:/EnergyPlusV23-1-0/Energy+.idd",
               "idf_template": "singleFamilyHouse_test.idf",
               "idf_out_dir": "frassinetto_casestudy_reduced"
               }
