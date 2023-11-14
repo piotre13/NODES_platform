@@ -128,6 +128,7 @@ def simulators_settings(configs, START_DATE, DAYS):
             SIM_CONFIG[sim]['python'] = SIM_CONFIG[sim]['py_lib']
 
 
+
         for model, meta in conf['MODELS'].items():
             dict_params = meta['PARAMS']  # dizionario attributi e valori
             if isinstance(meta['PARAMS'], dict):
@@ -148,7 +149,7 @@ def simulators_settings(configs, START_DATE, DAYS):
         time_res = 1.
 
     global world
-    world = mosaik.World(sim_config=SIM_CONFIG, mosaik_config=MK_CONFIG, time_resolution=time_res, debug=False)
+    world = mosaik.World(sim_config=SIM_CONFIG, mosaik_config=MK_CONFIG, time_resolution=time_res, debug=True)
     ## Starting Simulator
     simulators = {}
 
