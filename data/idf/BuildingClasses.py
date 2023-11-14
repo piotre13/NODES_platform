@@ -232,7 +232,7 @@ class SingleFamilyHouse(Building):
                 material_obj.Visible_Absorptance = material['properties']['Visible_Absorptance']
 
     def _define_constructions(self):
-
+        #TODO testing only for window
         for construction in self.constructions_list:
             if construction['type'] == 'window':
                 construction_obj = self.idf.getobject('WindowMaterial:SimpleGlazingSystem', 'window_simple')
