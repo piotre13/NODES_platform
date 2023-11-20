@@ -215,19 +215,19 @@ if __name__ == '__main__':
         "hvac_attrs":["Qt", "G_gas", "En_auxel", "Text", "fuel"],
         "sims":{
             "FMUs":{"auto":True, # serve per fare un simulatore per ogni fmu
-                    "fmu_dir":"/home/pietrorm/Documents/CODE/NODES_platform/models/fmus/frassinetto_casestudy_reduced",
+                    "fmu_dir":"../models/fmus/frassinetto_casestudy_med",
                     "attrs":["PeopleNumber","peopleActivity","LightsWatt","EEquipWatt","InfilAch","OthEquRadWatt","OthEquFCWatt","TBuilding","HeatingLoadTarget"],
                     "mk": "fmu_pyfmi_sim",
                     "mod_name": "rc"},
 
             "DB": True,
             "weather":{
-                "data_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/meteo_file/meteo_bousson.csv"
+                "data_file": "meteo_file/meteo_bousson.csv"
             }
         }
     }
 
-    scenario = Scenario_Yaml('Frassinetto_test_reduced')
+    scenario = Scenario_Yaml('Frassinetto_test_med')
     #scenario.add_weather()
     scenario.auto_creation(sim_dict)
     scenario.write_yaml()

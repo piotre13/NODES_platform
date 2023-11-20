@@ -62,7 +62,7 @@ class Analyser():
 
 
 if __name__ == '__main__':
-    file_path = "/home/pietrorm/Documents/CODE/NODES_platform/Outputs/20231027_Frassinetto_test_reduced.hdf5"
+    file_path = "/home/pietrorm/Documents/CODE/NODES_platform/Outputs/20231119_Frassinetto_test_med.hdf5"
     analiser = Analyser(file_path)
     entities = analiser.get_group_keys()
     df = analiser.get_df_from_entities(entities)

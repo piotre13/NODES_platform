@@ -1,5 +1,5 @@
 {
-  "high_performance": [
+  "2000_2100": [
     {
       "name": "floor_ground",
       "layers": {
@@ -48,7 +48,7 @@
       }
     }
   ],
-  "0000_1950": [
+  "0_1950": [
     {
       "name": "floor_ground",
       "layers": {

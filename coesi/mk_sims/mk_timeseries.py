@@ -23,7 +23,7 @@ import numpy as np
 
 PROJECT_ROOT = str(Path(__file__).resolve().parents[2]).replace('\\', '/')
 sys.path.append(PROJECT_ROOT)
-from coesi.definitions import MODELS_ROOT
+from coesi.definitions import MODELS_ROOT, DATA_ROOT
 
 
 META = {
@@ -54,7 +54,7 @@ class TimeSeriesSim(mosaik_api.Simulator):
             raise ValueError('ExampleSim only supports time_resolution=1., but'
                              ' %s was set.' % time_resolution)
         # load datafile
-        self.df = pd.read_csv(os.path.join(MODELS_ROOT, datafile))
+        self.df = pd.read_csv(os.path.join(DATA_ROOT, datafile))
 
         # Set timestamp and DatetimeIndex
         assert 'DateTime' in self.df.columns

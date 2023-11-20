@@ -92,3 +92,5 @@ SCEN_OUTPUTS:
     - fmu_pyfmi_sim2.rc_Bui27.HeatingLoadTarget
     - fmu_pyfmi_sim2.rc_Bui27.TBuilding
     step_size: 300
+
+CONNECTIONS:

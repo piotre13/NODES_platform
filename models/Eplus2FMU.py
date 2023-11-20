@@ -33,7 +33,7 @@ def Eplus2FMU_single(config):
 
 if __name__ == '__main__':
     config ={
-        "idf_file": "/home/pietrorm/Documents/CODE/NODES_platform/data/idf/frassinetto_casestudy/SingleFamilyHouse_2.idf",
+        "idf_file": "../idf/frassinetto_casestudy/SingleFamilyHouse_2.idf",
         "idd_file": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
         "weather": "/home/pietrorm/Documents/CODE/NODES_platform/data/meteo_file/meteo_bousson.epw",
         "FMI_v": "2.0",

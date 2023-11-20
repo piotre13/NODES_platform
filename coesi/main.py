@@ -107,7 +107,7 @@ def simulators_settings(configs, START_DATE, DAYS):
     ## Mosaik setup
     MK_CONFIG = {
         'addr': ('127.0.0.1', 5555),
-        'start_timeout': 30,  # seconds default 10
+        'start_timeout': 120,  # seconds default 10
         'stop_timeout': 30,  # seconds default 10
     }
 

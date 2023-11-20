@@ -12,6 +12,6 @@ MODELS_ROOT = os.path.join(PROJECT_ROOT, 'models').replace('\\','/')
 OUTPUTS_ROOT = os.path.join(PROJECT_ROOT, 'Outputs').replace('\\','/')
 TEMP_ROOT = os.path.join(PROJECT_ROOT, 'coesi/resources/temp').replace('\\','/')
 RESOURCE_ROOT = os.path.join(PROJECT_ROOT, 'coesi/resources').replace('\\','/')
-
+DATA_ROOT = os.path.join(PROJECT_ROOT, 'data').replace('\\','/')
 # Define matlab root exec
 MATLABROOT = r"C:\Program Files\MATLAB\R2020a\toolbox\shared\fmu_share\script"

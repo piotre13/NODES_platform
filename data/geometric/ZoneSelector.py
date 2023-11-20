@@ -45,8 +45,8 @@ class DataFiller():
         return df
 
     def statistical_assignation(self,df,census_ind,tracciato):
-
-        df = self.calc_year_of_constrcution_stat(df,census_ind,tracciato)
+        #if df['']
+        #df = self.calc_year_of_constrcution_stat(df,census_ind,tracciato)
         #TODO aggiungere funzione per assegnazione deterministica in funzione del numero reale di edifici per year slot in ogni sezione di censimento
         #calc number of families in buildings
         #calc number of person in buildings
@@ -357,7 +357,12 @@ class ZoneSelector():
         #converting formats
         self.buildings= self.buildings.astype({'height': 'float', 'area': 'float','net_leased_area': 'float','gross_floor_area': 'float'})
         self.set_unique_ids()
-    def get_year_of_construction(self):
+    def get_year_of_construction(self, autorange=False):
+        if autorange!= False:
+            self.buildings['year_of_construction'] = ''
+            self.buildings['year_of_construction'] =self.buildings['year_of_construction'].apply(lambda x: random.randint(autorange[0],autorange[1]))
+            return
+
         if ('year_of_construction' not in self.buildings.columns and self.proc_conf['matching_col'][
             self.proc_conf['output_columns'].index('year_of_construction')]
                 not in self.buildings.columns):
@@ -375,8 +380,17 @@ class ZoneSelector():
     def get_w2w(self):
         self.buildings['w2w']=0.2
     def get_construction_type(self):
-        #TODO now is hardcoded must be taken from data or from config specifications
-        self.buildings['construction_type'] = 'high_performance'
+        '''strictly related to the year of construction of the buildings, the archetypes that defines the type of construction depends on the year
+        it will be added also a distinction on the type of building'''
+
+        def ass(x):
+            for i in self.proc_conf['construction_ranges']:
+                if x>i[0] and x<=i[1]:
+                    return f'{i[0]}_{i[1]}'
+
+        self.buildings['construction_type'] = self.buildings['year_of_construction'].apply(ass)
+
+
     def get_tabula_archetype(self):
         #TODO in future for teaser lets use this one enhanced by Finocchiaro thesis
         self.buildings['Tabula_type'] = 'SFH'
@@ -499,7 +513,7 @@ if __name__ == '__main__':
     zone.get_destination()
     zone.get_elevation()
     zone.get_geometrical_values()
-    zone.get_year_of_construction()
+    zone.get_year_of_construction( autorange=(1800,1949))
     zone.get_demographics()
     zone.clean_df(cut=True,filter=True)
     zone.get_construction_type()
@@ -507,7 +521,7 @@ if __name__ == '__main__':
     zone.get_shading_surfaces()
     zone.get_hvac_id()
     zone.get_tabula_archetype()
-    zone.df2geojson('outcomes/frassinetto_test_reduced.geojson')
+    zone.df2geojson('outcomes/frassinetto_test_low.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')
 
     print('yo')

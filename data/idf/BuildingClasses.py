@@ -5,6 +5,7 @@ import json
 import geopandas as gpd
 import shapely.wkt
 import pandas as pd
+import os
 def find_starting_vertex(vertices):
     # Find the vertex with the minimum x-coordinate
     min_x = max(vertices, key=lambda vertex: vertex[0])
@@ -383,7 +384,13 @@ class SingleFamilyHouse(Building):
                 setattr(shading_surface, f"Vertex_{i}_Zcoordinate", "{:.7f}".format(vertex[2]))
 
     def save_idf(self, path):
-        self.idf.savecopy(path)
+        try:
+            self.idf.savecopy(path)
+        except FileNotFoundError:
+            out_dir = path.split('/')[0]
+            os.mkdir(out_dir)
+            self.idf.savecopy(path)
+
 
 
 def main(config):
@@ -424,10 +431,10 @@ if __name__ == '__main__':
 
     config = {"material_file":"materials.json",
               "construction_file": "constructions.json",
-              "gdf_file": "C:/Users/SilvioBrandi/PycharmProjects/NODES_platform/data/geometric/outcomes/frassinetto_test_reduced.geojson",
-              "idd_path": "C:/EnergyPlusV23-1-0/Energy+.idd",
+              "gdf_file": "../geometric/outcomes/frassinetto_test_low.geojson",
+              "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
               "idf_template": "singleFamilyHouse_test.idf",
-              "idf_out_dir": "frassinetto_casestudy_reduced"
+              "idf_out_dir": "frassinetto_casestudy_low"
               }
 
     main(config)

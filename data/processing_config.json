@@ -16,7 +16,8 @@
   "istat_indices": ["A6","A7","A2","A44","PF1"],
   "filter": {"dest": ["residential"]},
 
-  "eplus_idd": "/usr/local/EnergyPlus-23-1-0/Energy+.idd"
+  "eplus_idd": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
+  "construction_ranges": [[0,1950],[1950,2000],[2000, 2100]]
 
 
 
