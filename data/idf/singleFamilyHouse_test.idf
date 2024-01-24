@@ -488,6 +488,12 @@ ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     OthEquFCWatt,              !- FMU Variable Name
     0;                       !- Initial Value
 
+ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
+    FMU_Zone_SetPoint_Schedule,  !- Schedule Name
+    Any Number,              !- Schedule Type Limits Names
+    ZoneSetPoint,              !- FMU Variable Name
+    20.;                       !- Initial Value
+
 
 !-   ===========  ALL OBJECTS IN CLASS: OUTPUT:VARIABLEDICTIONARY ===========
 
@@ -563,12 +569,13 @@ ZoneControl:Thermostat ,
   Zn001_Thermostat,
   Zn001,
   Zone Control Type Sched,
-  ThermostatSetpoint:SingleHeating, Heating Setpoint with SB;
+  ThermostatSetpoint:SingleHeating,
+  Heating Setpoint with SB;
 
 !- ! Control type objects these may be used in more than one zone
 ThermostatSetpoint:SingleHeating ,
   Heating Setpoint with SB,
-  Heating Setpoints;
+  FMU_Zone_SetPoint_Schedule;
 
 Schedule:Compact , 
   Zone Control Type Sched, 
