@@ -6,6 +6,8 @@ import geopandas as gpd
 import shapely.wkt
 import pandas as pd
 import os
+
+
 def find_starting_vertex(vertices):
     # Find the vertex with the minimum x-coordinate
     min_x = max(vertices, key=lambda vertex: vertex[0])
@@ -59,7 +61,7 @@ def reduce_distance_and_maintain_center(point1, point2, reduction_percentage):
     center_y = (point1[1] + point2[1]) / 2
 
     # Calculate the original distance
-    original_distance = math.sqrt((point2[0] - point1[0])**2 + (point2[1] - point1[1])**2)
+    original_distance = math.sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)
 
     # Calculate the reduction in distance
     reduction = reduction_percentage / 100 * original_distance
@@ -176,27 +178,29 @@ class SingleFamilyHouse(Building):
         self.materials_list = config['materials_list']
         self.constructions_list = config['construction_list']
         self.height = config['height']
+        self.n_floors = config['n_floors']
         self.window_to_wall_ratio = config['window_to_wall_ratio']
         self.window_distance_from_roof = 0.5
         self.floor_vertices = list(config['floor_vertices'].exterior.coords)
         self.floor_vertices.pop()
+        self.building_surface_area = config['area']
+        self.heated_surface_area = self.building_surface_area * self.n_floors
 
-
-        #getting neighbours if presents
+        # getting neighbours if presents
         if not pd.isnull(config['shading_surfaces']):
             self.shading_surfaces = shapely.wkt.loads(config['shading_surfaces'])
-            self.shading_surfaces = [list(x.exterior.coords) for x in self.shading_surfaces.geoms ]
+            self.shading_surfaces = [list(x.exterior.coords) for x in self.shading_surfaces.geoms]
             self.shading_vertices = shapely.wkt.loads(config['shading_vertices'])
             print('yo')
         else:
             self.shading_surfaces = []
 
-
         self._define_materials()
         self._define_constructions()
         self._create_floor_and_roof_surfaces()
         self._create_wall_surfaces()
-        if len(self.shading_surfaces)>0:
+        self._add_floor_internal_mass()
+        if len(self.shading_surfaces) > 0:
             self._add_shading()
             print('shades_added')
         # self._add_shading()
@@ -233,7 +237,7 @@ class SingleFamilyHouse(Building):
                 material_obj.Visible_Absorptance = material['properties']['Visible_Absorptance']
 
     def _define_constructions(self):
-        #TODO testing only for window
+        # TODO testing only for window
         for construction in self.constructions_list:
             if construction['name'].startswith('window'):
                 construction_obj = self.idf.getobject('WindowMaterial:SimpleGlazingSystem', 'window_simple')
@@ -299,9 +303,8 @@ class SingleFamilyHouse(Building):
 
             if i == len(sorted_floor_vertices) - 1:
                 wall_base_vertices = [sorted_floor_vertices[i], sorted_floor_vertices[0]]
-                print(wall_base_vertices)
             else:
-                wall_base_vertices = [sorted_floor_vertices[i], sorted_floor_vertices[i+1]]
+                wall_base_vertices = [sorted_floor_vertices[i], sorted_floor_vertices[i + 1]]
 
             window_base_vertices = reduce_distance_and_maintain_center(wall_base_vertices[0],
                                                                        wall_base_vertices[1],
@@ -361,20 +364,21 @@ class SingleFamilyHouse(Building):
             window_surface.Vertex_4_Ycoordinate = "{:.7f}".format(window_base_vertices[0][1])
             window_surface.Vertex_4_Zcoordinate = "{:.7f}".format(window_min_z_coordinate)
             try:
-                setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
+                setattr(shading_control, f"Fenestration_Surface_{i + 1}_Name", f'window{i}')
 
             except ValueError as e:
-                shading_control.objls.append(f"Fenestration_Surface_{i+1}_Name")
-                setattr(shading_control, f"Fenestration_Surface_{i+1}_Name", f'window{i}')
+                shading_control.objls.append(f"Fenestration_Surface_{i + 1}_Name")
+                setattr(shading_control, f"Fenestration_Surface_{i + 1}_Name", f'window{i}')
                 print(shading_control.__dict__)
                 print(e)
                 print('yo')
+
     def _add_shading(self):
         self.shading_surfaces.pop()
         for i in range(len(self.shading_surfaces)):
             surafaces_vertices = self.shading_surfaces[i]
             surafaces_vertices.pop()
-            #surafaces_vertices = sort_vertices_counterclockwise(surafaces_vertices)
+            # surafaces_vertices = sort_vertices_counterclockwise(surafaces_vertices)
             # create shading object:
             shading_surface = self.idf.newidfobject('Shading:Building:Detailed')
             shading_surface.Name = f'shading_{i}'
@@ -383,6 +387,14 @@ class SingleFamilyHouse(Building):
                 setattr(shading_surface, f"Vertex_{i}_Ycoordinate", "{:.7f}".format(vertex[1]))
                 setattr(shading_surface, f"Vertex_{i}_Zcoordinate", "{:.7f}".format(vertex[2]))
 
+    def _add_floor_internal_mass(self):
+        if self.n_floors > 1:
+            floor_internal_mass = self.idf.newidfobject('InternalMass')
+            floor_internal_mass.Name = 'floor'
+            floor_internal_mass.Construction_Name = 'floor_internal'
+            floor_internal_mass.Zone_or_ZoneList_Name = 'Zn001'
+            floor_internal_mass.Surface_Area = self.building_surface_area * (self.n_floors - 1)
+
     def save_idf(self, path):
         try:
             self.idf.savecopy(path)
@@ -390,7 +402,6 @@ class SingleFamilyHouse(Building):
             out_dir = path.split('/')[0]
             os.mkdir(out_dir)
             self.idf.savecopy(path)
-
 
 
 def main(config):
@@ -405,10 +416,17 @@ def main(config):
     gdf = gpd.read_file(config['gdf_file'])
 
     for bid, b_row in gdf.iterrows():
-        params = {'name':'BUI_%s'%bid, 'materials_list': None, 'construction_list': constructions_list[b_row['construction_type']],
-                  'window_to_wall_ratio': b_row['w2w'], 'height': b_row['height'], 'floor_vertices': b_row['geometry'], 'shading_surfaces':b_row['neighbours_surfaces'], "shading_vertices":b_row['neighbours_vertices']}
+        params = {'name': 'BUI_%s' % bid, 'materials_list': None,
+                  'construction_list': constructions_list[b_row['construction_type']],
+                  'window_to_wall_ratio': b_row['w2w'],
+                  'height': b_row['height'],
+                  'floor_vertices': b_row['geometry'],
+                  'shading_surfaces': b_row['neighbours_surfaces'],
+                  "shading_vertices": b_row['neighbours_vertices'],
+                  'n_floors': b_row['n_floors'],
+                  'area': b_row['area']}
 
-        #prepare the material list
+        # prepare the material list
         unique_materials = set()
 
         for construction in constructions_list[b_row['construction_type']]:
@@ -418,29 +436,23 @@ def main(config):
         mat_list = [material for material in materials_list if material['name'] in unique_materials]
         params['materials_list'] = mat_list
 
-        #instantiating a class for creating an IDF
-        #TODO the name must be passed as config
-        idf_name = config['idf_out_dir']+'/SingleFamilyHouse_%s.idf'%bid
+        # instantiating a class for creating an IDF
+        # TODO the name must be passed as config
+        idf_name = config['idf_out_dir'] + '/SingleFamilyHouse_%s.idf' % bid
         sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
         sfh.save_idf(idf_name)
 
 
-
-
 if __name__ == '__main__':
-
-    config = {"material_file":"materials.json",
+    config = {"material_file": "materials.json",
               "construction_file": "constructions.json",
-              "gdf_file": "../geometric/outcomes/frassinetto_test_low.geojson",
-              "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
+              "gdf_file": "../geometric/outcomes/frassinetto_test.geojson",
+              "idd_path": "C:/EnergyPlusV23-2-0/Energy+.idd",
               "idf_template": "singleFamilyHouse_test.idf",
               "idf_out_dir": "frassinetto_casestudy_low"
               }
 
     main(config)
-
-
-
 
     # floor_coordinates = [[392783.116707601875532, 5037970.027620642445982],
     #                      [392786.345666732289828, 5037964.115988032892346],

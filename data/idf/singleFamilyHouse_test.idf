@@ -305,12 +305,12 @@ WindowProperty:FrameAndDivider,
 
 !-   ===========  ALL OBJECTS IN CLASS: INTERNALMASS ===========
 
-InternalMass,
-    mass_internal_walls,     !- Name
-    wall_internal,           !- Construction Name
-    Zn001,                   !- Zone or ZoneList Name
-    ,                        !- Space or SpaceList Name
-    100;                     !- Surface Area {m2}
+!- InternalMass,
+!-    mass_internal_walls,     !- Name
+!-    wall_internal,           !- Construction Name
+!-    Zn001,                   !- Zone or ZoneList Name
+!-    ,                        !- Space or SpaceList Name
+!-    100;                     !- Surface Area {m2}
 
 
 !-   ===========  ALL OBJECTS IN CLASS: PEOPLE ===========

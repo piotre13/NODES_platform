@@ -41,6 +41,14 @@
       }
     },
     {
+      "name": "floor_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    },
+    {
       "name": "window",
       "properties": {
         "U": 1.67,
@@ -84,6 +92,14 @@
       }
     },
     {
+      "name": "floor_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    },
+    {
       "name": "window",
       "properties": {
         "U": 4.3,
@@ -119,6 +135,14 @@
     },
     {
       "name": "wall_internal",
+      "layers": {
+        "Outside_Layer": "gypsumplaster_UNI10456",
+        "Layer_2": "internal_brickwork_UNI10351",
+        "Layer_3": "gypsumplaster_UNI10456"
+      }
+    },
+    {
+      "name": "floor_internal",
       "layers": {
         "Outside_Layer": "gypsumplaster_UNI10456",
         "Layer_2": "internal_brickwork_UNI10351",
