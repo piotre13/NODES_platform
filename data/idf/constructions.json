@@ -43,9 +43,10 @@
     {
       "name": "floor_internal",
       "layers": {
-        "Outside_Layer": "gypsumplaster_UNI10456",
-        "Layer_2": "internal_brickwork_UNI10351",
-        "Layer_3": "gypsumplaster_UNI10456"
+        "Outside_Layer": "External plaster",
+        "Layer_2": "hollowcore_slab",
+        "Layer_3": "concrete_slab_UNI10351",
+        "Layer_4": "ceramic_tile_UNI10456"
       }
     },
     {
@@ -94,9 +95,10 @@
     {
       "name": "floor_internal",
       "layers": {
-        "Outside_Layer": "gypsumplaster_UNI10456",
-        "Layer_2": "internal_brickwork_UNI10351",
-        "Layer_3": "gypsumplaster_UNI10456"
+        "Outside_Layer": "External plaster",
+        "Layer_2": "hollowcore_slab",
+        "Layer_3": "concrete_slab_UNI10351",
+        "Layer_4": "ceramic_tile_UNI10456"
       }
     },
     {
@@ -112,7 +114,7 @@
       "name": "floor_ground",
       "layers": {
         "Outside_Layer": "External plaster",
-        "Layer_2": "Hollowcore slab",
+        "Layer_2": "hollowcore_slab",
         "Layer_3": "Cement mortar (2cm)",
         "Layer_4": "Indoor flooring (stoneware)"
       }
@@ -144,9 +146,10 @@
     {
       "name": "floor_internal",
       "layers": {
-        "Outside_Layer": "gypsumplaster_UNI10456",
-        "Layer_2": "internal_brickwork_UNI10351",
-        "Layer_3": "gypsumplaster_UNI10456"
+        "Outside_Layer": "External plaster",
+        "Layer_2": "hollowcore_slab",
+        "Layer_3": "concrete_slab_UNI10351",
+        "Layer_4": "ceramic_tile_UNI10456"
       }
     },
     {

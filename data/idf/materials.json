@@ -254,7 +254,7 @@
       }
     },
     {
-      "name": "Hollowcore slab",
+      "name": "hollowcore_slab",
       "properties": {
         "Roughness": "MediumRough",
         "Thickness": 0.16,
@@ -352,6 +352,19 @@
         "Conductivity": 0.15,
         "Density": 550,
         "Specific_Heat": 1600,
+        "Thermal_Absorptance": 0.9,
+        "Solar_Absorptance": 0.7,
+        "Visible_Absorptance": 0.7
+      }
+    },
+    {
+      "name": "concrete_slab_UNI10351",
+      "properties": {
+        "Roughness": "MediumRough",
+        "Thickness": 0.04,
+        "Conductivity": 1.91,
+        "Density": 2400,
+        "Specific_Heat": 880,
         "Thermal_Absorptance": 0.9,
         "Solar_Absorptance": 0.7,
         "Visible_Absorptance": 0.7
