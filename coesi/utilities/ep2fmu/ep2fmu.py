@@ -20,7 +20,7 @@ def ep2fmu(model_name,save_dir= os.path.dirname(os.path.abspath( __file__ ))):
 		#envpy27 = 'C:/Users/Daniele Schiera/Anaconda3/envs/EP2FMU/python.exe'
 		#subprocess.call([envpy27, EnergyPlusToFMU, '-i', idd, "-w", wth, idf])
 		# subprocess.call(['python', EnergyPlusToFMU, '-i', idd, "-w", wth, "-a","2.0", idf]) -a for FMI version
-		subprocess.call(['python', EnergyPlusToFMU, '-i', idd, "-w", wth,"-a","2.0", idf])
+		subprocess.call(['python', EnergyPlusToFMU, '-i', idd, "-w", wth,"-a","2.0",'-d', '-l', idf])
 	except:
 		raise('To run EnergyPlusToFMU we must use environment python 2.7')
 
