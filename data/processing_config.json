@@ -4,7 +4,7 @@
   "matching_col": ["geometry", "av", "-","-", "-", "-", "des_ty", "-", "SEZ2011"],
   "matching_values": {
     "dest": {
-      "residential": ["edificio generico-uso residenziale", "edificio generico-uso abitativo"],
+      "residential": ["edificiogenerico-usoresidenziale","edificiogenerico-usoresidenzialeecommerciale", "edificiogenerico-usoabitativo", "villettaaschiera-usoabitativo"],
       "industrial": [],
       "agricoltural": ["capannone-uso agricolturale"],
       "administrative": [],

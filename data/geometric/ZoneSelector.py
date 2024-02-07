@@ -281,6 +281,7 @@ class ZoneSelector():
             print('data downloaded')
         else:
             self.buildings = self.inputs['buildings']
+            self.buildings['des_ty'] = self.buildings['des_ty'].str.replace(" ","")
             print('Buildings data already present')
 
         #perform some stupid cleaning for all nan columns
@@ -473,7 +474,7 @@ class ZoneSelector():
                 self.buildings.at[index,'neighbours_vertices']=MultiPoint(vertex).wkt
             #self.buildings['b_id'] = self.buildings['b_id'].astype(str)
 
-        print(geom)
+        #print(geom)
 
 
 
@@ -513,7 +514,7 @@ if __name__ == '__main__':
     zone.get_destination()
     zone.get_elevation()
     zone.get_geometrical_values()
-    zone.get_year_of_construction( autorange=(1800,1949))
+    zone.get_year_of_construction( autorange=(2001,2024))
     zone.get_demographics()
     zone.clean_df(cut=True,filter=True)
     zone.get_construction_type()
@@ -521,7 +522,7 @@ if __name__ == '__main__':
     zone.get_shading_surfaces()
     zone.get_hvac_id()
     zone.get_tabula_archetype()
-    zone.df2geojson('outcomes/frassinetto_test_low.geojson')
+    zone.df2geojson('outcomes/frassinetto_test_high.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')
 
     print('yo')

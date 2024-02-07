@@ -65,6 +65,7 @@ class Scenario_Yaml():
                     tmp['MODELS'][fmu_dict['mod_name']]['PARAMS']['fmu_name'] = name
                     tmp['MODELS'][fmu_dict['mod_name']]['PARAMS']['instance_name'] = [inst_name]
                     tmp['MODELS'][fmu_dict['mod_name']]['PARAMS']['num'] = 1
+
                     tmp['MODELS'][fmu_dict['mod_name']]['PUBLIC'] = True
 
                     sim_name = fmu_dict['mk']+str(i)
@@ -215,7 +216,7 @@ if __name__ == '__main__':
         "hvac_attrs":["Qt", "G_gas", "En_auxel", "Text", "fuel"],
         "sims":{
             "FMUs":{"auto":True, # serve per fare un simulatore per ogni fmu
-                    "fmu_dir":"../models/fmus/frassinetto_casestudy_med",
+                    "fmu_dir":"../models/fmus/frassinetto_casestudy_13",
                     "attrs":["PeopleNumber","peopleActivity","LightsWatt","EEquipWatt","InfilAch","OthEquRadWatt","OthEquFCWatt","TBuilding","HeatingLoadTarget"],
                     "mk": "fmu_pyfmi_sim",
                     "mod_name": "rc"},
@@ -227,7 +228,7 @@ if __name__ == '__main__':
         }
     }
 
-    scenario = Scenario_Yaml('Frassinetto_test_med')
+    scenario = Scenario_Yaml('Frassinetto_test_13')
     #scenario.add_weather()
     scenario.auto_creation(sim_dict)
     scenario.write_yaml()
