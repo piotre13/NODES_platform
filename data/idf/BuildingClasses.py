@@ -390,7 +390,7 @@ class SingleFamilyHouse(Building):
     def _add_floor_internal_mass(self):
         if self.n_floors > 1:
             floor_internal_mass = self.idf.newidfobject('InternalMass')
-            floor_internal_mass.Name = 'floor'
+            floor_internal_mass.Name = 'floorInternalMass'
             floor_internal_mass.Construction_Name = 'floor_internal'
             floor_internal_mass.Zone_or_ZoneList_Name = 'Zn001'
             floor_internal_mass.Surface_Area = self.building_surface_area * (self.n_floors - 1)
