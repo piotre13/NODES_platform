@@ -47,10 +47,35 @@ class DataFiller():
     def statistical_assignation(self,df,census_ind,tracciato):
         #if df['']
         #df = self.calc_year_of_constrcution_stat(df,census_ind,tracciato)
+        df = self.calc_families(df, census_ind, tracciato)
         #TODO aggiungere funzione per assegnazione deterministica in funzione del numero reale di edifici per year slot in ogni sezione di censimento
         #calc number of families in buildings
         #calc number of person in buildings
 
+        return df
+    def calc_families(self, df, census_ind, tracciato):
+        #PF1 tot famiglie residenti
+        #P1 tot popolation
+
+        df['tot_area_persez'] = df['net_leased_area'].groupby(df['sez_cens']).transform('sum')
+        def get_fam(x,cens_ind):
+            tmp = cens_ind.loc[cens_ind['SEZ2011']==x['sez_cens'], 'P1']
+            if tmp.empty:
+                return 0
+            else:
+                n_fam= tmp/4/x['tot_area_persez']*x['net_leased_area']
+
+                if n_fam.iloc[0]<1:
+                    n_fam=1
+                else:
+                    n_fam=int(n_fam.iloc[0])
+
+            return n_fam
+        df['n_fam_'] = df.apply(lambda x: get_fam(x, census_ind), axis=1)
+
+
+
+        #todo fare meglio per ora distribuisco una tipologia di famiglia (4 persone) in funzione della net lease area
         return df
     def calc_year_of_constrcution_stat(self,df, census_ind,tracciato):
         #TODO parlare con silvio ha senso fare così coi numeri che abbiamo o semplicemente riportiamo i numeri di edifici con la fascia d'anno
@@ -402,20 +427,29 @@ class ZoneSelector():
         #todo must implement an unique taxonomy to include the hvac type
         self.buildings['hvac_type'] = 'gb'
 
-    def get_demographics (self):
-        #NO user inputs for now only from istat data
-        #TODO generalize the demographic assignation
+
+    def assign_census_zone(self):
         df = self.check_coordinates(self.inputs['census_zone'])
         df = df[[self.proc_conf['matching_col'][
-                self.proc_conf['output_columns'].index('sez_cens')], 'geometry']]
-        self.buildings = self.buildings.sjoin(df,how='left', predicate='intersects')
+                     self.proc_conf['output_columns'].index('sez_cens')], 'geometry']]
+        self.buildings = self.buildings.sjoin(df, how='left', predicate='intersects')
         old_name = self.proc_conf['matching_col'][self.proc_conf['output_columns'].index('sez_cens')]
         mapper = {old_name: 'sez_cens'}
         self.buildings = self.buildings.rename(columns=mapper)
+    def get_demographics (self):
+        #NO user inputs for now only from istat data
+        #TODO generalize the demographic assignation
+        # df = self.check_coordinates(self.inputs['census_zone'])
+        # df = df[[self.proc_conf['matching_col'][
+        #         self.proc_conf['output_columns'].index('sez_cens')], 'geometry']]
+        # self.buildings = self.buildings.sjoin(df,how='left', predicate='intersects')
+        # old_name = self.proc_conf['matching_col'][self.proc_conf['output_columns'].index('sez_cens')]
+        # mapper = {old_name: 'sez_cens'}
+        # self.buildings = self.buildings.rename(columns=mapper)
 
         #start_statistical assignation
         self.inputs['census_ind'] = self.inputs['census_ind'].loc[self.inputs['census_ind']['SEZ2011'].isin(self.inputs['census_zone']['SEZ2011'])]
-        self.buildings = self.Datafilling.statistical_assignation(self.buildings,self.inputs['census_ind'], self.inputs['census_ind_tracciato'])
+        self.buildings = self.Datafilling.statistical_assignation(self.buildings,self.inputs['census_ind'], self.inputs['census_ind_tracciato']) #TODO
 
     def set_unique_ids(self):
         self.buildings = self.buildings.reset_index()
@@ -427,6 +461,7 @@ class ZoneSelector():
         self.buildings['neighbours_surfaces'] = pd.Series()
         self.buildings['neighbours_vertices'] = pd.Series()
         self.buildings['neighbours_ids'] = pd.Series()
+        self.buildings['noWindow_surfaces'] = pd.Series()
         #need to convert buildings to projected cartesian
         self.buildings = self.buildings.to_crs('EPSG:32632')
 
@@ -437,13 +472,22 @@ class ZoneSelector():
             neigh_list = self.buildings.sindex.query(buffer, predicate= 'contains' )
             neigh_list = np.delete(neigh_list, np.where(neigh_list == num))
             self.buildings.at[index,'neighbours_ids'] = str(neigh_list)
+            touching=[]
+
             #ref_x = 500000.0
             #ref_y = 4649776.22
             neigh_vertex = []
             for neigh in neigh_list:
+
+
+
                 idx = 'BUI_%s'%neigh
                 height = self.buildings.loc[idx,'height']
                 geom = self.buildings.loc[idx,'geometry'].exterior.coords.xy
+
+                t = row['geometry'].intersects(self.buildings.loc[idx,'geometry'])
+                if t :
+                    touching.append(t)
                 surfaces = []
                 x=geom[0]
                 y=geom[1]
@@ -515,8 +559,9 @@ if __name__ == '__main__':
     zone.get_elevation()
     zone.get_geometrical_values()
     zone.get_year_of_construction( autorange=(2001,2024))
-    zone.get_demographics()
-    zone.clean_df(cut=True,filter=True)
+    zone.assign_census_zone()
+    zone.clean_df(cut=True, filter=True)
+    zone.get_demographics() # va sempre eseguito dopo il clean perche sparge abitanti su tutti gli edifici  quinsi anche non residenziali se ci sono va corretto
     zone.get_construction_type()
     zone.get_w2w()
     zone.get_shading_surfaces()

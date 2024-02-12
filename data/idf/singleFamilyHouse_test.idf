@@ -32,8 +32,8 @@ Building,
     0.04,                    !- Loads Convergence Tolerance Value {W}
     0.004,                   !- Temperature Convergence Tolerance Value {deltaC}
     FullExterior,        !- Solar Distribution
-    25,                      !- Maximum Number of Warmup Days
-    6;                       !- Minimum Number of Warmup Days
+    1,                      !- Maximum Number of Warmup Days
+    1;                       !- Minimum Number of Warmup Days
 
 
 !-   ===========  ALL OBJECTS IN CLASS: SHADOWCALCULATION ===========
@@ -450,37 +450,37 @@ ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_People_Number_Schedule,  !- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     PeopleNumber,            !- FMU Variable Name
-    1;                       !- Initial Value
+    0;                       !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_People_Activity_Schedule,  !- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     PeopleActivity,          !- FMU Variable Name
-    80;                      !- Initial Value
+    0;                      !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_Lights_Watt_Schedule,!- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     LightsWatt,              !- FMU Variable Name
-    80;                      !- Initial Value
+    0;                      !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_EEquip_Watt_Schedule,!- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     EEquipWatt,              !- FMU Variable Name
-    80;                      !- Initial Value
+    0;                      !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_Infil_Ach_Schedule,  !- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     InfilAch,                !- FMU Variable Name
-    0.5;                     !- Initial Value
+    0;                     !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_OthEqu_Watt_Schedule_Rad,  !- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     OthEquRadWatt,              !- FMU Variable Name
-    2000;                       !- Initial Value
+    0;                       !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_OthEqu_Watt_Schedule_FanCoil,  !- Schedule Name

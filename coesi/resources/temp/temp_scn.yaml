@@ -1,128 +1,28 @@
 CONNECTIONS:
-  '0':
-    ATTRS:
-    - - DryBulb
-      - Text
-    FROM: timeseries.ts_0
-    TO:
-    - heating_system.hs_0
-    - heating_system.hs_1
-    - heating_system.hs_2
-    - heating_system.hs_3
-    - heating_system.hs_4
-  '1':
-    ATTRS:
-    - - HeatingLoadTarget
-      - Qt
-    FROM: fmu_pyfmi_sim0.rc_Bui13
-    TO: heating_system.hs_0
-  '10':
-    ATTRS:
-    - - Qt
-      - OthEquRadWatt
-    FROM: heating_system.hs_4
-    PARAMS:
-      initial_data:
-        Qt: 0.0
-      time_shifted: true
-    TO: fmu_pyfmi_sim5.rc_Buiff
-  '2':
-    ATTRS:
-    - - HeatingLoadTarget
-      - Qt
-    FROM: fmu_pyfmi_sim1.rc_Bui102
-    TO: heating_system.hs_1
-  '3':
-    ATTRS:
-    - - HeatingLoadTarget
-      - Qt
-    FROM: fmu_pyfmi_sim2.rc_Bui27
-    TO: heating_system.hs_2
-  '4':
-    ATTRS:
-    - - HeatingLoadTarget
-      - Qt
-    FROM: fmu_pyfmi_sim3.rc_Bui0
-    TO: heating_system.hs_3
-  '5':
-    ATTRS:
-    - - HeatingLoadTarget
-      - Qt
-    FROM: fmu_pyfmi_sim5.rc_Buiff
-    TO: heating_system.hs_4
-  '6':
-    ATTRS:
-    - - Qt
-      - OthEquRadWatt
-    FROM: heating_system.hs_0
-    PARAMS:
-      initial_data:
-        Qt: 0.0
-      time_shifted: true
-    TO: fmu_pyfmi_sim0.rc_Bui13
-  '7':
-    ATTRS:
-    - - Qt
-      - OthEquRadWatt
-    FROM: heating_system.hs_1
-    PARAMS:
-      initial_data:
-        Qt: 0.0
-      time_shifted: true
-    TO: fmu_pyfmi_sim1.rc_Bui102
-  '8':
-    ATTRS:
-    - - Qt
-      - OthEquRadWatt
-    FROM: heating_system.hs_2
-    PARAMS:
-      initial_data:
-        Qt: 0.0
-      time_shifted: true
-    TO: fmu_pyfmi_sim2.rc_Bui27
-  '9':
-    ATTRS:
-    - - Qt
-      - OthEquRadWatt
-    FROM: heating_system.hs_3
-    PARAMS:
-      initial_data:
-        Qt: 0.0
-      time_shifted: true
-    TO: fmu_pyfmi_sim3.rc_Bui0
+
 SCEN_CONFIG:
   DAYS: 15
   RT_FACTOR: null
-  SCENARIO_NAME: Frassinetto_test_13
+  SCENARIO_NAME: Frassinetto_test_debug_high
   START_DATE: '2021-01-01 01:00:00'
 SCEN_OUTPUTS:
   DB:
     attrs:
-    - fmu_pyfmi_sim0.rc_Bui13.TBuilding
-    - fmu_pyfmi_sim0.rc_Bui13.HeatingLoadTarget
-    - fmu_pyfmi_sim1.rc_Bui102.TBuilding
-    - fmu_pyfmi_sim1.rc_Bui102.HeatingLoadTarget
-    - fmu_pyfmi_sim2.rc_Bui27.TBuilding
-    - fmu_pyfmi_sim2.rc_Bui27.HeatingLoadTarget
-    - fmu_pyfmi_sim3.rc_Bui0.TBuilding
-    - fmu_pyfmi_sim3.rc_Bui0.HeatingLoadTarget
-    - fmu_pyfmi_sim5.rc_Buiff.TBuilding
-    - fmu_pyfmi_sim5.rc_Buiff.HeatingLoadTarget
-    - heating_system.hs_0.fuel
-    - heating_system.hs_1.fuel
-    - heating_system.hs_2.fuel
-    - heating_system.hs_3.fuel
-    - heating_system.hs_4.fuel
-    - heating_system.hs_0.En_auxel
-    - heating_system.hs_1.En_auxel
-    - heating_system.hs_2.En_auxel
-    - heating_system.hs_3.En_auxel
-    - heating_system.hs_4.En_auxel
-    - heating_system.hs_0.Qt
-    - heating_system.hs_1.Qt
-    - heating_system.hs_2.Qt
-    - heating_system.hs_3.Qt
-    - heating_system.hs_4.Qt
+    - fmu_pyfmi_sim0.rc_Bui138.TBuilding
+    - fmu_pyfmi_sim0.rc_Bui138.HeatingLoadTarget
+    - fmu_pyfmi_sim1.rc_Bui13.TBuilding
+    - fmu_pyfmi_sim1.rc_Bui13.HeatingLoadTarget
+    - fmu_pyfmi_sim2.rc_Bui59.TBuilding
+    - fmu_pyfmi_sim2.rc_Bui59.HeatingLoadTarget
+    - fmu_pyfmi_sim3.rc_Bui44.TBuilding
+    - fmu_pyfmi_sim3.rc_Bui44.HeatingLoadTarget
+    - fmu_pyfmi_sim4.rc_Bui102.TBuilding
+    - fmu_pyfmi_sim4.rc_Bui102.HeatingLoadTarget
+    - fmu_pyfmi_sim5.rc_Bui35.TBuilding
+    - fmu_pyfmi_sim5.rc_Bui35.HeatingLoadTarget
+    - fmu_pyfmi_sim6.rc_Bui27.TBuilding
+    - fmu_pyfmi_sim6.rc_Bui27.HeatingLoadTarget
+
     step_size: 600
 SIM_CONFIG:
   fmu_pyfmi_sim0:
@@ -130,16 +30,44 @@ SIM_CONFIG:
       rc:
         ATTRS:
         - PeopleNumber
-        - peopleActivity
+        - PeopleActivity
         - LightsWatt
         - EEquipWatt
         - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
+        - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SingleFamilyHouse_13
+          fmu_name: SF_high_138
+          instance_name:
+          - Bui138
+          num: 1
+        PUBLIC: true
+    PARAMS:
+      fmu_log: 0
+      step_size: 600
+      stop_time: 31536000
+      work_dir: frassinetto_debug
+    RUN_PROCESS:
+      cmd: python mk_fmu_pyfmi.py %(addr)s
+  fmu_pyfmi_sim1:
+    MODELS:
+      rc:
+        ATTRS:
+        - PeopleNumber
+        - PeopleActivity
+        - LightsWatt
+        - EEquipWatt
+        - InfilAch
+        - OthEquRadWatt
+        - OthEquFCWatt
+        - ZoneSetPoint
+        - TBuilding
+        - HeatingLoadTarget
+        PARAMS:
+          fmu_name: SF_high_13
           instance_name:
           - Bui13
           num: 1
@@ -148,24 +76,79 @@ SIM_CONFIG:
       fmu_log: 0
       step_size: 600
       stop_time: 31536000
-      work_dir: frassinetto_casestudy_13
+      work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim1:
+  fmu_pyfmi_sim2:
     MODELS:
       rc:
         ATTRS:
         - PeopleNumber
-        - peopleActivity
+        - PeopleActivity
         - LightsWatt
         - EEquipWatt
         - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
+        - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SingleFamilyHouse_102
+          fmu_name: SF_high_59
+          instance_name:
+          - Bui59
+          num: 1
+        PUBLIC: true
+    PARAMS:
+      fmu_log: 0
+      step_size: 600
+      stop_time: 31536000
+      work_dir: frassinetto_debug
+    RUN_PROCESS:
+      cmd: python mk_fmu_pyfmi.py %(addr)s
+  fmu_pyfmi_sim3:
+    MODELS:
+      rc:
+        ATTRS:
+        - PeopleNumber
+        - PeopleActivity
+        - LightsWatt
+        - EEquipWatt
+        - InfilAch
+        - OthEquRadWatt
+        - OthEquFCWatt
+        - ZoneSetPoint
+        - TBuilding
+        - HeatingLoadTarget
+        PARAMS:
+          fmu_name: SF_high_44
+          instance_name:
+          - Bui44
+          num: 1
+        PUBLIC: true
+    PARAMS:
+      fmu_log: 0
+      step_size: 600
+      stop_time: 31536000
+      work_dir: frassinetto_debug
+    RUN_PROCESS:
+      cmd: python mk_fmu_pyfmi.py %(addr)s
+  fmu_pyfmi_sim4:
+    MODELS:
+      rc:
+        ATTRS:
+        - PeopleNumber
+        - PeopleActivity
+        - LightsWatt
+        - EEquipWatt
+        - InfilAch
+        - OthEquRadWatt
+        - OthEquFCWatt
+        - ZoneSetPoint
+        - TBuilding
+        - HeatingLoadTarget
+        PARAMS:
+          fmu_name: SF_high_102
           instance_name:
           - Bui102
           num: 1
@@ -174,24 +157,52 @@ SIM_CONFIG:
       fmu_log: 0
       step_size: 600
       stop_time: 31536000
-      work_dir: frassinetto_casestudy_13
+      work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim2:
+  fmu_pyfmi_sim5:
     MODELS:
       rc:
         ATTRS:
         - PeopleNumber
-        - peopleActivity
+        - PeopleActivity
         - LightsWatt
         - EEquipWatt
         - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
+        - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SingleFamilyHouse_27
+          fmu_name: SF_high_35
+          instance_name:
+          - Bui35
+          num: 1
+        PUBLIC: true
+    PARAMS:
+      fmu_log: 0
+      step_size: 600
+      stop_time: 31536000
+      work_dir: frassinetto_debug
+    RUN_PROCESS:
+      cmd: python mk_fmu_pyfmi.py %(addr)s
+  fmu_pyfmi_sim6:
+    MODELS:
+      rc:
+        ATTRS:
+        - PeopleNumber
+        - PeopleActivity
+        - LightsWatt
+        - EEquipWatt
+        - InfilAch
+        - OthEquRadWatt
+        - OthEquFCWatt
+        - ZoneSetPoint
+        - TBuilding
+        - HeatingLoadTarget
+        PARAMS:
+          fmu_name: SF_high_27
           instance_name:
           - Bui27
           num: 1
@@ -200,80 +211,10 @@ SIM_CONFIG:
       fmu_log: 0
       step_size: 600
       stop_time: 31536000
-      work_dir: frassinetto_casestudy_13
+      work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim3:
-    MODELS:
-      rc:
-        ATTRS:
-        - PeopleNumber
-        - peopleActivity
-        - LightsWatt
-        - EEquipWatt
-        - InfilAch
-        - OthEquRadWatt
-        - OthEquFCWatt
-        - TBuilding
-        - HeatingLoadTarget
-        PARAMS:
-          fmu_name: SingleFamilyHouse_0
-          instance_name:
-          - Bui0
-          num: 1
-        PUBLIC: true
-    PARAMS:
-      fmu_log: 0
-      step_size: 600
-      stop_time: 31536000
-      work_dir: frassinetto_casestudy_13
-    RUN_PROCESS:
-      cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim5:
-    MODELS:
-      rc:
-        ATTRS:
-        - PeopleNumber
-        - peopleActivity
-        - LightsWatt
-        - EEquipWatt
-        - InfilAch
-        - OthEquRadWatt
-        - OthEquFCWatt
-        - TBuilding
-        - HeatingLoadTarget
-        PARAMS:
-          fmu_name: SingleFamilyHouse_13_ff
-          instance_name:
-          - Buiff
-          num: 1
-        PUBLIC: true
-    PARAMS:
-      fmu_log: 0
-      step_size: 600
-      stop_time: 31536000
-      work_dir: frassinetto_casestudy_13
-    RUN_PROCESS:
-      cmd: python mk_fmu_pyfmi.py %(addr)s
-  heating_system:
-    MODELS:
-      hs:
-        ATTRS:
-        - Qt
-        - G_gas
-        - En_auxel
-        - Text
-        - fuel
-        PARAMS:
-          EPC_rating: B
-          leased_area: 100
-          num: 5
-          type: gb
-        PUBLIC: true
-    PARAMS:
-      step_size: 60
-    RUN_PROCESS:
-      cmd: python mk_heating_system.py %(addr)s
+
   timeseries:
     MODELS:
       ts:
