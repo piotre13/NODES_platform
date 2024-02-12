@@ -32,8 +32,8 @@ Building,
     0.04,                    !- Loads Convergence Tolerance Value {W}
     0.004,                   !- Temperature Convergence Tolerance Value {deltaC}
     FullExterior,        !- Solar Distribution
-    1,                      !- Maximum Number of Warmup Days
-    1;                       !- Minimum Number of Warmup Days
+    6,                      !- Maximum Number of Warmup Days
+    6;                       !- Minimum Number of Warmup Days
 
 
 !-   ===========  ALL OBJECTS IN CLASS: SHADOWCALCULATION ===========
