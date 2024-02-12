@@ -191,7 +191,6 @@ class SingleFamilyHouse(Building):
             self.shading_surfaces = shapely.wkt.loads(config['shading_surfaces'])
             self.shading_surfaces = [list(x.exterior.coords) for x in self.shading_surfaces.geoms]
             self.shading_vertices = shapely.wkt.loads(config['shading_vertices'])
-            print('yo')
         else:
             self.shading_surfaces = []
 
@@ -202,7 +201,7 @@ class SingleFamilyHouse(Building):
         self._add_floor_internal_mass()
         if len(self.shading_surfaces) > 0:
             self._add_shading()
-            print('shades_added')
+            #print('shades_added')
         # self._add_shading()
 
     def _define_materials(self):
@@ -270,7 +269,7 @@ class SingleFamilyHouse(Building):
             setattr(surface, f"Vertex_{i}_Xcoordinate", "{:.7f}".format(vertex[0]))
             setattr(surface, f"Vertex_{i}_Ycoordinate", "{:.7f}".format(vertex[1]))
             setattr(surface, f"Vertex_{i}_Zcoordinate", "0")
-        print('ok')
+        #print('ok')
 
         sorted_vertices = sort_vertices_counterclockwise(self.floor_vertices)
 
@@ -290,7 +289,7 @@ class SingleFamilyHouse(Building):
             setattr(surface, f"Vertex_{i}_Xcoordinate", "{:.7f}".format(vertex[0]))
             setattr(surface, f"Vertex_{i}_Ycoordinate", "{:.7f}".format(vertex[1]))
             setattr(surface, f"Vertex_{i}_Zcoordinate", "{:.7f}".format(self.height))
-        print('ok')
+        #print('ok')
 
     def _create_wall_surfaces(self):
 
@@ -369,9 +368,10 @@ class SingleFamilyHouse(Building):
             except ValueError as e:
                 shading_control.objls.append(f"Fenestration_Surface_{i + 1}_Name")
                 setattr(shading_control, f"Fenestration_Surface_{i + 1}_Name", f'window{i}')
+                print(self.building_name)
                 print(shading_control.__dict__)
                 print(e)
-                print('yo')
+                #print('yo')
 
     def _add_shading(self):
         self.shading_surfaces.pop()
@@ -438,18 +438,22 @@ def main(config):
 
         # instantiating a class for creating an IDF
         # TODO the name must be passed as config
-        idf_name = config['idf_out_dir'] + '/SingleFamilyHouse_%s.idf' % bid
+        name = config['FMU_name']
+        idf_name = config['idf_out_dir'] + '/%s_%s.idf' % (name,bid)
         sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
         sfh.save_idf(idf_name)
 
 
 if __name__ == '__main__':
+    perf = 'high'
+
     config = {"material_file": "materials.json",
               "construction_file": "constructions.json",
-              "gdf_file": "../geometric/outcomes/frassinetto_test.geojson",
-              "idd_path": "C:/EnergyPlusV23-2-0/Energy+.idd",
+              "gdf_file": "../geometric/outcomes/frassinetto_test_%s.geojson"%perf,
+              "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
               "idf_template": "singleFamilyHouse_test.idf",
-              "idf_out_dir": "frassinetto_casestudy_low"
+              "idf_out_dir": "frassinetto_casestudy_%s"%perf,
+              "FMU_name":'SF_%s'%perf
               }
 
     main(config)

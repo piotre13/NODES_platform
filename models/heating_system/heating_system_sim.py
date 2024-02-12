@@ -127,6 +127,9 @@ class Heating_system():
             elif self.type == 'gb':
                 self.fuel, self.En_auxel =  [x for x in res_plant]
                 self.Pel = self.En_auxel
+                if Qt<0:
+                    Qt=0.0 # TODO patch momentanea per non far tornare calori negativi dal boiler (problema oscillazioni iniziali eplus
+        #TODO non bisogna far tornare il Qt ma quello che effettivamente si riesce a produrre
             return [res_plant, Qt]
 
 
@@ -439,6 +442,8 @@ class Gas_boiler():
         return self.P_n
 
     def step(self, Text, Qt):
+        if Qt<0:
+            return [0.0,0.0]
         Qt = Qt / 1000
         beta = Qt / self.P_n
         if beta < 1:  # part load

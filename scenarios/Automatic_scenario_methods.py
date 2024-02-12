@@ -4,6 +4,8 @@ import os
 from components_templates import comp_temp # todo the template file should be something different than a python file
 import io
 from copy import deepcopy
+import geopandas as gpd
+import re
 
 class Scenario_Yaml():
     def __init__(self, name):
@@ -17,6 +19,8 @@ class Scenario_Yaml():
 
     def auto_creation(self, sim_dict=False):
         creation_complete = False
+        self.gdf = gpd.read_file(sim_dict['base_gdf'])
+
         self.scenario = self.templates['basics']
         if sim_dict:
             self.sim_instances(sim_dict)
@@ -54,7 +58,7 @@ class Scenario_Yaml():
         if fmu_dict['auto']:
             i=0
             for fmu in os.listdir(fmu_dict['fmu_dir']):
-                if i==300:
+                if i==400:
                     break
                 if fmu.endswith('.fmu'):
                     name = fmu.split('.')[0]
@@ -84,21 +88,44 @@ class Scenario_Yaml():
             eid = ''
         return eid
     def hvac_instances(self, type, attrs):
-
+        EPC_rating = {'high':'A3', 'med':'B', 'low':'F'}
+        #todo find a way for mixed performances ora si possono solo simulare con tutti la stessa perfromace
         self.scenario['SIM_CONFIG']['heating_system'] = self.templates['heating_sys']['heating_system']
-        if type == 'gb' :
-            model_name ='hs'
-            del self.scenario['SIM_CONFIG']['heating_system']['MODELS']['hp']
 
-        if type == 'hp' :
-            model_name ='hp'
+        if type == 'gb' :
+            del self.scenario['SIM_CONFIG']['heating_system']['MODELS']['hp']
             del self.scenario['SIM_CONFIG']['heating_system']['MODELS']['hs']
 
-        self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['ATTRS'] = attrs
-        self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['num'] = len(self.building_eids)
-        self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['leased_area'] = 100 # todo può essere una lista?
+            for i in range(len(self.building_eids)):
+                model_name ='hs %s'%i
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]={}
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PUBLIC']=True
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['ATTRS'] = attrs
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS'] = {}
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['num'] = 1
+                leased_area = self.gdf['net_leased_area'].tolist()
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['leased_area'] = leased_area[i]
+                perf = self.scenario_name.split('_')[-1]
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['EPC_rating'] = EPC_rating[perf]
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['type'] = 'gb'
 
-        print('yo')
+
+        if type == 'hp' :
+            del self.scenario['SIM_CONFIG']['heating_system']['MODELS']['hs']
+
+            for i in range(len(self.building_eids)):
+                model_name = 'hp_%s' % i
+
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name] = {}
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['ATTRS'] = attrs
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS'] = {}
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['num'] = 1
+                leased_area = self.gdf['net_leased_area'].tolist()
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['leased_area'] = leased_area[i]
+                perf = self.scenario_name.split('_')[-1]
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['EPC_rating'] = EPC_rating[perf]
+                self.scenario['SIM_CONFIG']['heating_system']['MODELS'][model_name]['PARAMS']['COP_nom'] = 3.5
+
 
     def auto_connections(self):
         for sim in self.scenario['SIM_CONFIG'].keys():
@@ -115,17 +142,20 @@ class Scenario_Yaml():
         pass
     def connect_autohvac(self):
 
+
+        self.building_eids.sort(key=lambda x:int(list(re.findall(r'\d+',x.split('_')[-1]))[0]))
+
         for i in range(len(self.building_eids)):
             j = i  + 1
             self.scenario['CONNECTIONS'][str(j)]={
                 'FROM': self.building_eids[i],
-                'TO':'heating_system.hs_%s'%i,
+                'TO':'heating_system.hs %s_%s'%(i,i),
                 'ATTRS':[['HeatingLoadTarget','Qt']]
             }
         for i in range(len(self.building_eids)):
             j = len(self.scenario['CONNECTIONS'])
             self.scenario['CONNECTIONS'][str(j)] = {
-                'FROM': 'heating_system.hs_%s' % i,
+                'FROM': 'heating_system.hs %s_%s' %(i,i),
                 'TO': self.building_eids[i],
                 'ATTRS': [['Qt', 'OthEquRadWatt']],
                 'PARAMS':{
@@ -143,22 +173,38 @@ class Scenario_Yaml():
     def connect_all2DB(self, yaml_file, attr_name, sim_name=None):
         if sim_name:
             sim = sim_name
+            j=0
             for model in yaml_file['SIM_CONFIG'][sim]['MODELS']:
                 num = yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['num']
-                for i in range(num):
+                if num == 1:
                     if 'instance_name' not in yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']:
-                        attr = sim + '.' + model + '_' +str(i)+'.' + attr_name
+                        attr = sim + '.' + model + '_' +str(j)+'.' + attr_name
 
                     elif len(yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']) == 1:
                         inst_names = yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']
                         attr = sim + '.' + model + '_' + inst_names[0] + '.' + attr_name
 
-                    else:
-                        inst_names = yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']
-                        attr = sim + '.' + model + '_' + inst_names[i] + '_' +str(i)+'.' + attr_name
-
                     if attr not in yaml_file['SCEN_OUTPUTS']['DB']['attrs']:
                         yaml_file['SCEN_OUTPUTS']['DB']['attrs'].append(attr)
+                    j += 1
+                else:
+
+                    for i in range(num):
+                        if 'instance_name' not in yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']:
+                            attr = sim + '.' + model + '_' +str(j)+'.' + attr_name
+
+                        elif len(yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']) == 1:
+                            inst_names = yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']
+                            attr = sim + '.' + model + '_' + inst_names[0] + '.' + attr_name
+
+                        else:
+                            inst_names = yaml_file['SIM_CONFIG'][sim]['MODELS'][model]['PARAMS']['instance_name']
+                            attr = sim + '.' + model + '_' + inst_names[i] + '_' +str(j)+'.' + attr_name
+
+                        if attr not in yaml_file['SCEN_OUTPUTS']['DB']['attrs']:
+                            yaml_file['SCEN_OUTPUTS']['DB']['attrs'].append(attr)
+                        j+=1
+                    j+=1
         else:
             for sim in yaml_file['SIM_CONFIG']:
                 for model in yaml_file['SIM_CONFIG'][sim]['MODELS']:
@@ -194,7 +240,7 @@ class Scenario_Yaml():
         print(tmp)
     def connect_weather(self):
         num = len (self.scenario['CONNECTIONS'])
-        to = ['heating_system.hs_%i'%i for i in range(len(self.building_eids))]
+        to = ['heating_system.hs %s_%s'%(i,i) for i in range(len(self.building_eids))]
         attrs = [['DryBulb','Text']]
         self.scenario['CONNECTIONS']['0']={'FROM': 'timeseries.ts_0',
                                                 'TO': to,
@@ -214,10 +260,11 @@ if __name__ == '__main__':
         "autohvac":True,
         "hvactype":"gb",
         "hvac_attrs":["Qt", "G_gas", "En_auxel", "Text", "fuel"],
+        "base_gdf":'../data/geometric/outcomes/frassinetto_test_high.geojson',
         "sims":{
             "FMUs":{"auto":True, # serve per fare un simulatore per ogni fmu
-                    "fmu_dir":"../models/fmus/frassinetto_casestudy_13",
-                    "attrs":["PeopleNumber","peopleActivity","LightsWatt","EEquipWatt","InfilAch","OthEquRadWatt","OthEquFCWatt","TBuilding","HeatingLoadTarget"],
+                    "fmu_dir":"../models/fmus/frassinetto_debug",
+                    "attrs":["PeopleNumber","PeopleActivity","LightsWatt","EEquipWatt","InfilAch","OthEquRadWatt","OthEquFCWatt","ZoneSetPoint","TBuilding","HeatingLoadTarget"],
                     "mk": "fmu_pyfmi_sim",
                     "mod_name": "rc"},
 
@@ -228,7 +275,7 @@ if __name__ == '__main__':
         }
     }
 
-    scenario = Scenario_Yaml('Frassinetto_test_13')
+    scenario = Scenario_Yaml('Frassinetto_test_debug_high')
     #scenario.add_weather()
     scenario.auto_creation(sim_dict)
     scenario.write_yaml()

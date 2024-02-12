@@ -51,7 +51,7 @@ comp_temp = {
         "start_date": "",
         "stop_date": "",
         "datafile": "",
-        "step_size": 3600,
+        "step_size": 600,
         "conv_dict": {}
       },
       "MODELS": {
@@ -88,7 +88,7 @@ comp_temp = {
         "cmd": "python mk_heating_system.py %(addr)s"
       },
       "PARAMS": {
-        "step_size": 60
+        "step_size": 600
       },
       "MODELS": {
         "hs": {

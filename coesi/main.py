@@ -178,10 +178,16 @@ def models_instantiation(simulators, models, G):
     #TODO dict con i nomi dei sim
     #TODO nel sid evidare l'aggiunta di -int perchè tnato il sid viene preso dal nome univoco nello yaml
     #todo children name potrebbero non doversi portare il nome del model visto che abbiamo cambiato entities
+
+
     entities = {}
-    for sim, models in models.items():
+    for sim, mod in models.items():
         entities[sim]={}
-        for model, param in models.items():
+        if sim == 'heating_system': ## questa ggiunta mi serve per automatizzare gli scenari sto semplicemente riordinando il dict in funzione dei numeri dei sim
+            from collections import OrderedDict
+            skeys = sorted(mod.keys(), key=lambda s: int(s.split(' ')[-1]))
+            mod = OrderedDict((k, mod[k]) for k in skeys)
+        for model, param in mod.items():
             if param == []:
                 param = {}
             if "num" in param.keys():
