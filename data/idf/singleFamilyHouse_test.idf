@@ -32,7 +32,7 @@ Building,
     0.04,                    !- Loads Convergence Tolerance Value {W}
     0.004,                   !- Temperature Convergence Tolerance Value {deltaC}
     FullExterior,        !- Solar Distribution
-    25,                      !- Maximum Number of Warmup Days
+    7,                      !- Maximum Number of Warmup Days
     6;                       !- Minimum Number of Warmup Days
 
 
@@ -599,6 +599,17 @@ DesignSpecification:OutdoorAir,
   0.0,                                                     !- Outdoor Air Flow per Zone Floor Area {m3/s-m2}
   0.0;                                                     !- Outdoor Air Flow per Zone {m3/s}
 
+Schedule:Compact,
+    Heating availability,  !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 01/06,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 1
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,            !- Field 3
+    0;                       !- Field 4
+
 Sizing:Zone,
   Zn001,                                                   !- Zone or ZoneList Name
   SupplyAirTemperature,                                    !- Zone Cooling Design Supply Air Temperature Input Method
@@ -654,11 +665,11 @@ ZoneHVAC:IdealLoadsAirSystem,
   0.0077,                                                  !- Minimum Cooling Supply Air Humidity Ratio [kg-H20/kg-air]
   LimitCapacity,                                           !- Heating Limit
   ,                                                        !- Maximum Heating Air Flow Rate {m3/s}
-  0,                                                    !- Maximum Sensible Heating Capacity {m3/s}
+  1000,                                                    !- Maximum Sensible Heating Capacity {m3/s}
   LimitCapacity,                                           !- Cooling Limit
   ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
   0,                                                       !- Maximum Total Cooling Capacity {m3/s}
-  ,                                                        !- Heating Availability Schedule Name
+  Heating availability,                                                        !- Heating Availability Schedule Name
   ,                                                        !- Cooling Availability Schedule Name
   None,                                                    !- Dehumidification Control Type
   0.7,                                                     !- Cooling Sensible Heat Ratio
