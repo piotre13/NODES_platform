@@ -591,6 +591,17 @@ Schedule:Compact,
   Through: 12/31,
   For: AllDays,
   Until: 24:00, 20.;
+
+Schedule:Compact,
+    Heating availability,  !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 01/04,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 1
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,            !- Field 3
+    0;                       !- Field 4
 	
 DesignSpecification:OutdoorAir,
   SZ DSOA Zn001,                                           !- Name
@@ -658,7 +669,7 @@ ZoneHVAC:IdealLoadsAirSystem,
   LimitCapacity,                                           !- Cooling Limit
   ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
   0,                                                       !- Maximum Total Cooling Capacity {m3/s}
-  ,                                                        !- Heating Availability Schedule Name
+  Heating availability,                                                        !- Heating Availability Schedule Name
   ,                                                        !- Cooling Availability Schedule Name
   None,                                                    !- Dehumidification Control Type
   0.7,                                                     !- Cooling Sensible Heat Ratio
