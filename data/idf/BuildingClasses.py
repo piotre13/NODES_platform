@@ -416,7 +416,7 @@ def main(config):
     gdf = gpd.read_file(config['gdf_file'])
 
     for bid, b_row in gdf.iterrows():
-        params = {'name': 'BUI_%s' % bid, 'materials_list': None,
+        params = {'name': 'BUI%s' % bid, 'materials_list': None,
                   'construction_list': constructions_list[b_row['construction_type']],
                   'window_to_wall_ratio': b_row['w2w'],
                   'height': b_row['height'],
@@ -438,8 +438,8 @@ def main(config):
 
         # instantiating a class for creating an IDF
         # TODO the name must be passed as config
-        name = config['FMU_name']
-        idf_name = config['idf_out_dir'] + '/%s_%s.idf' % (name,bid)
+        name = b_row['b_id']
+        idf_name = config['idf_out_dir'] +'/'+ name +'.idf'
         sfh = SingleFamilyHouse(config=params, idf_path=config['idf_template'], idd_path=config['idd_path'])
         sfh.save_idf(idf_name)
 
@@ -453,7 +453,6 @@ if __name__ == '__main__':
               "idd_path": "/usr/local/EnergyPlus-23-1-0/Energy+.idd",
               "idf_template": "singleFamilyHouse_test.idf",
               "idf_out_dir": "frassinetto_casestudy_%s"%perf,
-              "FMU_name":'SF_%s'%perf
               }
 
     main(config)

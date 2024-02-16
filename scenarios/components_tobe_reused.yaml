@@ -1,0 +1,39 @@
+
+  timeseries1:
+    MODELS:
+      ts:
+        ATTRS:
+        - Pres
+        - P
+        PARAMS: []
+        PUBLIC: true
+    PARAMS:
+      conv_dict:
+        P: 1:0.0
+        Pres: 1:0
+
+      datafile: occupancy/famiglia.csv
+      start_date: START_DATE
+      stepsize: 600
+      stop_date: '2015-01-30 00:00:00'
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+
+
+
+
+
+  '4':
+    ATTRS:
+      - - Pres
+        - PeopleNumber
+    FROM: timeseries1.ts_0
+    TO:
+      - fmu_pyfmi_sim0.rc_Bui27
+  '5':
+    ATTRS:
+      - - P
+        - PeopleActivity
+    FROM: timeseries1.ts_0
+    TO:
+      - fmu_pyfmi_sim0.rc_Bui27

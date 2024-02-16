@@ -1,0 +1,14 @@
+SCEN_CONFIG:
+  DAYS: 0
+  RT_FACTOR: null
+  SCENARIO_NAME: ''
+  START_DATE: '' #2021-01-01 01:00:00 use following format
+
+SCEN_OUTPUTS:
+  DB:
+    attrs: [] #list of attrs with full name (sim+mod+attr_name)
+    step_size: 0
+
+SIM_CONFIG: {}
+
+CONNECTIONS: {}

@@ -88,6 +88,7 @@ class Heating_System(mosaik_api.Simulator):
                     elif attr == 'Text':
                         Text = list(values.values())[0]
 
+
             model_instance.step(Text, Qt)
 
         return time + self.step_size  # Step size

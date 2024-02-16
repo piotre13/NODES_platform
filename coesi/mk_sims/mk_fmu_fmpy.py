@@ -215,7 +215,7 @@ class FMU_Adapter(mosaik_api.Simulator):
     def finalize(self):
         for eid, fmu in self.entities.items():
             fmu.terminate()
-            # fmu.freeInstance() # TODO: se ho èpiù instanze richiede molto tempo (test con pyfmi)
+            # fmu.freeInstance() # TODO: se ho èpiù instanze richiede molto tempo (test con pyfmi.yaml)
 
         if self.solver:
             self.command.kill()

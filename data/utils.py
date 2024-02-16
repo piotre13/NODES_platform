@@ -49,6 +49,6 @@ def convert_epw_to_csv(epw_file_path, csv_file_path):
 
 
 if __name__ == '__main__':
-    epw_file = 'meteo_file/meteo_bousson.epw'
-    out_file = 'meteo_file/meteo_bousson.csv'
+    epw_file = 'meteo_file/meteo_frassinetto_TMY.epw'
+    out_file = 'meteo_file/meteo_frassinetto.csv'
     convert_epw_to_csv(epw_file,out_file)

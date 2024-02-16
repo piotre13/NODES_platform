@@ -100,6 +100,7 @@ class Heating_system():
 
     def step(self, Text, Qt):
         self.Qt = Qt
+        self.Text = Text
         if Text > 100:
             Text = Text-273.15
         self.Tw = self.Tw_cc(Text, self.k_factor)
@@ -128,7 +129,8 @@ class Heating_system():
                 self.fuel, self.En_auxel =  [x for x in res_plant]
                 self.Pel = self.En_auxel
                 if Qt<0:
-                    Qt=0.0 # TODO patch momentanea per non far tornare calori negativi dal boiler (problema oscillazioni iniziali eplus
+                    self.Qt=0.0
+                    Qt=0.0# TODO patch momentanea per non far tornare calori negativi dal boiler (problema oscillazioni iniziali eplus
         #TODO non bisogna far tornare il Qt ma quello che effettivamente si riesce a produrre
             return [res_plant, Qt]
 

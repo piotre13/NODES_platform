@@ -1,0 +1,18 @@
+  heating_system:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 368.8390197365775
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS:
+      step_size: 600
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s

@@ -22,6 +22,34 @@ SimulationControl,
     No,                      !- Do HVAC Sizing Simulation for Sizing Periods
     1;                       !- Maximum Number of HVAC Sizing Simulation Passes
 
+SizingPeriod:DesignDay,
+	Denver Centennial Ann Htg 99.6% Condns DB,     ! Name
+	12,                                            ! Month
+	21,                                            ! Day of Month
+	WinterDesignDay,                               ! Day Type
+	-10.8,                                         ! Maximum Dry-Bulb Temperature
+	0.0,                                           ! Daily Dry-Bulb Temperature Range
+	,                                              ! Dry-Bulb Temperature Range Modifier Type
+	,                                              ! Dry-Bulb Temperature Range Modifier Day Schedule Name
+	Wetbulb,                                       ! Humidity Condition Type
+	-10.8,                                         ! Wetbulb or DewPoint at Maximum Dry-Bulb
+	,                                              ! Humidity Condition Day Schedule Name
+	,                                              ! Humidity Ratio at Maximum Dry-Bulb
+	,                                              ! Enthalpy at Maximum Dry-Bulb
+	,                                              ! Daily Wet-Bulb Temperature Range
+	81560.,                                        ! Barometric Pressure
+	3,                                             ! Wind Speed
+	340,                                           ! Wind Direction
+	No,                                            ! Rain Indicator
+	No,                                            ! Snow Indicator
+	No,                                            ! Daylight Saving Time Indicator
+	ASHRAEClearSky,                                ! Solar Model Indicator
+	,                                              ! Beam Solar Day Schedule Name
+	,                                              ! Diffuse Solar Day Schedule Name
+	,                                              ! ASHRAE Clear Sky Optical Depth for Beam Irradiance (taub)
+	,                                              ! ASHRAE Clear Sky Optical Depth for Diffuse Irradiance (taud)
+	0.00;                                          ! Sky Clearness
+
 
 !-   ===========  ALL OBJECTS IN CLASS: BUILDING ===========
 
@@ -32,8 +60,8 @@ Building,
     0.04,                    !- Loads Convergence Tolerance Value {W}
     0.004,                   !- Temperature Convergence Tolerance Value {deltaC}
     FullExterior,        !- Solar Distribution
-    1,                      !- Maximum Number of Warmup Days
-    1;                       !- Minimum Number of Warmup Days
+    6,                      !- Maximum Number of Warmup Days
+    6;                       !- Minimum Number of Warmup Days
 
 
 !-   ===========  ALL OBJECTS IN CLASS: SHADOWCALCULATION ===========
@@ -453,12 +481,6 @@ ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     0;                       !- Initial Value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
-    FMU_People_Activity_Schedule,  !- Schedule Name
-    Any Number,              !- Schedule Type Limits Names
-    PeopleActivity,          !- FMU Variable Name
-    0;                      !- Initial Value
-
-ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_Lights_Watt_Schedule,!- Schedule Name
     Any Number,              !- Schedule Type Limits Names
     LightsWatt,              !- FMU Variable Name
@@ -470,11 +492,29 @@ ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     EEquipWatt,              !- FMU Variable Name
     0;                      !- Initial Value
 
-ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
-    FMU_Infil_Ach_Schedule,  !- Schedule Name
-    Any Number,              !- Schedule Type Limits Names
-    InfilAch,                !- FMU Variable Name
-    0;                     !- Initial Value
+Schedule:Compact,
+    FMU_Infil_Ach_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,            !- Field 3
+    0.5;                      !- Field 4
+
+Schedule:Compact,
+    Heating availability,  !- Name
+    Any Number,              !- Schedule Type Limits Name
+    Through: 01/04,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00, 1
+    Through: 12/31,          !- Field 1
+    For: AllDays,            !- Field 2
+    Until: 24:00,            !- Field 3
+    0;                       !- Field 4
+
+Schedule:Constant,
+    FMU_People_Activity_Schedule,!- Name
+    Any Number,              !- Schedule Type Limits Name
+    80; !- hourly value
 
 ExternalInterface:FunctionalMockupUnitExport:To:Schedule,
     FMU_OthEqu_Watt_Schedule_Rad,  !- Schedule Name
@@ -507,6 +547,10 @@ Output:VariableDictionary,
 Output:Variable,
     Zn001,                   !- Key Value
     Zone Mean Air Temperature,    !- Variable Name
+    timestep;                !- Reporting Frequency
+Output:Variable,
+    Zn001,                   !- Key Value
+    Zone Operative Temperature,    !- Variable Name
     timestep;                !- Reporting Frequency
 
 Output:Variable,
@@ -584,14 +628,9 @@ Schedule:Compact ,
   For: AllDays,
   Until: 24:00,
   1; !- Single Heating
-! Heating setpoint schedule definition
-Schedule:Compact,
-  Heating Setpoints,
-  Temperature,
-  Through: 12/31,
-  For: AllDays,
-  Until: 24:00, 20.;
-	
+  ! Heating setpoint schedule definition
+
+
 DesignSpecification:OutdoorAir,
   SZ DSOA Zn001,                                           !- Name
   flow/person,                                             !- Outdoor Air Method
@@ -658,7 +697,7 @@ ZoneHVAC:IdealLoadsAirSystem,
   LimitCapacity,                                           !- Cooling Limit
   ,                                                        !- Maximum Cooling Air Flow Rate {m3/s}
   0,                                                       !- Maximum Total Cooling Capacity {m3/s}
-  ,                                                        !- Heating Availability Schedule Name
+  Heating availability,                                                        !- Heating Availability Schedule Name
   ,                                                        !- Cooling Availability Schedule Name
   None,                                                    !- Dehumidification Control Type
   0.7,                                                     !- Cooling Sensible Heat Ratio
@@ -670,5 +709,4 @@ ZoneHVAC:IdealLoadsAirSystem,
   None,                                                    !- Heat Recovery Type
   0.70,                                                    !- Sensible Heat Recovery Effectiveness
   0.65;                                                    !- Latent Heat Recovery Effectiveness
-
 

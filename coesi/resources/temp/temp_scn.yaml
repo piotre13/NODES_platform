@@ -1,48 +1,485 @@
 CONNECTIONS:
-
+  '0':
+    ATTRS:
+    - - DryBulb
+      - Text
+    FROM: weather.ts_0
+    TO:
+    - heating0.hs_0
+    - heating1.hs_0
+    - heating2.hs_0
+    - heating3.hs_0
+    - heating4.hs_0
+    - heating5.hs_0
+    - heating6.hs_0
+  '1':
+    ATTRS:
+    - - Tset
+      - ZoneSetPoint
+    FROM: scheduler.schedule_0
+    TO:
+    - pyfmi0.BUI59_0
+    - pyfmi1.BUI138_0
+    - pyfmi2.BUI102_0
+    - pyfmi3.BUI13_0
+    - pyfmi6.BUI44_0
+    - pyfmi7.BUI35_0
+    - pyfmi9.BUI27_0
+  '10':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy4.occ_0
+    TO: pyfmi6.BUI44_0
+  '11':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy4.occ_0
+    TO: pyfmi6.BUI44_0
+  '12':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy5.occ_0
+    TO: pyfmi7.BUI35_0
+  '13':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy5.occ_0
+    TO: pyfmi7.BUI35_0
+  '14':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy6.occ_0
+    TO: pyfmi9.BUI27_0
+  '15':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy6.occ_0
+    TO: pyfmi9.BUI27_0
+  '16':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi0.BUI59_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating0.hs_0
+  '17':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating0.hs_0
+    TO: pyfmi0.BUI59_0
+  '18':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi1.BUI138_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating1.hs_0
+  '19':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating1.hs_0
+    TO: pyfmi1.BUI138_0
+  '2':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy0.occ_0
+    TO: pyfmi0.BUI59_0
+  '20':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi2.BUI102_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating2.hs_0
+  '21':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating2.hs_0
+    TO: pyfmi2.BUI102_0
+  '22':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi3.BUI13_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating3.hs_0
+  '23':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating3.hs_0
+    TO: pyfmi3.BUI13_0
+  '24':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi6.BUI44_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating4.hs_0
+  '25':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating4.hs_0
+    TO: pyfmi6.BUI44_0
+  '26':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi7.BUI35_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating5.hs_0
+  '27':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating5.hs_0
+    TO: pyfmi7.BUI35_0
+  '28':
+    ATTRS:
+    - - HeatingLoadTarget
+      - Qt
+    FROM: pyfmi9.BUI27_0
+    PARAMS:
+      initial_data:
+        HeatingLoadTarget: 0.0
+      time_shifted: true
+    TO: heating6.hs_0
+  '29':
+    ATTRS:
+    - - Qt
+      - OthEquRadWatt
+    FROM: heating6.hs_0
+    TO: pyfmi9.BUI27_0
+  '3':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy0.occ_0
+    TO: pyfmi0.BUI59_0
+  '4':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy1.occ_0
+    TO: pyfmi1.BUI138_0
+  '5':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy1.occ_0
+    TO: pyfmi1.BUI138_0
+  '6':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy2.occ_0
+    TO: pyfmi2.BUI102_0
+  '7':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy2.occ_0
+    TO: pyfmi2.BUI102_0
+  '8':
+    ATTRS:
+    - - P
+      - EEquipWatt
+    FROM: occupancy3.occ_0
+    TO: pyfmi3.BUI13_0
+  '9':
+    ATTRS:
+    - - Pres
+      - PeopleNumber
+    FROM: occupancy3.occ_0
+    TO: pyfmi3.BUI13_0
 SCEN_CONFIG:
   DAYS: 15
   RT_FACTOR: null
-  SCENARIO_NAME: Frassinetto_test_debug_high
+  SCENARIO_NAME: test_scenario
   START_DATE: '2021-01-01 01:00:00'
 SCEN_OUTPUTS:
   DB:
     attrs:
-    - fmu_pyfmi_sim0.rc_Bui138.TBuilding
-    - fmu_pyfmi_sim0.rc_Bui138.HeatingLoadTarget
-    - fmu_pyfmi_sim1.rc_Bui13.TBuilding
-    - fmu_pyfmi_sim1.rc_Bui13.HeatingLoadTarget
-    - fmu_pyfmi_sim2.rc_Bui59.TBuilding
-    - fmu_pyfmi_sim2.rc_Bui59.HeatingLoadTarget
-    - fmu_pyfmi_sim3.rc_Bui44.TBuilding
-    - fmu_pyfmi_sim3.rc_Bui44.HeatingLoadTarget
-    - fmu_pyfmi_sim4.rc_Bui102.TBuilding
-    - fmu_pyfmi_sim4.rc_Bui102.HeatingLoadTarget
-    - fmu_pyfmi_sim5.rc_Bui35.TBuilding
-    - fmu_pyfmi_sim5.rc_Bui35.HeatingLoadTarget
-    - fmu_pyfmi_sim6.rc_Bui27.TBuilding
-    - fmu_pyfmi_sim6.rc_Bui27.HeatingLoadTarget
-
+    - pyfmi0.BUI59_0.TBuilding
+    - pyfmi0.BUI59_0.HeatingLoadTarget
+    - pyfmi1.BUI138_0.TBuilding
+    - pyfmi1.BUI138_0.HeatingLoadTarget
+    - pyfmi2.BUI102_0.TBuilding
+    - pyfmi2.BUI102_0.HeatingLoadTarget
+    - pyfmi3.BUI13_0.TBuilding
+    - pyfmi3.BUI13_0.HeatingLoadTarget
+    - pyfmi6.BUI44_0.TBuilding
+    - pyfmi6.BUI44_0.HeatingLoadTarget
+    - pyfmi7.BUI35_0.TBuilding
+    - pyfmi7.BUI35_0.HeatingLoadTarget
+    - pyfmi9.BUI27_0.TBuilding
+    - pyfmi9.BUI27_0.HeatingLoadTarget
+    - heating0.hs_0.Qt
+    - heating0.hs_0.En_auxel
+    - heating0.hs_0.fuel
+    - heating1.hs_0.Qt
+    - heating1.hs_0.En_auxel
+    - heating1.hs_0.fuel
+    - heating2.hs_0.Qt
+    - heating2.hs_0.En_auxel
+    - heating2.hs_0.fuel
+    - heating3.hs_0.Qt
+    - heating3.hs_0.En_auxel
+    - heating3.hs_0.fuel
+    - heating4.hs_0.Qt
+    - heating4.hs_0.En_auxel
+    - heating4.hs_0.fuel
+    - heating5.hs_0.Qt
+    - heating5.hs_0.En_auxel
+    - heating5.hs_0.fuel
+    - heating6.hs_0.Qt
+    - heating6.hs_0.En_auxel
+    - heating6.hs_0.fuel
+    - weather.ts_0.DryBulb
     step_size: 600
 SIM_CONFIG:
-  fmu_pyfmi_sim0:
+  heating0:
     MODELS:
-      rc:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 380.9049735309036
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: &id001
+      step_size: 600
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating1:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 53.09516363096459
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating2:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 316.2941389565933
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating3:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 628.0185912062097
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating4:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 307.6642761184727
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating5:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 51.35509237839424
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  heating6:
+    MODELS:
+      hs:
+        ATTRS:
+        - Qt
+        - En_auxel
+        - Text
+        - fuel
+        PARAMS:
+          EPC_rating: A3
+          leased_area: 686.1532835665614
+          num: 1
+          type: gb
+        PUBLIC: true
+    PARAMS: *id001
+    RUN_PROCESS:
+      cmd: python mk_heating_system.py %(addr)s
+  occupancy0:
+    MODELS:
+      occ:
+        ATTRS: &id002
+        - P
+        - Pres
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: &id003
+      conv_dict:
+        P: '1:0'
+        Pres: '1:0'
+      datafile: occupancy/famiglia.csv
+      start_date: START_DATE
+      stepsize: 600
+      stop_date: '2021-01-30 00:00:00'
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy1:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy2:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy3:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy4:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy5:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  occupancy6:
+    MODELS:
+      occ:
+        ATTRS: *id002
+        PARAMS:
+          num: 1
+        PUBLIC: true
+    PARAMS: *id003
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
+  pyfmi0:
+    MODELS:
+      BUI59:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_138
-          instance_name:
-          - Bui138
+          fmu_name: BUI59
           num: 1
         PUBLIC: true
     PARAMS:
@@ -52,24 +489,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim1:
+  pyfmi1:
     MODELS:
-      rc:
+      BUI138:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_13
-          instance_name:
-          - Bui13
+          fmu_name: BUI138
           num: 1
         PUBLIC: true
     PARAMS:
@@ -79,24 +512,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim2:
+  pyfmi2:
     MODELS:
-      rc:
+      BUI102:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_59
-          instance_name:
-          - Bui59
+          fmu_name: BUI102
           num: 1
         PUBLIC: true
     PARAMS:
@@ -106,24 +535,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim3:
+  pyfmi3:
     MODELS:
-      rc:
+      BUI13:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_44
-          instance_name:
-          - Bui44
+          fmu_name: BUI13
           num: 1
         PUBLIC: true
     PARAMS:
@@ -133,24 +558,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim4:
+  pyfmi6:
     MODELS:
-      rc:
+      BUI44:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_102
-          instance_name:
-          - Bui102
+          fmu_name: BUI44
           num: 1
         PUBLIC: true
     PARAMS:
@@ -160,24 +581,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim5:
+  pyfmi7:
     MODELS:
-      rc:
+      BUI35:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_35
-          instance_name:
-          - Bui35
+          fmu_name: BUI35
           num: 1
         PUBLIC: true
     PARAMS:
@@ -187,24 +604,20 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-  fmu_pyfmi_sim6:
+  pyfmi9:
     MODELS:
-      rc:
+      BUI27:
         ATTRS:
         - PeopleNumber
-        - PeopleActivity
         - LightsWatt
         - EEquipWatt
-        - InfilAch
         - OthEquRadWatt
         - OthEquFCWatt
         - ZoneSetPoint
         - TBuilding
         - HeatingLoadTarget
         PARAMS:
-          fmu_name: SF_high_27
-          instance_name:
-          - Bui27
+          fmu_name: BUI27
           num: 1
         PUBLIC: true
     PARAMS:
@@ -214,24 +627,29 @@ SIM_CONFIG:
       work_dir: frassinetto_debug
     RUN_PROCESS:
       cmd: python mk_fmu_pyfmi.py %(addr)s
-
-  timeseries:
+  scheduler:
+    MODELS:
+      schedule:
+        ATTRS:
+        - Tset
+        PARAMS:
+          num: 1
+          schedule:
+          - 0:21
+        PUBLIC: true
+    PARAMS:
+      days: DAYS
+    RUN_PROCESS:
+      python: mk_scheduler:AgentScheduler
+  weather:
     MODELS:
       ts:
         ATTRS:
         - Atmos_Pressure
         - DewPoint
         - DryBulb
-        - RelHum
-        - OpaqSkyCvr
-        - Ceiling_Hgt
-        - TotSkyCvr
-        - WindSpd
-        - WindDir
-        - HorzIRSky
-        - DifHorzRad
-        - DirNormRad
-        PARAMS: []
+        PARAMS:
+          num: 1
         PUBLIC: true
     PARAMS:
       conv_dict:
@@ -240,9 +658,9 @@ SIM_CONFIG:
         OpaqSkyCvr: 0.1:0
         TotSkyCvr: 0.1:0
         WindDir: 3.14159265359/180.0:0
-      datafile: meteo_file/meteo_bousson.csv
+      datafile: meteo_file/meteo_frassinetto.csv
       start_date: START_DATE
-      stepsize: 60
+      stepsize: 600
       stop_date: '2021-01-30 00:00:00'
     RUN_PROCESS:
       python: mk_timeseries:TimeSeriesSim

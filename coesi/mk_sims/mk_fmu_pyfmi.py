@@ -51,7 +51,7 @@ class FMU_Adapter(mosaik_api.Simulator):
         self.sid = None
 
     def init(self, sid, time_resolution=1., work_dir=None, eid_prefix=None, start_time=0, stop_time=0, step_size=
-    None, fmu_check=False, fmu_info=False, fmu_log=2, sim_meta=None, solver=None):  # pyfmi require 0.0 as stop
+    None, fmu_check=False, fmu_info=False, fmu_log=2, sim_meta=None, solver=None):  # pyfmi.yaml require 0.0 as stop
         # time by
         # default
         # TODO general parameters for FMU to set the scenario for the simulator
@@ -116,10 +116,10 @@ class FMU_Adapter(mosaik_api.Simulator):
             fmiVersion = self.entities[eid].get_version()
 
             if fmiVersion == '2.0':
-                self.entities[eid].instantiate(name=instance_name[i]) # Todo: load_fmu e instantiate crea due
+                self.entities[eid].instantiate(name=eid) # Todo: load_fmu e instantiate crea due
                 # instanze ?? ma è l'unico modo per creare i files con il nome _instance_name
             else:
-                self.entities[eid].instantiate_slave(name=instance_name[i])
+                self.entities[eid].instantiate_slave(name=eid)
 
             # Set all variables start values (start=) like fixed parameters
             if start_vrs:
@@ -202,7 +202,7 @@ class FMU_Adapter(mosaik_api.Simulator):
     def finalize(self):
         for eid, fmu in self.entities.items():
             fmu.terminate()
-            # fmu.free_instance() # TODO: se ho più instanze richiede molto tempo (test con pyfmi)
+            # fmu.free_instance() # TODO: se ho più instanze richiede molto tempo (test con pyfmi.yaml)
             # print(fmu.print_log())
         if self.solver:
             # self.command.stdin.write('stop\n'.encode())

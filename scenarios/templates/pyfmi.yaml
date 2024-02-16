@@ -1,0 +1,24 @@
+  fmu_pyfmi_sim0:
+    MODELS:
+      rc:
+        ATTRS:
+        - PeopleNumber
+        - LightsWatt
+        - EEquipWatt
+        - OthEquRadWatt
+        - OthEquFCWatt
+        - ZoneSetPoint
+        - TBuilding
+        - HeatingLoadTarget
+        PARAMS:
+          fmu_name: SF_high_27
+          num: 1
+
+        PUBLIC: true
+    PARAMS:
+      fmu_log: 0
+      step_size: 600
+      stop_time: 31536000
+      work_dir: frassinetto_debug_27
+    RUN_PROCESS:
+      cmd: python mk_fmu_pyfmi.py %(addr)s

@@ -1,0 +1,11 @@
+
+ATTRS:
+  - - ''
+    - ''
+FROM: '' #eg fmu_pyfmi_sim0.rc_Bui27
+TO: ''  #this could be a list of multiple for connection one_to_many
+PARAMS:
+  initial_data:
+    var: 0.0  # here var must be changed with the correct variable name
+  time_shifted: true
+

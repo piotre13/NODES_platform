@@ -1,0 +1,12 @@
+  scheduler:
+    RUN_PROCESS:
+      python: mk_scheduler:AgentScheduler
+    PARAMS:
+      days: DAYS
+    MODELS:
+      schedule:
+        PUBLIC: true
+        PARAMS:
+          schedule: [ '0:20']
+        ATTRS:
+          - Tset

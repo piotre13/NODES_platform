@@ -12,6 +12,7 @@ import numpy as np
 import random
 import statistics
 import json
+import re
 import matplotlib.pyplot as plt
 from scipy import stats
 
@@ -71,7 +72,7 @@ class DataFiller():
                     n_fam=int(n_fam.iloc[0])
 
             return n_fam
-        df['n_fam_'] = df.apply(lambda x: get_fam(x, census_ind), axis=1)
+        df['n_fam'] = df.apply(lambda x: get_fam(x, census_ind), axis=1)
 
 
 
@@ -404,7 +405,7 @@ class ZoneSelector():
             print('Year_of_construction values are already present with the correct column name')
             return
     def get_w2w(self):
-        self.buildings['w2w']=0.2
+        self.buildings['w2w']=0.05
     def get_construction_type(self):
         '''strictly related to the year of construction of the buildings, the archetypes that defines the type of construction depends on the year
         it will be added also a distinction on the type of building'''
@@ -453,7 +454,7 @@ class ZoneSelector():
 
     def set_unique_ids(self):
         self.buildings = self.buildings.reset_index()
-        self.buildings['b_id'] = self.buildings.apply(lambda i: 'BUI_%s'%i.name, axis=1)
+        self.buildings['b_id'] = self.buildings.apply(lambda i: 'BUI%s'%i.name, axis=1)
         self.buildings = self.buildings.set_index('b_id')
 
     def get_shading_surfaces(self, distance = 40):
@@ -466,7 +467,7 @@ class ZoneSelector():
         self.buildings = self.buildings.to_crs('EPSG:32632')
 
         for index, row in self.buildings.iterrows():
-            num = int(index.split('_')[-1])
+            num = re.findall(r'\d+', index)[0]
             centroid = row['geometry'].centroid
             buffer = centroid.buffer(distance)
             neigh_list = self.buildings.sindex.query(buffer, predicate= 'contains' )
@@ -481,7 +482,7 @@ class ZoneSelector():
 
 
 
-                idx = 'BUI_%s'%neigh
+                idx = 'BUI%s'%neigh
                 height = self.buildings.loc[idx,'height']
                 geom = self.buildings.loc[idx,'geometry'].exterior.coords.xy
 
@@ -558,7 +559,7 @@ if __name__ == '__main__':
     zone.get_destination()
     zone.get_elevation()
     zone.get_geometrical_values()
-    zone.get_year_of_construction( autorange=(2001,2024))
+    zone.get_year_of_construction( autorange=(1000,1940))
     zone.assign_census_zone()
     zone.clean_df(cut=True, filter=True)
     zone.get_demographics() # va sempre eseguito dopo il clean perche sparge abitanti su tutti gli edifici  quinsi anche non residenziali se ci sono va corretto
@@ -567,7 +568,7 @@ if __name__ == '__main__':
     zone.get_shading_surfaces()
     zone.get_hvac_id()
     zone.get_tabula_archetype()
-    zone.df2geojson('outcomes/frassinetto_test_high.geojson')
+    zone.df2geojson('outcomes/frassinetto_test_low.geojson')
     #zone.df2geojson('outcomes/frassinetto_test.xlsx')
 
     print('yo')

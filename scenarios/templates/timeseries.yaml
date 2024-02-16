@@ -1,0 +1,22 @@
+  timeseries:
+    MODELS:
+      ts:
+        ATTRS:
+        - Atmos_Pressure
+        - DewPoint
+        - DryBulb
+        PARAMS: []
+        PUBLIC: true
+    PARAMS:
+      conv_dict:
+        DewPoint: 1:273.15
+        DryBulb: 1:273.15
+        OpaqSkyCvr: 0.1:0
+        TotSkyCvr: 0.1:0
+        WindDir: 3.14159265359/180.0:0
+      datafile: meteo_file/meteo_bousson.csv
+      start_date: START_DATE
+      stepsize: 600
+      stop_date: '2021-01-30 00:00:00'
+    RUN_PROCESS:
+      python: mk_timeseries:TimeSeriesSim
